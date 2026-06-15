@@ -1,0 +1,5 @@
+**/.git
+**/.wrangler
+**/.DS_Store
+wrangler.toml
+*.md
