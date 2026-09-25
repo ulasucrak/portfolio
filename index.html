@@ -7,287 +7,616 @@
     <title>Ulaş Uçrak | Software & AI Engineer</title>
     <meta name="description"
         content="Ulaş Uçrak — Computer Engineering graduate (Çankaya University, 2026) working on C++/Qt desktop software, embedded firmware and AI.">
+    <meta name="theme-color" content="#F8FAFC">
+    <script>
+        // Apply saved theme before first paint to avoid a flash
+        document.documentElement.classList.add('js');
+        try { if (localStorage.getItem('theme') === 'dark') document.documentElement.setAttribute('data-theme', 'dark'); } catch (e) { }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Open+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <!-- Decorative background -->
+    <div class="bg-blobs" aria-hidden="true">
+        <span class="blob blob-1"></span>
+        <span class="blob blob-2"></span>
+        <span class="blob blob-3"></span>
+    </div>
 
     <!-- NAVBAR -->
-    <header>
-        <nav>
-            <div class="logo">ulasucrak</div>
+    <header class="nav-wrap">
+        <nav class="nav" aria-label="Main">
+            <a href="#hero" class="logo" aria-label="Ulaş Uçrak — home">
+                <span class="logo-mark" aria-hidden="true">U</span>
+                <span class="logo-text">ulaş uçrak</span>
+            </a>
             <ul class="nav-links">
-                <li><a href="#summary">Summary</a></li>
-                <li><a href="#education">Education</a></li>
-                <li><a href="#projects">Projects</a></li>
+                <li><a href="#about">About</a></li>
                 <li><a href="#experience">Experience</a></li>
+                <li><a href="#projects">Projects</a></li>
                 <li><a href="#skills">Skills</a></li>
+                <li><a href="#education">Education</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
-            <button id="theme-toggle" aria-label="Toggle dark mode">🌙</button>
+            <button id="theme-toggle" class="icon-btn" type="button" aria-label="Switch to dark mode">
+                <svg class="i-moon" viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z" />
+                </svg>
+                <svg class="i-sun" viewBox="0 0 24 24" aria-hidden="true">
+                    <circle cx="12" cy="12" r="4" />
+                    <path
+                        d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41" />
+                </svg>
+            </button>
         </nav>
     </header>
 
-    <!-- HERO -->
-    <section id="hero">
-        <p class="hero-eyebrow">Software Engineer</p>
+    <main id="main">
 
-        <div class="avatar-wrap">
-            <img src="profile.jpg" alt="Ulaş Uçrak" class="hero-avatar" onerror="this.style.visibility='hidden'">
-        </div>
+        <!-- HERO -->
+        <section id="hero" class="hero">
+            <div class="hero-copy">
+                <p class="eyebrow"><span class="dot" aria-hidden="true"></span>Computer Engineer · Ankara, Türkiye</p>
+                <h1>Hi, I'm <span class="grad">Ulaş Uçrak</span>.</h1>
+                <p class="hero-lead">I build reliable software where hardware meets intelligence — from C++/Qt
+                    desktop apps and embedded firmware to model satellites and AI services.</p>
 
-        <h1>Hi, I'm <span class="highlight">Ulaş Uçrak</span></h1>
-        <p>I build reliable systems where strong engineering meets intelligent software — from
-            model satellites to on-chain apps.</p>
+                <div class="hero-actions">
+                    <a href="#projects" class="btn btn-primary">
+                        See my work
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M5 12h14M12 5l7 7-7 7" />
+                        </svg>
+                    </a>
+                    <a href="cv.pdf" download class="btn btn-ghost">
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                            <path d="M7 10l5 5 5-5" />
+                            <path d="M12 15V3" />
+                        </svg>
+                        Download CV
+                    </a>
+                </div>
 
-        <div class="hero-actions">
-            <a href="#projects" class="btn btn-primary">See my projects →</a>
-            <a href="cv.pdf" download class="btn btn-outline">Download CV</a>
-        </div>
+                <ul class="socials" aria-label="Social links">
+                    <li><a href="https://linkedin.com/in/ulasucrak" target="_blank" rel="noopener noreferrer"
+                            aria-label="LinkedIn">
+                            <svg viewBox="0 0 24 24" class="fill" aria-hidden="true">
+                                <path
+                                    d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 1 1 0-4.123 2.062 2.062 0 0 1 0 4.123zM3.558 20.452h3.56V9H3.56v11.452z" />
+                            </svg></a></li>
+                    <li><a href="https://github.com/ulasucrak" target="_blank" rel="noopener noreferrer"
+                            aria-label="GitHub">
+                            <svg viewBox="0 0 24 24" class="fill" aria-hidden="true">
+                                <path
+                                    d="M12 .297c-6.630 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.070 3.633 17.700 3.633 17.700c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.070 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.760-1.605-2.665-.3-5.466-1.332-5.466-5.930 0-1.310.465-2.380 1.235-3.220-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.300 1.230.960-.267 1.980-.399 3-.405 1.020.006 2.040.138 3 .405 2.280-1.552 3.285-1.230 3.285-1.230.645 1.653.24 2.873.12 3.176.765.840 1.230 1.910 1.230 3.220 0 4.610-2.805 5.625-5.475 5.920.42.36.81 1.096.81 2.220 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" />
+                            </svg></a></li>
+                    <li><a href="mailto:ulasucrak@gmail.com" aria-label="Email">
+                            <svg viewBox="0 0 24 24" aria-hidden="true">
+                                <rect x="2" y="4" width="20" height="16" rx="2" />
+                                <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+                            </svg></a></li>
+                </ul>
+            </div>
 
-        <div class="social-links">
-            <a href="https://linkedin.com/in/ulasucrak" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
-                    <path
-                        d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 1 1 0-4.123 2.062 2.062 0 0 1 0 4.123zM3.558 20.452h3.56V9H3.56v11.452z" />
+            <!-- Character stage -->
+            <div class="stage" id="hero-stage">
+                <span class="stage-ring" aria-hidden="true"></span>
+
+                <span class="orbit o1" aria-hidden="true">
+                    <svg viewBox="0 0 24 24">
+                        <rect x="4" y="4" width="16" height="16" rx="2" />
+                        <rect x="9" y="9" width="6" height="6" />
+                        <path d="M15 2v2M15 20v2M2 15h2M2 9h2M20 15h2M20 9h2M9 2v2M9 20v2" />
+                    </svg>
+                </span>
+                <span class="orbit o2" aria-hidden="true">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M13 7 9 3 5 7l4 4" />
+                        <path d="m17 11 4 4-4 4-4-4" />
+                        <path d="m8 12 4 4 6-6-4-4Z" />
+                        <path d="m16 8 3-3" />
+                        <path d="M9 21a6 6 0 0 0-6-6" />
+                    </svg>
+                </span>
+                <span class="orbit o3" aria-hidden="true">
+                    <svg viewBox="0 0 24 24">
+                        <path d="m16 18 6-6-6-6M8 6l-6 6 6 6" />
+                    </svg>
+                </span>
+                <span class="orbit o4" aria-hidden="true">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M12 3l1.9 5.8L20 11l-6.1 2.2L12 19l-1.9-5.8L4 11l6.1-2.2Z" />
+                    </svg>
+                </span>
+
+                <div class="bubble" aria-hidden="true"><span class="bubble-text">Hi there!</span><span
+                        class="caret"></span></div>
+
+                <svg class="character" viewBox="0 0 260 280" role="img"
+                    aria-label="Illustrated character of Ulaş waving">
+                    <g class="ch-body">
+                        <!-- neck -->
+                        <path d="M107 156 L107 194 Q120 203 133 194 L133 156 Z" fill="#E2AD85" />
+                        <!-- torso: black zip polo -->
+                        <path d="M38 280 C38 228 68 202 106 192 L134 192 C172 202 202 228 202 280 Z"
+                            fill="#1D1D22" />
+                        <path d="M106 191 L93 204 L115 224 L120 207 Z" fill="#2A2A31" stroke="#111114"
+                            stroke-width="1.2" stroke-linejoin="round" />
+                        <path d="M134 191 L147 204 L125 224 L120 207 Z" fill="#2A2A31" stroke="#111114"
+                            stroke-width="1.2" stroke-linejoin="round" />
+                        <path d="M120 208 L120 280" stroke="#5B5B66" stroke-width="1.6" />
+                        <rect x="117.5" y="226" width="5" height="9" rx="1.5" fill="#8A8A96" />
+                    </g>
+
+                    <!-- waving arm -->
+                    <g class="ch-arm">
+                        <path d="M172 226 C188 216 202 208 212 200 L230 214 C220 228 206 242 192 252 Z"
+                            fill="#1D1D22" />
+                        <path d="M213 203 L227 157 L242 161 L229 211 Z" fill="#F2C7A1" />
+                        <path d="M211 201 L230 215" stroke="#2A2A31" stroke-width="3" stroke-linecap="round" />
+                        <g stroke="#F2C7A1" stroke-width="6" stroke-linecap="round">
+                            <path d="M228 140 L225 125" />
+                            <path d="M235 137 L234 121" />
+                            <path d="M241 138 L243 123" />
+                            <path d="M246 143 L251 131" />
+                            <path d="M226 151 L217 143" />
+                        </g>
+                        <ellipse cx="236" cy="148" rx="11.5" ry="12.5" fill="#F2C7A1" />
+                    </g>
+
+                    <!-- head -->
+                    <g class="ch-head">
+                        <ellipse cx="120" cy="86" rx="47" ry="42" fill="#1C1716" />
+                        <ellipse cx="77" cy="118" rx="7.5" ry="11" fill="#E8B48C" />
+                        <ellipse cx="163" cy="118" rx="7.5" ry="11" fill="#E8B48C" />
+                        <path d="M78 117 q2 -5 3 0" stroke="#C98F68" stroke-width="1.6" fill="none" />
+                        <path d="M162 117 q-2 -5 -3 0" stroke="#C98F68" stroke-width="1.6" fill="none" />
+                        <path d="M80 102 C80 66 160 66 160 102 L160 124 C160 152 141 168 120 168 C99 168 80 152 80 124 Z"
+                            fill="#F2C7A1" />
+                        <!-- stubble -->
+                        <path d="M82 124 C84 150 100 167 120 168 C140 167 156 150 158 124 C152 138 142 146 133 146 Q120 141 107 146 C98 146 88 138 82 124 Z"
+                            fill="#3A2C26" opacity="0.26" />
+                        <path d="M105 141 Q120 135 135 141 Q120 145 105 141 Z" fill="#3A2C26" opacity="0.34" />
+                        <!-- curly hair -->
+                        <g fill="#1C1716">
+                            <path
+                                d="M76 104 C72 64 92 42 120 42 C148 42 168 64 164 104 C160 90 154 82 146 80 C132 86 108 86 94 80 C86 82 80 90 76 104 Z" />
+                            <circle cx="80" cy="88" r="9" />
+                            <circle cx="84" cy="71" r="10" />
+                            <circle cx="95" cy="57" r="11" />
+                            <circle cx="109" cy="48" r="11" />
+                            <circle cx="123" cy="45" r="11" />
+                            <circle cx="137" cy="47" r="11" />
+                            <circle cx="150" cy="55" r="11" />
+                            <circle cx="160" cy="69" r="10" />
+                            <circle cx="163" cy="86" r="8" />
+                            <circle cx="98" cy="78" r="8" />
+                            <circle cx="112" cy="80" r="7" />
+                            <circle cx="126" cy="80" r="7" />
+                            <circle cx="140" cy="78" r="8" />
+                            <circle cx="152" cy="74" r="7" />
+                        </g>
+                        <g stroke="#4A3E39" stroke-width="1.6" fill="none" stroke-linecap="round">
+                            <path d="M100 52 q6 -5 12 0" />
+                            <path d="M126 47 q6 -5 12 0" />
+                            <path d="M146 59 q5 -2 9 3" />
+                            <path d="M86 68 q3 -5 9 -5" />
+                            <path d="M114 72 q5 -3 9 1" />
+                        </g>
+                        <!-- brows -->
+                        <g class="ch-brows">
+                            <path d="M91 101 Q103 94 115 99" stroke="#1C1716" stroke-width="5" stroke-linecap="round"
+                                fill="none" />
+                            <path d="M125 99 Q137 94 149 101" stroke="#1C1716" stroke-width="5"
+                                stroke-linecap="round" fill="none" />
+                        </g>
+                        <!-- eyes -->
+                        <g class="ch-eye">
+                            <ellipse cx="103" cy="112" rx="7.5" ry="4.8" fill="#FFFFFF" />
+                            <g class="ch-pupil">
+                                <circle cx="103" cy="112" r="3.7" fill="#5B3A24" />
+                                <circle cx="103" cy="112" r="1.8" fill="#15110F" />
+                                <circle cx="104.3" cy="110.8" r="0.9" fill="#FFFFFF" />
+                            </g>
+                        </g>
+                        <g class="ch-eye">
+                            <ellipse cx="137" cy="112" rx="7.5" ry="4.8" fill="#FFFFFF" />
+                            <g class="ch-pupil">
+                                <circle cx="137" cy="112" r="3.7" fill="#5B3A24" />
+                                <circle cx="137" cy="112" r="1.8" fill="#15110F" />
+                                <circle cx="138.3" cy="110.8" r="0.9" fill="#FFFFFF" />
+                            </g>
+                        </g>
+                        <!-- nose -->
+                        <path d="M120 113 Q117 127 114 131 Q120 135 126 131" stroke="#CF9670" stroke-width="2.2"
+                            fill="none" stroke-linecap="round" stroke-linejoin="round" />
+                        <!-- mouth -->
+                        <path class="ch-mouth-neutral" d="M111 151 Q120 154 129 151" stroke="#A8645A"
+                            stroke-width="2.6" fill="none" stroke-linecap="round" />
+                        <path class="ch-mouth-smile" d="M109 149 Q120 160 131 149" stroke="#A8645A"
+                            stroke-width="2.6" fill="none" stroke-linecap="round" />
+                        <!-- cheeks -->
+                        <ellipse class="ch-cheek" cx="94" cy="134" rx="6" ry="3.5" fill="#F09A8A" />
+                        <ellipse class="ch-cheek" cx="146" cy="134" rx="6" ry="3.5" fill="#F09A8A" />
+                    </g>
                 </svg>
-            </a>
-            <a href="https://github.com/ulasucrak" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
-                    <path
-                        d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" />
-                </svg>
-            </a>
-            <a href="mailto:ulasucrak@gmail.com" aria-label="Email">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
-                    <path
-                        d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 0 1 0 19.366V5.457c0-2.023 2.309-3.178 3.927-1.964L5.455 4.64 12 9.548l6.545-4.91 1.528-1.145C21.69 2.28 24 3.434 24 5.457z" />
-                </svg>
-            </a>
-        </div>
-    </section>
+                <span class="stage-shadow" aria-hidden="true"></span>
+            </div>
+        </section>
 
-    <!-- SUMMARY -->
-    <section id="summary">
-        <div class="section-head">
-            <span class="section-index">01</span>
-            <h2>Summary</h2>
-            <span class="section-rule"></span>
-        </div>
-        <p>
-            Computer Engineering graduate from Çankaya University (2026) with a 3.91/4.00 GPA, ranked 1st in the
-            Faculty of Engineering. Software experience at SDT, ASELSAN and Leonardo Türkiye in C++/Qt desktop
-            software, embedded firmware, Python/FastAPI and React/Node.js. Software lead of the team placed 4th
-            worldwide at CanSat 2025, and winner of the Cursor Ankara Hackathon.
-        </p>
-    </section>
+        <!-- STATS -->
+        <section class="stats" aria-label="Highlights">
+            <div class="stat reveal">
+                <span class="stat-num">3.91</span>
+                <span class="stat-label">GPA, ranked 1st in the Faculty of Engineering</span>
+            </div>
+            <div class="stat reveal">
+                <span class="stat-num">4th</span>
+                <span class="stat-label">worldwide at CanSat 2025 as software lead</span>
+            </div>
+            <div class="stat reveal">
+                <span class="stat-num">1st</span>
+                <span class="stat-label">place, Cursor Ankara Hackathon</span>
+            </div>
+            <div class="stat reveal">
+                <span class="stat-num">3</span>
+                <span class="stat-label">engineering roles: SDT, ASELSAN, Leonardo</span>
+            </div>
+        </section>
 
-    <!-- EDUCATION -->
-    <section id="education">
-        <div class="section-head">
-            <span class="section-index">02</span>
-            <h2>Education</h2>
-            <span class="section-rule"></span>
-        </div>
-        <div class="card-grid">
-            <div class="card">
-                <h3>Çankaya University</h3>
-                <p class="card-tag">B.S. Computer Engineering · 2022 – 2026</p>
-                <p>GPA 3.91/4.00, ranked 1st in the Faculty of Engineering.</p>
+        <!-- ABOUT -->
+        <section id="about" class="section">
+            <div class="section-head reveal">
+                <span class="kicker">01 / About</span>
+                <h2>Engineering that holds up in the field</h2>
             </div>
-            <div class="card">
-                <h3>TED Ankara College</h3>
-                <p class="card-tag">High School Diploma · 2022</p>
-                <p>Foundational education and languages.</p>
+            <div class="about glass reveal">
+                <img src="profile.jpg" alt="Photo of Ulaş Uçrak" class="about-photo" width="160" height="160"
+                    loading="lazy">
+                <p>
+                    Computer Engineering graduate from Çankaya University (2026) with a 3.91/4.00 GPA, ranked 1st in
+                    the Faculty of Engineering. Software experience at SDT, ASELSAN and Leonardo Türkiye in C++/Qt
+                    desktop software, embedded firmware, Python/FastAPI and React/Node.js. Software lead of the team
+                    placed 4th worldwide at CanSat 2025, and winner of the Cursor Ankara Hackathon.
+                </p>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- PROJECTS -->
-    <section id="projects">
-        <div class="section-head">
-            <span class="section-index">03</span>
-            <h2>Projects</h2>
-            <span class="section-rule"></span>
-        </div>
-        <div class="card-grid">
-            <div class="card card-wide card-featured">
-                <h3>CanBEE — CANSAT Model Satellite</h3>
-                <p class="card-tag">1st Foundation Universities · 4th Worldwide — CANSAT 2025</p>
-                <p>As Software Team Lead, I developed the embedded software and designed the ground control
-                    interface for our model satellite in the CANSAT Competition 2025, organized by the American
-                    Astronautical Society and sponsored by NASA. Beyond leading software architecture and ensuring
-                    real-time system integration, I directly contributed to coding, testing, and implementing
-                    mission-critical functionality. During the two-week on-site field testing campaign in the
-                    United States, I supervised integration while refining the software for optimal performance.
-                    Our team ranked first among foundation universities and fourth worldwide.</p>
+        <!-- EXPERIENCE -->
+        <section id="experience" class="section">
+            <div class="section-head reveal">
+                <span class="kicker">02 / Experience</span>
+                <h2>Where I've shipped software</h2>
             </div>
-            <div class="card card-wide card-featured">
-                <h3>FitStake — Stake-to-Fit Web3 Platform</h3>
-                <p class="card-tag">1st Place — Cursor Ankara Hackathon: Blockchain Edition</p>
-                <p>A Web3 "stake-to-fit" platform built in 5 hours. Users stake SOL and earn rewards by completing
-                    verified workouts. Real-time exercise detection runs on MediaPipe AI, while smart contracts
-                    written in Rust with the Anchor framework manage on-chain reward distribution on Solana. The
-                    React frontend communicates with the blockchain via Web3.</p>
-            </div>
-            <div class="card">
-                <h3>Helma AI (HealthMate) — Elderly Care Assistant</h3>
-                <p class="card-tag">Multimodal · LLM Reasoning · FastAPI</p>
-                <p>Built the LLM reasoning component of a multimodal elderly-care system and the Python FastAPI
-                    service that serves it, designing Turkish conversational prompts and structured JSON outputs
-                    for daily-routine and health inference.</p>
-            </div>
-            <div class="card">
-                <h3>Understanding Bitcoin Sentiments</h3>
-                <p class="card-tag">Machine Learning · NLP</p>
-                <p>A machine-learning system analyzing Bitcoin tweet sentiment and its correlation with price
-                    trends — preprocessing datasets, training predictive models, and shipping a real-time sentiment
-                    analysis app that also assesses user influence on market predictions.</p>
-            </div>
-            <div class="card">
-                <h3>BEHSAT — TEKNOFEST</h3>
-                <p class="card-tag">Model Satellite · Embedded + GUI</p>
-                <p>Designed the GUI and implemented embedded code for the university's model satellite team
-                    competing at TEKNOFEST.</p>
-            </div>
-            <div class="card">
-                <h3>ReadLens</h3>
-                <p class="card-tag">C++ · Accessibility · OCR</p>
-                <p>A C++ accessibility tool that reads text in photographs aloud for visually impaired users,
-                    built with Tesseract OCR and eSpeak.</p>
-            </div>
-        </div>
-    </section>
+            <ol class="timeline">
+                <li class="tl-item reveal">
+                    <div class="tl-meta">Sep 2025 – Jun 2026</div>
+                    <div class="tl-card glass">
+                        <h3>SDT Uzay &amp; Savunma Teknolojileri</h3>
+                        <p class="role">Candidate Engineer (Part-time)</p>
+                        <p>Developed and maintained C++ software components for Qt-based desktop applications used in
+                            defense and space projects, and also worked on embedded systems software — part-time
+                            alongside the final year of the degree.</p>
+                        <ul class="tags">
+                            <li>C++</li>
+                            <li>Qt</li>
+                            <li>Embedded</li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="tl-item reveal">
+                    <div class="tl-meta">Aug 2025 – Sep 2025</div>
+                    <div class="tl-card glass">
+                        <h3>ASELSAN</h3>
+                        <p class="role">Intern, REHİS (Radar &amp; Electronic Warfare Systems)</p>
+                        <p>Designed and implemented a custom I2C-based communication protocol between STM32 boards in
+                            embedded C, and contributed to hardware–software integration, testing and debugging on
+                            STM32 microcontrollers.</p>
+                        <ul class="tags">
+                            <li>Embedded C</li>
+                            <li>STM32</li>
+                            <li>I2C</li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="tl-item reveal">
+                    <div class="tl-meta">2023 – 2025</div>
+                    <div class="tl-card glass">
+                        <h3>Çankaya University</h3>
+                        <p class="role">Undergraduate Teaching Assistant (Part-time)</p>
+                        <p>Helped students in C programming labs debug their code and understand the material, and
+                            graded assignments.</p>
+                    </div>
+                </li>
+                <li class="tl-item reveal">
+                    <div class="tl-meta">Jun 2024 – Jul 2024</div>
+                    <div class="tl-card glass">
+                        <h3>Leonardo Türkiye</h3>
+                        <p class="role">Intern</p>
+                        <p>Developed the complete firmware for an ESP32-based IoT device — sensor data collection,
+                            wireless communication and OTA updates — plus a Node.js server interface for HTTP firmware
+                            updates with JSON version comparison, and optimized asynchronous HTTP requests for more
+                            reliable device–server communication.</p>
+                        <ul class="tags">
+                            <li>ESP32</li>
+                            <li>OTA</li>
+                            <li>Node.js</li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="tl-item reveal">
+                    <div class="tl-meta">Jan 2024 – Feb 2024</div>
+                    <div class="tl-card glass">
+                        <h3>Bilkent Cyberpark</h3>
+                        <p class="role">Web Development Intern</p>
+                        <p>Built a personal CV website in React during a four-week web development internship.</p>
+                    </div>
+                </li>
+            </ol>
+        </section>
 
-    <!-- EXPERIENCE -->
-    <section id="experience">
-        <div class="section-head">
-            <span class="section-index">04</span>
-            <h2>Experience</h2>
-            <span class="section-rule"></span>
-        </div>
-        <div class="card-grid">
-            <div class="card">
-                <h3>SDT Uzay &amp; Savunma Teknolojileri</h3>
-                <p class="card-tag">Candidate Engineer (Part-time) · Sep 2025 – Jun 2026</p>
-                <p>Developed and maintained C++ software components for Qt-based desktop applications used in
-                    defense and space projects, and also worked on embedded systems software — part-time alongside
-                    the final year of the degree.</p>
+        <!-- PROJECTS -->
+        <section id="projects" class="section">
+            <div class="section-head reveal">
+                <span class="kicker">03 / Projects &amp; Competitions</span>
+                <h2>Things I've built</h2>
             </div>
-            <div class="card">
-                <h3>ASELSAN</h3>
-                <p class="card-tag">Intern, REHİS (Radar &amp; Electronic Warfare Systems) · Aug 2025 – Sep 2025</p>
-                <p>Designed and implemented a custom I2C-based communication protocol between STM32 boards in
-                    embedded C, and contributed to hardware–software integration, testing and debugging on STM32
-                    microcontrollers.</p>
-            </div>
-            <div class="card">
-                <h3>Leonardo Türkiye</h3>
-                <p class="card-tag">Intern · Jun 2024 – Jul 2024</p>
-                <p>Developed complete firmware for an ESP32-based IoT device — sensor data collection, wireless
-                    communication, and OTA updates — plus a Node.js server interface for HTTP firmware updates with
-                    JSON version comparison, and optimized asynchronous HTTP requests for more reliable
-                    device–server communication.</p>
-            </div>
-            <div class="card">
-                <h3>Çankaya University</h3>
-                <p class="card-tag">Undergraduate Teaching Assistant (Part-time) · 2023 – 2025</p>
-                <p>Helped students in C programming labs debug their code and understand the material, and graded
-                    assignments.</p>
-            </div>
-            <div class="card">
-                <h3>Bilkent Cyberpark</h3>
-                <p class="card-tag">Web Development Intern · Jan 2024 – Feb 2024</p>
-                <p>Built a personal CV website in React during a four-week web development internship.</p>
-            </div>
-            <div class="card">
-                <h3>Computer Engineering Society</h3>
-                <p class="card-tag">President (Volunteer) · 2024 – 2025</p>
-                <p>Led Çankaya University's Computer Engineering Society — organizing events and seminars,
-                    coordinating with companies and sponsors, and assigning tasks within the board.</p>
-            </div>
-        </div>
-    </section>
+            <div class="bento">
+                <article class="project glass featured reveal">
+                    <div class="project-top">
+                        <span class="p-icon" aria-hidden="true"><svg viewBox="0 0 24 24">
+                                <path d="M13 7 9 3 5 7l4 4" />
+                                <path d="m17 11 4 4-4 4-4-4" />
+                                <path d="m8 12 4 4 6-6-4-4Z" />
+                                <path d="m16 8 3-3" />
+                                <path d="M9 21a6 6 0 0 0-6-6" />
+                            </svg></span>
+                        <span class="award">4th worldwide · CanSat 2025</span>
+                    </div>
+                    <h3>CanBEE — CanSat Model Satellite</h3>
+                    <p class="role">Software Team Lead · 1st among foundation universities</p>
+                    <p>In the CanSat Competition 2025 (American Astronautical Society, NASA-sponsored), I led the
+                        software team and defined the architecture, including real-time integration with the ground
+                        station. I developed the embedded software, designed the ground control interface, coded and
+                        tested core mission functions, and tuned the software during a two-week on-site field-test
+                        campaign in the United States.</p>
+                    <ul class="tags">
+                        <li>Embedded</li>
+                        <li>Ground Station</li>
+                        <li>Real-time</li>
+                    </ul>
+                </article>
 
-    <!-- SKILLS -->
-    <section id="skills">
-        <div class="section-head">
-            <span class="section-index">05</span>
-            <h2>Skills</h2>
-            <span class="section-rule"></span>
-        </div>
-        <div class="card-grid">
-            <div class="card">
-                <h3>Programming</h3>
-                <div class="chip-row">
-                    <span class="chip">C</span><span class="chip">C++</span><span class="chip">C#</span>
-                    <span class="chip">Python</span><span class="chip">Swift</span><span class="chip">JavaScript</span>
-                    <span class="chip">HTML</span><span class="chip">CSS</span>
+                <article class="project glass featured reveal">
+                    <div class="project-top">
+                        <span class="p-icon" aria-hidden="true"><svg viewBox="0 0 24 24">
+                                <path
+                                    d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6M18 9h1.5a2.5 2.5 0 0 0 0-5H18M4 22h16M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22M14 14.66V17c0 .55.47.98.97 1.21C16.150 18.75 17 20.24 17 22M18 2H6v7a6 6 0 0 0 12 0V2Z" />
+                            </svg></span>
+                        <span class="award">1st place · Cursor Ankara Hackathon</span>
+                    </div>
+                    <h3>FitStake — Stake-to-Fit Web3 Platform</h3>
+                    <p class="role">Blockchain Edition · built in 5 hours</p>
+                    <p>Users stake SOL and earn rewards for completing verified workouts. MediaPipe handles real-time
+                        exercise detection, Rust/Anchor smart contracts on Solana manage on-chain rewards, and a React
+                        frontend ties it together.</p>
+                    <ul class="tags">
+                        <li>MediaPipe</li>
+                        <li>Rust / Anchor</li>
+                        <li>Solana</li>
+                        <li>React</li>
+                    </ul>
+                </article>
+
+                <article class="project glass reveal">
+                    <h3>Helma AI (HealthMate)</h3>
+                    <p class="role">AI-powered elderly care assistant</p>
+                    <p>Built the LLM reasoning component of a multimodal elderly-care system and the Python FastAPI
+                        service that serves it, with Turkish conversational prompts and structured JSON outputs.</p>
+                    <ul class="tags">
+                        <li>LLM</li>
+                        <li>FastAPI</li>
+                    </ul>
+                </article>
+
+                <article class="project glass reveal">
+                    <h3>Understanding Bitcoin Sentiments</h3>
+                    <p class="role">Machine learning · NLP</p>
+                    <p>Analyzed Bitcoin tweet sentiment, its correlation with price trends and user influence;
+                        trained predictive models and built a real-time sentiment analysis app.</p>
+                    <ul class="tags">
+                        <li>scikit-learn</li>
+                        <li>NLP</li>
+                    </ul>
+                </article>
+
+                <article class="project glass reveal">
+                    <h3>BEHSAT — TEKNOFEST</h3>
+                    <p class="role">Model satellite · GUI + embedded</p>
+                    <p>Designed the GUI and implemented embedded code for the university's model satellite team.</p>
+                    <ul class="tags">
+                        <li>GUI</li>
+                        <li>Embedded</li>
+                    </ul>
+                </article>
+
+                <article class="project glass reveal">
+                    <h3>ReadLens</h3>
+                    <p class="role">C++ accessibility tool</p>
+                    <p>Reads text in photographs aloud for visually impaired users, using Tesseract OCR and eSpeak.
+                    </p>
+                    <ul class="tags">
+                        <li>C++</li>
+                        <li>OCR</li>
+                    </ul>
+                </article>
+            </div>
+        </section>
+
+        <!-- SKILLS -->
+        <section id="skills" class="section">
+            <div class="section-head reveal">
+                <span class="kicker">04 / Skills</span>
+                <h2>Toolbox</h2>
+            </div>
+            <div class="skills">
+                <div class="skill glass reveal">
+                    <h3>Languages</h3>
+                    <ul class="chips">
+                        <li>C</li>
+                        <li>C++</li>
+                        <li>Python</li>
+                        <li>JavaScript</li>
+                        <li>C#</li>
+                        <li>Swift</li>
+                        <li>HTML</li>
+                        <li>CSS</li>
+                    </ul>
+                </div>
+                <div class="skill glass reveal">
+                    <h3>Frameworks &amp; Libraries</h3>
+                    <ul class="chips">
+                        <li>Qt</li>
+                        <li>React</li>
+                        <li>Node.js</li>
+                        <li>FastAPI</li>
+                        <li>.NET</li>
+                        <li>Electron</li>
+                        <li>MediaPipe</li>
+                        <li>Tesseract OCR</li>
+                    </ul>
+                </div>
+                <div class="skill glass reveal">
+                    <h3>Embedded</h3>
+                    <ul class="chips">
+                        <li>STM32</li>
+                        <li>ESP32</li>
+                        <li>Embedded C</li>
+                        <li>I2C</li>
+                        <li>OTA firmware updates</li>
+                    </ul>
+                </div>
+                <div class="skill glass reveal">
+                    <h3>AI / ML</h3>
+                    <ul class="chips">
+                        <li>pandas</li>
+                        <li>NumPy</li>
+                        <li>scikit-learn</li>
+                        <li>NLP</li>
+                        <li>Sentiment analysis</li>
+                        <li>LLM prompt design</li>
+                        <li>Structured JSON outputs</li>
+                    </ul>
+                </div>
+                <div class="skill glass reveal">
+                    <h3>Databases</h3>
+                    <ul class="chips">
+                        <li>MySQL</li>
+                        <li>Firebase</li>
+                        <li>Supabase</li>
+                        <li>ChromaDB</li>
+                    </ul>
+                </div>
+                <div class="skill glass reveal">
+                    <h3>Tools &amp; Spoken Languages</h3>
+                    <ul class="chips">
+                        <li>Git</li>
+                        <li>Linux (Ubuntu)</li>
+                        <li>Windows</li>
+                        <li>Turkish — Native</li>
+                        <li>English — C1</li>
+                        <li>German — A2</li>
+                    </ul>
                 </div>
             </div>
-            <div class="card">
-                <h3>Frameworks</h3>
-                <div class="chip-row">
-                    <span class="chip">Qt</span><span class="chip">React</span><span class="chip">Node.js</span>
-                    <span class="chip">FastAPI</span><span class="chip">.NET</span><span class="chip">Electron</span>
-                    <span class="chip">MediaPipe</span><span class="chip">Tesseract OCR</span>
-                </div>
-            </div>
-            <div class="card">
-                <h3>Databases</h3>
-                <div class="chip-row">
-                    <span class="chip">ChromaDB</span><span class="chip">MySQL</span>
-                    <span class="chip">Firebase</span><span class="chip">Supabase</span>
-                </div>
-            </div>
-            <div class="card">
-                <h3>Systems &amp; Tools</h3>
-                <div class="chip-row">
-                    <span class="chip">Git</span><span class="chip">Linux (Ubuntu)</span><span class="chip">Windows</span>
-                </div>
-            </div>
-            <div class="card">
-                <h3>Embedded</h3>
-                <div class="chip-row">
-                    <span class="chip">STM32</span><span class="chip">ESP32</span><span class="chip">Embedded C</span>
-                    <span class="chip">I2C</span><span class="chip">OTA Firmware Updates</span>
-                </div>
-            </div>
-            <div class="card">
-                <h3>AI / ML</h3>
-                <div class="chip-row">
-                    <span class="chip">pandas</span><span class="chip">NumPy</span><span class="chip">scikit-learn</span>
-                    <span class="chip">NLP</span><span class="chip">Sentiment Analysis</span>
-                    <span class="chip">LLM Prompt Design</span><span class="chip">Structured JSON Outputs</span>
-                </div>
-            </div>
-            <div class="card">
-                <h3>Languages</h3>
-                <div class="chip-row">
-                    <span class="chip">Turkish — Native</span><span class="chip">English — C1</span>
-                    <span class="chip">German — A2</span>
-                </div>
-            </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- CONTACT -->
-    <section id="contact">
-        <div class="section-head">
-            <span class="section-index">06</span>
-            <h2>Contact</h2>
-            <span class="section-rule"></span>
-        </div>
-        <p class="contact-cta">Let's build something reliable.</p>
-        <a href="mailto:ulasucrak@gmail.com" class="contact-email">ulasucrak@gmail.com</a>
-    </section>
+        <!-- EDUCATION & LEADERSHIP -->
+        <section id="education" class="section">
+            <div class="section-head reveal">
+                <span class="kicker">05 / Education &amp; Leadership</span>
+                <h2>Foundations</h2>
+            </div>
+            <div class="edu">
+                <div class="edu-card glass reveal">
+                    <span class="p-icon" aria-hidden="true"><svg viewBox="0 0 24 24">
+                            <path d="M22 10 12 5 2 10l10 5 10-5Z" />
+                            <path d="M6 12v5c3 3 9 3 12 0v-5" />
+                        </svg></span>
+                    <div>
+                        <h3>Çankaya University</h3>
+                        <p class="role">B.S. Computer Engineering · 2022 – 2026</p>
+                        <p>GPA 3.91/4.00, ranked 1st in the Faculty of Engineering.</p>
+                    </div>
+                </div>
+                <div class="edu-card glass reveal">
+                    <span class="p-icon" aria-hidden="true"><svg viewBox="0 0 24 24">
+                            <path d="M22 10 12 5 2 10l10 5 10-5Z" />
+                            <path d="M6 12v5c3 3 9 3 12 0v-5" />
+                        </svg></span>
+                    <div>
+                        <h3>TED Ankara College</h3>
+                        <p class="role">High School Diploma · 2022</p>
+                        <p>Foundational education and languages.</p>
+                    </div>
+                </div>
+                <div class="edu-card glass reveal">
+                    <span class="p-icon" aria-hidden="true"><svg viewBox="0 0 24 24">
+                            <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+                            <circle cx="9" cy="7" r="4" />
+                            <path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" />
+                        </svg></span>
+                    <div>
+                        <h3>Computer Engineering Society</h3>
+                        <p class="role">President (Volunteer) · 2024 – 2025</p>
+                        <p>Organized events and seminars, coordinated with companies and sponsors, and assigned tasks
+                            within the board.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-    <!-- FOOTER -->
-    <footer>
-        <p>© 2026 Ulaş Uçrak — Designed &amp; built from scratch.</p>
+        <!-- CONTACT -->
+        <section id="contact" class="section">
+            <div class="contact glass reveal">
+                <div class="contact-copy">
+                    <span class="kicker">06 / Contact</span>
+                    <h2>Let's build something reliable.</h2>
+                    <p>Open to software, embedded and AI engineering roles. The fastest way to reach me is email.</p>
+                    <div class="hero-actions">
+                        <a href="mailto:ulasucrak@gmail.com" class="btn btn-primary">
+                            <svg viewBox="0 0 24 24" aria-hidden="true">
+                                <rect x="2" y="4" width="20" height="16" rx="2" />
+                                <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+                            </svg>
+                            ulasucrak@gmail.com
+                        </a>
+                        <a href="https://linkedin.com/in/ulasucrak" target="_blank" rel="noopener noreferrer"
+                            class="btn btn-ghost">LinkedIn</a>
+                    </div>
+                </div>
+                <div class="contact-stage" id="contact-stage" aria-hidden="true"></div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>© 2026 Ulaş Uçrak — designed &amp; built from scratch.</p>
     </footer>
 
-    <button id="back-to-top" aria-label="Back to top">↑</button>
+    <button id="back-to-top" class="icon-btn" type="button" aria-label="Back to top">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="m5 12 7-7 7 7M12 19V5" />
+        </svg>
+    </button>
 
     <script src="script.js"></script>
 </body>
