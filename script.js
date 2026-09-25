@@ -8,22 +8,22 @@ const hasIO = 'IntersectionObserver' in window;
 
 
 // ============================================================
-// 1) THEME — light by default, remembers the visitor's choice
+// 1) THEME — dark by default, remembers the visitor's choice
 // ============================================================
 const themeBtn = document.getElementById('theme-toggle');
 const themeMeta = document.querySelector('meta[name="theme-color"]');
 
 function applyTheme(theme) {
-    if (theme === 'dark') root.setAttribute('data-theme', 'dark');
+    if (theme === 'light') root.setAttribute('data-theme', 'light');
     else root.removeAttribute('data-theme');
-    themeBtn.setAttribute('aria-label', theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode');
-    if (themeMeta) themeMeta.setAttribute('content', theme === 'dark' ? '#0B1220' : '#FFFFFF');
+    themeBtn.setAttribute('aria-label', theme === 'light' ? 'Switch to dark mode' : 'Switch to light mode');
+    if (themeMeta) themeMeta.setAttribute('content', theme === 'light' ? '#FAFAFA' : '#09090B');
 }
 
-applyTheme(root.getAttribute('data-theme') === 'dark' ? 'dark' : 'light');
+applyTheme(root.getAttribute('data-theme') === 'light' ? 'light' : 'dark');
 
 themeBtn.addEventListener('click', () => {
-    const next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+    const next = root.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
     applyTheme(next);
     try { localStorage.setItem('theme', next); } catch (e) { /* storage unavailable */ }
 });

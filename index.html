@@ -4,36 +4,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ulaş Uçrak | Software Engineer — Embedded & AI</title>
+    <title>Ulaş Uçrak | Software & AI Engineer</title>
     <meta name="description"
-        content="Ulaş Uçrak — Computer Engineering graduate (Çankaya University, 2026, ranked 1st in faculty) with experience at SDT, ASELSAN and Leonardo in C++/Qt, embedded firmware and AI.">
-    <meta name="theme-color" content="#FFFFFF">
+        content="Ulaş Uçrak — Computer Engineering graduate (Çankaya University, 2026) working on C++/Qt desktop software, embedded firmware and AI.">
+    <meta name="theme-color" content="#09090B">
     <script>
-        // Light by default; apply a saved dark preference before first paint
+        // Dark by default; apply a saved light preference before first paint
         document.documentElement.classList.add('js');
-        try { if (localStorage.getItem('theme') === 'dark') document.documentElement.setAttribute('data-theme', 'dark'); } catch (e) { }
+        try { if (localStorage.getItem('theme') === 'light') document.documentElement.setAttribute('data-theme', 'light'); } catch (e) { }
     </script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
     <a class="skip-link" href="#main">Skip to content</a>
 
-    <!-- HEADER -->
-    <header class="header">
-        <div class="container header-inner">
-            <a href="#top" class="brand" aria-label="Ulaş Uçrak — home">
-                <span class="brand-mark" aria-hidden="true">UU</span>
-                <span class="brand-text">
-                    <span class="brand-name">Ulaş Uçrak</span>
-                    <span class="brand-role">Software Engineer</span>
-                </span>
-            </a>
-            <nav class="nav" aria-label="Main">
+    <!-- NAV -->
+    <header class="nav">
+        <div class="nav-inner">
+            <a href="#top" class="logo">ulaş uçrak<span class="accent">_</span></a>
+            <nav aria-label="Main">
                 <ul class="nav-links">
                     <li><a href="#about">About</a></li>
                     <li><a href="#experience">Experience</a></li>
@@ -43,26 +37,17 @@
                     <li><a href="#contact">Contact</a></li>
                 </ul>
             </nav>
-            <div class="header-actions">
-                <button id="theme-toggle" class="icon-btn" type="button" aria-label="Switch to dark mode">
-                    <svg class="i-moon" viewBox="0 0 24 24" aria-hidden="true">
-                        <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z" />
-                    </svg>
-                    <svg class="i-sun" viewBox="0 0 24 24" aria-hidden="true">
-                        <circle cx="12" cy="12" r="4" />
-                        <path
-                            d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41" />
-                    </svg>
-                </button>
-                <a href="cv.pdf" download class="btn btn-primary btn-sm header-cv">
-                    <svg viewBox="0 0 24 24" aria-hidden="true">
-                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
-                        <path d="M7 10l5 5 5-5" />
-                        <path d="M12 15V3" />
-                    </svg>
-                    Résumé
-                </a>
-            </div>
+            <a href="cv.pdf" download class="nav-cv">CV ↓</a>
+            <button id="theme-toggle" class="icon-btn" type="button" aria-label="Switch to light mode">
+                <svg class="i-sun" viewBox="0 0 24 24" aria-hidden="true">
+                    <circle cx="12" cy="12" r="4" />
+                    <path
+                        d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41" />
+                </svg>
+                <svg class="i-moon" viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z" />
+                </svg>
+            </button>
         </div>
     </header>
 
@@ -70,521 +55,512 @@
 
         <!-- HERO -->
         <section id="top" class="hero">
-            <div class="container hero-grid">
+            <div class="hero-bg" aria-hidden="true"></div>
+            <div class="hero-grid">
                 <div class="hero-copy">
-                    <p class="overline">Software Engineer · Embedded Systems &amp; AI</p>
-                    <h1>Ulaş Uçrak</h1>
-                    <p class="hero-lead">Computer engineer building dependable software for defense, space and
-                        intelligent systems — from C++/Qt desktop applications and embedded firmware to AI services.
+                    <p class="label"><span class="status" aria-hidden="true"></span>Software Engineer · Ankara, Türkiye
                     </p>
+                    <h1>Ulaş Uçrak</h1>
+                    <p class="lead">I build reliable software where hardware meets intelligence — C++/Qt desktop
+                        apps, embedded firmware, model satellites and AI services.</p>
 
-                    <ul class="credentials">
-                        <li>
-                            <svg viewBox="0 0 24 24" aria-hidden="true">
-                                <path d="M20 6 9 17l-5-5" />
-                            </svg>
-                            B.S. Computer Engineering, 3.91 GPA — ranked 1st in faculty
-                        </li>
-                        <li>
-                            <svg viewBox="0 0 24 24" aria-hidden="true">
-                                <path d="M20 6 9 17l-5-5" />
-                            </svg>
-                            Software lead, 4th worldwide at CanSat 2025 (NASA-sponsored)
-                        </li>
-                        <li>
-                            <svg viewBox="0 0 24 24" aria-hidden="true">
-                                <path d="M20 6 9 17l-5-5" />
-                            </svg>
-                            Engineering roles at SDT, ASELSAN and Leonardo Türkiye
-                        </li>
-                    </ul>
+                    <div class="code-card" aria-label="Summary">
+                        <div class="code-bar" aria-hidden="true"><span></span><span></span><span></span><em>about.ts</em>
+                        </div>
+<pre><code><span class="k">const</span> <span class="v">ulas</span> = {
+  role:   <span class="s">"Software Engineer"</span>,
+  focus:  [<span class="s">"C++/Qt"</span>, <span class="s">"Embedded"</span>, <span class="s">"AI"</span>],
+  gpa:    <span class="n">3.91</span>, <span class="c">// ranked 1st in faculty</span>
+  cansat: <span class="s">"4th worldwide"</span>,
+};</code></pre>
+                    </div>
 
                     <div class="actions">
-                        <a href="#contact" class="btn btn-primary">Get in touch
+                        <a href="#projects" class="btn btn-primary">View projects
                             <svg viewBox="0 0 24 24" aria-hidden="true">
                                 <path d="M5 12h14M12 5l7 7-7 7" />
                             </svg>
                         </a>
-                        <a href="cv.pdf" download class="btn btn-outline">Download résumé</a>
+                        <a href="cv.pdf" download class="btn btn-line">
+                            <svg viewBox="0 0 24 24" aria-hidden="true">
+                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                                <path d="M7 10l5 5 5-5" />
+                                <path d="M12 15V3" />
+                            </svg>
+                            Download CV
+                        </a>
                     </div>
-
-                    <ul class="socials" aria-label="Profiles">
-                        <li><a href="https://linkedin.com/in/ulasucrak" target="_blank" rel="noopener noreferrer"
-                                aria-label="LinkedIn profile">
-                                <svg viewBox="0 0 24 24" class="fill" aria-hidden="true">
-                                    <path
-                                        d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 1 1 0-4.123 2.062 2.062 0 0 1 0 4.123zM3.558 20.452h3.56V9H3.56v11.452z" />
-                                </svg>LinkedIn</a></li>
-                        <li><a href="https://github.com/ulasucrak" target="_blank" rel="noopener noreferrer"
-                                aria-label="GitHub profile">
-                                <svg viewBox="0 0 24 24" class="fill" aria-hidden="true">
-                                    <path
-                                        d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" />
-                                </svg>GitHub</a></li>
-                        <li><a href="mailto:ulasucrak@gmail.com" aria-label="Send an email">
-                                <svg viewBox="0 0 24 24" aria-hidden="true">
-                                    <rect x="2" y="4" width="20" height="16" rx="2" />
-                                    <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
-                                </svg>Email</a></li>
+                    <ul class="links">
+                        <li><a href="https://github.com/ulasucrak" target="_blank" rel="noopener noreferrer">GitHub
+                                ↗</a></li>
+                        <li><a href="https://linkedin.com/in/ulasucrak" target="_blank"
+                                rel="noopener noreferrer">LinkedIn ↗</a></li>
+                        <li><a href="mailto:ulasucrak@gmail.com">Email ↗</a></li>
                     </ul>
                 </div>
 
-                <!-- Character panel -->
-                <div class="portrait">
-                    <div class="stage" id="hero-stage" title="Say hi">
-                        <div class="bubble" aria-hidden="true"><span class="bubble-text"></span><span
-                                class="caret"></span></div>
-                        <div class="stage-char" data-character="hero"></div>
-                        <noscript><img src="profile.jpg" alt="Ulaş Uçrak" class="noscript-photo"></noscript>
-                    </div>
-                    <div class="portrait-caption">
-                        <div>
-                            <p class="pc-name">Ulaş Uçrak</p>
-                            <p class="pc-loc">Ankara, Türkiye</p>
-                        </div>
-                        <span class="availability"><span class="dot" aria-hidden="true"></span>Open to
-                            opportunities</span>
-                    </div>
+                <div class="stage" id="hero-stage" title="Say hi">
+                    <span class="stage-glow" aria-hidden="true"></span>
+                    <span class="stage-disc" aria-hidden="true"></span>
+                    <span class="orbit-dot" aria-hidden="true"></span>
+                    <span class="orbit-dot slow" aria-hidden="true"></span>
+                    <div class="bubble" aria-hidden="true"><span class="bubble-text"></span><span
+                            class="caret"></span></div>
+                    <div class="stage-char" data-character="hero"></div>
+                    <noscript><img src="profile.jpg" alt="Ulaş Uçrak" class="noscript-photo"></noscript>
                 </div>
             </div>
         </section>
 
-        <!-- PROOF -->
-        <section class="proof" aria-label="Highlights">
-            <div class="container">
-                <div class="proof-companies">
-                    <span class="proof-label">Experience with</span>
-                    <ul>
-                        <li>SDT Uzay &amp; Savunma</li>
-                        <li>ASELSAN</li>
-                        <li>Leonardo Türkiye</li>
-                        <li>Bilkent Cyberpark</li>
-                    </ul>
-                </div>
-                <dl class="stats">
-                    <div class="stat reveal">
-                        <dt>Cumulative GPA</dt>
-                        <dd>3.91<span>/4.00</span></dd>
-                    </div>
-                    <div class="stat reveal">
-                        <dt>Faculty ranking</dt>
-                        <dd>1st</dd>
-                    </div>
-                    <div class="stat reveal">
-                        <dt>CanSat 2025</dt>
-                        <dd>4th<span> worldwide</span></dd>
-                    </div>
-                    <div class="stat reveal">
-                        <dt>Cursor Hackathon</dt>
-                        <dd>1st<span> place</span></dd>
-                    </div>
-                </dl>
+        <!-- TECH MARQUEE -->
+        <div class="marquee" aria-label="Technologies">
+            <ul class="marquee-track">
+                <li>C++</li><li>Qt</li><li>Embedded C</li><li>STM32</li><li>ESP32</li><li>I2C</li><li>Python</li>
+                <li>FastAPI</li><li>React</li><li>Node.js</li><li>MediaPipe</li><li>Rust / Anchor</li><li>scikit-learn</li>
+                <li>LLMs</li><li>Linux</li><li>Git</li>
+            </ul>
+            <ul class="marquee-track" aria-hidden="true">
+                <li>C++</li><li>Qt</li><li>Embedded C</li><li>STM32</li><li>ESP32</li><li>I2C</li><li>Python</li>
+                <li>FastAPI</li><li>React</li><li>Node.js</li><li>MediaPipe</li><li>Rust / Anchor</li><li>scikit-learn</li>
+                <li>LLMs</li><li>Linux</li><li>Git</li>
+            </ul>
+        </div>
+
+        <!-- HIGHLIGHTS -->
+        <section class="facts" aria-label="Highlights">
+            <div class="fact reveal">
+                <span class="fact-icon" aria-hidden="true"><svg viewBox="0 0 24 24">
+                        <path d="M22 10 12 5 2 10l10 5 10-5Z" />
+                        <path d="M6 12v5c3 3 9 3 12 0v-5" />
+                    </svg></span>
+                <span class="fact-num">3.91</span><span class="fact-label">GPA · ranked 1st in the Faculty of
+                    Engineering</span>
+            </div>
+            <div class="fact reveal">
+                <span class="fact-icon" aria-hidden="true"><svg viewBox="0 0 24 24">
+                        <path d="M13 7 9 3 5 7l4 4" />
+                        <path d="m17 11 4 4-4 4-4-4" />
+                        <path d="m8 12 4 4 6-6-4-4Z" />
+                        <path d="m16 8 3-3" />
+                        <path d="M9 21a6 6 0 0 0-6-6" />
+                    </svg></span>
+                <span class="fact-num">4th</span><span class="fact-label">worldwide · CanSat 2025, software
+                    lead</span>
+            </div>
+            <div class="fact reveal">
+                <span class="fact-icon" aria-hidden="true"><svg viewBox="0 0 24 24">
+                        <circle cx="12" cy="8" r="6" />
+                        <path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11" />
+                    </svg></span>
+                <span class="fact-num">1st</span><span class="fact-label">place · Cursor Ankara Hackathon</span>
+            </div>
+            <div class="fact reveal">
+                <span class="fact-icon" aria-hidden="true"><svg viewBox="0 0 24 24">
+                        <rect x="2" y="7" width="20" height="14" rx="2" />
+                        <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" />
+                    </svg></span>
+                <span class="fact-num">3</span><span class="fact-label">engineering roles · SDT, ASELSAN,
+                    Leonardo</span>
             </div>
         </section>
 
         <!-- ABOUT -->
-        <section id="about" class="section" data-pose="idle" data-say="That's me, hi!">
-            <div class="container">
-                <header class="section-head reveal">
-                    <p class="eyebrow">About</p>
-                    <h2>Profile</h2>
-                </header>
-                <div class="about-grid">
-                    <div class="about-text reveal">
-                        <p>I'm a Computer Engineering graduate from Çankaya University (2026) with a 3.91/4.00 GPA,
-                            ranked 1st in the Faculty of Engineering.</p>
-                        <p>My software experience spans SDT, ASELSAN and Leonardo Türkiye, working on C++/Qt desktop
-                            software, embedded firmware, Python/FastAPI and React/Node.js. I was the software lead of
-                            the team placed 4th worldwide at CanSat 2025, and I won the Cursor Ankara Hackathon.</p>
-                    </div>
-                    <aside class="card profile-card reveal" aria-label="Quick facts">
-                        <img src="profile.jpg" alt="Photo of Ulaş Uçrak" class="profile-photo" width="72" height="72"
-                            loading="lazy">
-                        <dl class="facts">
-                            <div>
-                                <dt>Location</dt>
-                                <dd>Ankara, Türkiye</dd>
-                            </div>
-                            <div>
-                                <dt>Degree</dt>
-                                <dd>B.S. Computer Engineering, 2026</dd>
-                            </div>
-                            <div>
-                                <dt>Focus</dt>
-                                <dd>C++/Qt · Embedded · AI</dd>
-                            </div>
-                            <div>
-                                <dt>Languages</dt>
-                                <dd>Turkish, English (C1), German (A2)</dd>
-                            </div>
-                            <div>
-                                <dt>Email</dt>
-                                <dd><a href="mailto:ulasucrak@gmail.com">ulasucrak@gmail.com</a></dd>
-                            </div>
-                        </dl>
-                    </aside>
+        <section id="about" class="row" data-pose="idle" data-say="That's me, hi!">
+            <header class="row-label reveal">
+                <h2><span>01</span>About</h2>
+                <p>Who I am, in short.</p>
+            </header>
+            <div class="row-body about reveal">
+                <img src="profile.jpg" alt="Photo of Ulaş Uçrak" class="about-photo" width="96" height="96"
+                    loading="lazy">
+                <div>
+                    <p>Computer Engineering graduate from Çankaya University (2026) with a 3.91/4.00 GPA, ranked 1st
+                        in the Faculty of Engineering. Software experience at SDT, ASELSAN and Leonardo Türkiye in
+                        C++/Qt desktop software, embedded firmware, Python/FastAPI and React/Node.js. Software lead of
+                        the team placed 4th worldwide at CanSat 2025, and winner of the Cursor Ankara Hackathon.</p>
+                    <dl class="mini-facts">
+                        <div>
+                            <dt>Based in</dt>
+                            <dd>Ankara, Türkiye</dd>
+                        </div>
+                        <div>
+                            <dt>Focus</dt>
+                            <dd>C++/Qt · Embedded · AI</dd>
+                        </div>
+                        <div>
+                            <dt>Languages</dt>
+                            <dd>TR · EN (C1) · DE (A2)</dd>
+                        </div>
+                    </dl>
                 </div>
             </div>
         </section>
 
         <!-- EXPERIENCE -->
-        <section id="experience" class="section section-alt" data-pose="laptop" data-say="Shipping C++ & firmware…">
-            <div class="container">
-                <header class="section-head reveal">
-                    <p class="eyebrow">Experience</p>
-                    <h2>Professional experience</h2>
-                </header>
-                <ol class="timeline">
-                    <li class="job card reveal">
-                        <span class="monogram" aria-hidden="true">SDT</span>
-                        <div class="job-body">
-                            <div class="job-top">
-                                <div>
-                                    <h3>Candidate Engineer <span class="type">Part-time</span></h3>
-                                    <p class="company">SDT Uzay &amp; Savunma Teknolojileri</p>
-                                </div>
-                                <p class="date">Sep 2025 – Jun 2026</p>
-                            </div>
-                            <ul class="bullets">
-                                <li>Developed and maintained C++ software components for Qt-based desktop applications
-                                    used in defense and space projects.</li>
-                                <li>Also worked on embedded systems software, part-time alongside the final year of the
-                                    degree.</li>
-                            </ul>
-                            <ul class="tags">
-                                <li>C++</li>
-                                <li>Qt</li>
-                                <li>Embedded</li>
-                            </ul>
+        <section id="experience" class="row" data-pose="laptop" data-say="Shipping C++ & firmware…">
+            <header class="row-label reveal">
+                <h2><span>02</span>Experience</h2>
+                <p>5 roles · 2023 – 2026</p>
+            </header>
+            <ol class="row-body stack-list">
+                <li class="card job reveal">
+                    <span class="mono-tile" aria-hidden="true">SDT</span>
+                    <div>
+                        <div class="card-top">
+                            <h3>SDT Uzay &amp; Savunma Teknolojileri</h3>
+                            <span class="date">Sep 2025 – Jun 2026</span>
                         </div>
-                    </li>
-                    <li class="job card reveal">
-                        <span class="monogram" aria-hidden="true">AS</span>
-                        <div class="job-body">
-                            <div class="job-top">
-                                <div>
-                                    <h3>Intern</h3>
-                                    <p class="company">ASELSAN · REHİS (Radar &amp; Electronic Warfare Systems)</p>
-                                </div>
-                                <p class="date">Aug 2025 – Sep 2025</p>
-                            </div>
-                            <ul class="bullets">
-                                <li>Designed and implemented a custom I2C-based communication protocol between STM32
-                                    boards in embedded C.</li>
-                                <li>Contributed to hardware–software integration on STM32 microcontrollers, and tested
-                                    and debugged embedded software.</li>
-                            </ul>
-                            <ul class="tags">
-                                <li>Embedded C</li>
-                                <li>STM32</li>
-                                <li>I2C</li>
-                            </ul>
+                        <p class="meta">Candidate Engineer (Part-time)</p>
+                        <ul class="bullets">
+                            <li>Developed and maintained C++ software components for Qt-based desktop applications
+                                used in defense and space projects.</li>
+                            <li>Also worked on embedded systems software, part-time alongside the final year of the
+                                degree.</li>
+                        </ul>
+                        <ul class="tags">
+                            <li>C++</li>
+                            <li>Qt</li>
+                            <li>Embedded</li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="card job reveal">
+                    <span class="mono-tile" aria-hidden="true">AS</span>
+                    <div>
+                        <div class="card-top">
+                            <h3>ASELSAN</h3>
+                            <span class="date">Aug 2025 – Sep 2025</span>
                         </div>
-                    </li>
-                    <li class="job card reveal">
-                        <span class="monogram" aria-hidden="true">ÇU</span>
-                        <div class="job-body">
-                            <div class="job-top">
-                                <div>
-                                    <h3>Undergraduate Teaching Assistant <span class="type">Part-time</span></h3>
-                                    <p class="company">Çankaya University</p>
-                                </div>
-                                <p class="date">2023 – 2025</p>
-                            </div>
-                            <ul class="bullets">
-                                <li>Helped students in C programming labs debug their code and understand the material,
-                                    and graded assignments.</li>
-                            </ul>
+                        <p class="meta">Intern · REHİS (Radar &amp; Electronic Warfare Systems)</p>
+                        <ul class="bullets">
+                            <li>Designed and implemented a custom I2C-based communication protocol between STM32
+                                boards in embedded C.</li>
+                            <li>Contributed to hardware–software integration on STM32 microcontrollers, and tested
+                                and debugged embedded software.</li>
+                        </ul>
+                        <ul class="tags">
+                            <li>Embedded C</li>
+                            <li>STM32</li>
+                            <li>I2C</li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="card job reveal">
+                    <span class="mono-tile" aria-hidden="true">ÇU</span>
+                    <div>
+                        <div class="card-top">
+                            <h3>Çankaya University</h3>
+                            <span class="date">2023 – 2025</span>
                         </div>
-                    </li>
-                    <li class="job card reveal">
-                        <span class="monogram" aria-hidden="true">LT</span>
-                        <div class="job-body">
-                            <div class="job-top">
-                                <div>
-                                    <h3>Intern</h3>
-                                    <p class="company">Leonardo Türkiye</p>
-                                </div>
-                                <p class="date">Jun 2024 – Jul 2024</p>
-                            </div>
-                            <ul class="bullets">
-                                <li>Developed the complete firmware for an ESP32-based IoT device: sensor data
-                                    collection, wireless communication and OTA updates.</li>
-                                <li>Built a Node.js server interface for HTTP-based firmware updates, using JSON parsing
-                                    to compare firmware versions.</li>
-                                <li>Optimized asynchronous HTTP requests to improve the reliability of device–server
-                                    communication.</li>
-                            </ul>
-                            <ul class="tags">
-                                <li>ESP32</li>
-                                <li>OTA</li>
-                                <li>Node.js</li>
-                            </ul>
+                        <p class="meta">Undergraduate Teaching Assistant (Part-time)</p>
+                        <ul class="bullets">
+                            <li>Helped students in C programming labs debug their code and understand the material,
+                                and graded assignments.</li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="card job reveal">
+                    <span class="mono-tile" aria-hidden="true">LT</span>
+                    <div>
+                        <div class="card-top">
+                            <h3>Leonardo Türkiye</h3>
+                            <span class="date">Jun 2024 – Jul 2024</span>
                         </div>
-                    </li>
-                    <li class="job card reveal">
-                        <span class="monogram" aria-hidden="true">BC</span>
-                        <div class="job-body">
-                            <div class="job-top">
-                                <div>
-                                    <h3>Web Development Intern</h3>
-                                    <p class="company">Bilkent Cyberpark</p>
-                                </div>
-                                <p class="date">Jan 2024 – Feb 2024</p>
-                            </div>
-                            <ul class="bullets">
-                                <li>Built a personal CV website in React during a four-week web development internship.
-                                </li>
-                            </ul>
+                        <p class="meta">Intern</p>
+                        <ul class="bullets">
+                            <li>Developed the complete firmware for an ESP32-based IoT device: sensor data
+                                collection, wireless communication and OTA updates.</li>
+                            <li>Built a Node.js server interface for HTTP-based firmware updates, using JSON parsing
+                                to compare firmware versions.</li>
+                            <li>Optimized asynchronous HTTP requests to improve the reliability of device–server
+                                communication.</li>
+                        </ul>
+                        <ul class="tags">
+                            <li>ESP32</li>
+                            <li>OTA</li>
+                            <li>Node.js</li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="card job reveal">
+                    <span class="mono-tile" aria-hidden="true">BC</span>
+                    <div>
+                        <div class="card-top">
+                            <h3>Bilkent Cyberpark</h3>
+                            <span class="date">Jan 2024 – Feb 2024</span>
                         </div>
-                    </li>
-                </ol>
-            </div>
+                        <p class="meta">Web Development Intern</p>
+                        <ul class="bullets">
+                            <li>Built a personal CV website in React during a four-week web development
+                                internship.</li>
+                        </ul>
+                    </div>
+                </li>
+            </ol>
         </section>
 
         <!-- PROJECTS -->
-        <section id="projects" class="section" data-pose="sat" data-say="CanBEE: 4th worldwide!">
-            <div class="container">
-                <header class="section-head reveal">
-                    <p class="eyebrow">Projects &amp; Competitions</p>
-                    <h2>Selected work</h2>
-                </header>
-                <div class="projects">
-                    <article class="card project featured reveal">
-                        <p class="award">
-                            <svg viewBox="0 0 24 24" aria-hidden="true">
-                                <circle cx="12" cy="8" r="6" />
-                                <path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11" />
-                            </svg>
-                            4th worldwide · 1st among foundation universities
-                        </p>
-                        <h3>CanBEE — CanSat Model Satellite</h3>
-                        <p class="project-meta">Software Team Lead · CanSat Competition 2025 (American Astronautical
-                            Society, NASA-sponsored)</p>
-                        <ul class="bullets">
-                            <li>Led the software team and defined the software architecture, including real-time
-                                integration with the ground station.</li>
-                            <li>Developed the embedded software and designed the ground control interface; coded and
-                                tested the core mission functions.</li>
-                            <li>Supervised integration and tuned the software during a two-week on-site field-test
-                                campaign in the United States.</li>
-                        </ul>
-                        <ul class="tags">
-                            <li>Embedded</li>
-                            <li>Ground station</li>
-                            <li>Real-time</li>
-                        </ul>
-                    </article>
-
-                    <article class="card project featured reveal">
-                        <p class="award">
-                            <svg viewBox="0 0 24 24" aria-hidden="true">
-                                <circle cx="12" cy="8" r="6" />
-                                <path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11" />
-                            </svg>
-                            1st place · Cursor Ankara Hackathon: Blockchain Edition
-                        </p>
-                        <h3>FitStake — Web3 “Stake-to-Fit” Platform</h3>
-                        <p class="project-meta">Built in 5 hours</p>
-                        <ul class="bullets">
-                            <li>Users stake SOL and earn rewards for completing verified workouts.</li>
-                            <li>MediaPipe for real-time exercise detection, Rust/Anchor smart contracts on Solana for
-                                on-chain rewards, and a React frontend.</li>
-                        </ul>
-                        <ul class="tags">
-                            <li>MediaPipe</li>
-                            <li>Rust / Anchor</li>
-                            <li>Solana</li>
-                            <li>React</li>
-                        </ul>
-                    </article>
-
-                    <article class="card project reveal">
-                        <h3>Helma AI (HealthMate)</h3>
-                        <p class="project-meta">AI-powered elderly care assistant</p>
-                        <p>Built the LLM reasoning component of a multimodal elderly-care system and the Python
-                            FastAPI service that serves it, with Turkish conversational prompts and structured JSON
-                            outputs for daily-routine and health inference.</p>
-                        <ul class="tags">
-                            <li>LLM</li>
-                            <li>FastAPI</li>
-                            <li>Python</li>
-                        </ul>
-                    </article>
-
-                    <article class="card project reveal">
-                        <h3>Understanding Bitcoin Sentiments</h3>
-                        <p class="project-meta">Insights from tweets and users</p>
-                        <p>Used machine learning to analyze the sentiment of Bitcoin-related tweets and its correlation
-                            with price trends and user influence; trained predictive models and built a real-time
-                            sentiment analysis application.</p>
-                        <ul class="tags">
-                            <li>scikit-learn</li>
-                            <li>NLP</li>
-                            <li>pandas</li>
-                        </ul>
-                    </article>
-
-                    <article class="card project reveal">
-                        <h3>BEHSAT — TEKNOFEST Model Satellite</h3>
-                        <p class="project-meta">GUI &amp; embedded software</p>
-                        <p>Designed the GUI and implemented embedded code for the university's model satellite team.
-                        </p>
-                        <ul class="tags">
-                            <li>GUI</li>
-                            <li>Embedded</li>
-                        </ul>
-                    </article>
-
-                    <article class="card project reveal">
-                        <h3>ReadLens</h3>
-                        <p class="project-meta">Accessibility tool</p>
-                        <p>C++ tool that reads text in photographs aloud for visually impaired users, using Tesseract
-                            OCR and eSpeak.</p>
-                        <ul class="tags">
-                            <li>C++</li>
-                            <li>Tesseract OCR</li>
-                        </ul>
-                    </article>
-                </div>
+        <section id="projects" class="row" data-pose="sat" data-say="CanBEE: 4th worldwide!">
+            <header class="row-label reveal">
+                <h2><span>03</span>Projects</h2>
+                <p>6 projects · 2 competition wins</p>
+            </header>
+            <div class="row-body project-grid">
+                <article class="card project featured reveal">
+                    <div class="project-top">
+                        <span class="icon-tile" aria-hidden="true"><svg viewBox="0 0 24 24">
+                                <path d="M13 7 9 3 5 7l4 4" />
+                                <path d="m17 11 4 4-4 4-4-4" />
+                                <path d="m8 12 4 4 6-6-4-4Z" />
+                                <path d="m16 8 3-3" />
+                                <path d="M9 21a6 6 0 0 0-6-6" />
+                            </svg></span>
+                        <span class="badge">4th worldwide · CanSat 2025</span>
+                    </div>
+                    <h3>CanBEE — CanSat Model Satellite</h3>
+                    <p class="meta">Software Team Lead · 1st among foundation universities</p>
+                    <p>Led the software team and defined the architecture, including real-time integration with the
+                        ground station. Developed the embedded software, designed the ground control interface, and
+                        tuned the software during a two-week on-site field-test campaign in the United States
+                        (American Astronautical Society, NASA-sponsored).</p>
+                    <ul class="tags">
+                        <li>Embedded</li>
+                        <li>Ground station</li>
+                        <li>Real-time</li>
+                    </ul>
+                </article>
+                <article class="card project featured reveal">
+                    <div class="project-top">
+                        <span class="icon-tile" aria-hidden="true"><svg viewBox="0 0 24 24">
+                                <path
+                                    d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6M18 9h1.5a2.5 2.5 0 0 0 0-5H18M4 22h16M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22M18 2H6v7a6 6 0 0 0 12 0V2Z" />
+                            </svg></span>
+                        <span class="badge">1st place · Cursor Hackathon</span>
+                    </div>
+                    <h3>FitStake — Stake-to-Fit Web3 Platform</h3>
+                    <p class="meta">Blockchain Edition · built in 5 hours</p>
+                    <p>Users stake SOL and earn rewards for completing verified workouts. MediaPipe handles
+                        real-time exercise detection, Rust/Anchor smart contracts on Solana manage on-chain rewards,
+                        and a React frontend ties it together.</p>
+                    <ul class="tags">
+                        <li>MediaPipe</li>
+                        <li>Rust / Anchor</li>
+                        <li>Solana</li>
+                        <li>React</li>
+                    </ul>
+                </article>
+                <article class="card project reveal">
+                    <div class="project-top">
+                        <span class="icon-tile" aria-hidden="true"><svg viewBox="0 0 24 24">
+                                <path d="M12 3l1.9 5.8L20 11l-6.1 2.2L12 19l-1.9-5.8L4 11l6.1-2.2Z" />
+                            </svg></span>
+                    </div>
+                    <h3>Helma AI (HealthMate)</h3>
+                    <p class="meta">AI-powered elderly care assistant</p>
+                    <p>Built the LLM reasoning component of a multimodal elderly-care system and the Python FastAPI
+                        service that serves it, with Turkish prompts and structured JSON outputs.</p>
+                    <ul class="tags">
+                        <li>LLM</li>
+                        <li>FastAPI</li>
+                    </ul>
+                </article>
+                <article class="card project reveal">
+                    <div class="project-top">
+                        <span class="icon-tile" aria-hidden="true"><svg viewBox="0 0 24 24">
+                                <path d="M3 3v18h18" />
+                                <path d="m19 9-5 5-4-4-3 3" />
+                            </svg></span>
+                    </div>
+                    <h3>Understanding Bitcoin Sentiments</h3>
+                    <p class="meta">Machine learning · NLP</p>
+                    <p>Analyzed Bitcoin tweet sentiment, its correlation with price trends and user influence;
+                        trained predictive models and built a real-time sentiment analysis app.</p>
+                    <ul class="tags">
+                        <li>scikit-learn</li>
+                        <li>NLP</li>
+                    </ul>
+                </article>
+                <article class="card project reveal">
+                    <div class="project-top">
+                        <span class="icon-tile" aria-hidden="true"><svg viewBox="0 0 24 24">
+                                <rect x="4" y="4" width="16" height="16" rx="2" />
+                                <rect x="9" y="9" width="6" height="6" />
+                                <path d="M15 2v2M15 20v2M2 15h2M2 9h2M20 15h2M20 9h2M9 2v2M9 20v2" />
+                            </svg></span>
+                    </div>
+                    <h3>BEHSAT — TEKNOFEST</h3>
+                    <p class="meta">Model satellite · GUI + embedded</p>
+                    <p>Designed the GUI and implemented embedded code for the university's model satellite team.</p>
+                    <ul class="tags">
+                        <li>GUI</li>
+                        <li>Embedded</li>
+                    </ul>
+                </article>
+                <article class="card project reveal">
+                    <div class="project-top">
+                        <span class="icon-tile" aria-hidden="true"><svg viewBox="0 0 24 24">
+                                <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z" />
+                                <circle cx="12" cy="12" r="3" />
+                            </svg></span>
+                    </div>
+                    <h3>ReadLens</h3>
+                    <p class="meta">C++ accessibility tool</p>
+                    <p>Reads text in photographs aloud for visually impaired users, using Tesseract OCR and
+                        eSpeak.</p>
+                    <ul class="tags">
+                        <li>C++</li>
+                        <li>OCR</li>
+                    </ul>
+                </article>
             </div>
         </section>
 
         <!-- SKILLS -->
-        <section id="skills" class="section section-alt" data-pose="chip" data-say="C++, STM32, Python…">
-            <div class="container">
-                <header class="section-head reveal">
-                    <p class="eyebrow">Skills</p>
-                    <h2>Technical skills</h2>
-                </header>
-                <div class="skills">
-                    <div class="card skill reveal">
-                        <h3>Languages</h3>
-                        <ul class="tags">
-                            <li>C</li>
-                            <li>C++</li>
-                            <li>Python</li>
-                            <li>JavaScript</li>
-                            <li>C#</li>
-                            <li>Swift</li>
-                            <li>HTML</li>
-                            <li>CSS</li>
-                        </ul>
-                    </div>
-                    <div class="card skill reveal">
-                        <h3>Frameworks &amp; Libraries</h3>
-                        <ul class="tags">
-                            <li>Qt</li>
-                            <li>React</li>
-                            <li>Node.js</li>
-                            <li>FastAPI</li>
-                            <li>.NET</li>
-                            <li>Electron</li>
-                            <li>MediaPipe</li>
-                            <li>Tesseract OCR</li>
-                        </ul>
-                    </div>
-                    <div class="card skill reveal">
-                        <h3>Embedded</h3>
-                        <ul class="tags">
-                            <li>STM32</li>
-                            <li>ESP32</li>
-                            <li>Embedded C</li>
-                            <li>I2C</li>
-                            <li>OTA firmware updates</li>
-                        </ul>
-                    </div>
-                    <div class="card skill reveal">
-                        <h3>AI / ML</h3>
-                        <ul class="tags">
-                            <li>pandas</li>
-                            <li>NumPy</li>
-                            <li>scikit-learn</li>
-                            <li>NLP</li>
-                            <li>Sentiment analysis</li>
-                            <li>LLM prompt design</li>
-                            <li>Structured JSON outputs</li>
-                        </ul>
-                    </div>
-                    <div class="card skill reveal">
-                        <h3>Databases</h3>
-                        <ul class="tags">
-                            <li>MySQL</li>
-                            <li>Firebase</li>
-                            <li>Supabase</li>
-                            <li>ChromaDB</li>
-                        </ul>
-                    </div>
-                    <div class="card skill reveal">
-                        <h3>Tools &amp; Platforms</h3>
-                        <ul class="tags">
-                            <li>Git</li>
-                            <li>Linux (Ubuntu)</li>
-                            <li>Windows</li>
-                        </ul>
-                    </div>
+        <section id="skills" class="row" data-pose="chip" data-say="C++, STM32, Python…">
+            <header class="row-label reveal">
+                <h2><span>04</span>Skills</h2>
+                <p>Tools I use day to day.</p>
+            </header>
+            <div class="row-body skill-grid">
+                <div class="card skill reveal">
+                    <h3><svg viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="m16 18 6-6-6-6M8 6l-6 6 6 6" />
+                        </svg>Languages</h3>
+                    <ul class="tags">
+                        <li>C</li>
+                        <li>C++</li>
+                        <li>Python</li>
+                        <li>JavaScript</li>
+                        <li>C#</li>
+                        <li>Swift</li>
+                        <li>HTML</li>
+                        <li>CSS</li>
+                    </ul>
+                </div>
+                <div class="card skill reveal">
+                    <h3><svg viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M12 2 2 7l10 5 10-5-10-5Z" />
+                            <path d="m2 17 10 5 10-5M2 12l10 5 10-5" />
+                        </svg>Frameworks</h3>
+                    <ul class="tags">
+                        <li>Qt</li>
+                        <li>React</li>
+                        <li>Node.js</li>
+                        <li>FastAPI</li>
+                        <li>.NET</li>
+                        <li>Electron</li>
+                        <li>MediaPipe</li>
+                        <li>Tesseract OCR</li>
+                    </ul>
+                </div>
+                <div class="card skill reveal">
+                    <h3><svg viewBox="0 0 24 24" aria-hidden="true">
+                            <rect x="4" y="4" width="16" height="16" rx="2" />
+                            <rect x="9" y="9" width="6" height="6" />
+                            <path d="M15 2v2M15 20v2M2 15h2M2 9h2M20 15h2M20 9h2M9 2v2M9 20v2" />
+                        </svg>Embedded</h3>
+                    <ul class="tags">
+                        <li>STM32</li>
+                        <li>ESP32</li>
+                        <li>Embedded C</li>
+                        <li>I2C</li>
+                        <li>OTA updates</li>
+                    </ul>
+                </div>
+                <div class="card skill reveal">
+                    <h3><svg viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M12 3l1.9 5.8L20 11l-6.1 2.2L12 19l-1.9-5.8L4 11l6.1-2.2Z" />
+                        </svg>AI / ML</h3>
+                    <ul class="tags">
+                        <li>pandas</li>
+                        <li>NumPy</li>
+                        <li>scikit-learn</li>
+                        <li>NLP</li>
+                        <li>Sentiment analysis</li>
+                        <li>LLM prompt design</li>
+                        <li>Structured JSON</li>
+                    </ul>
+                </div>
+                <div class="card skill reveal">
+                    <h3><svg viewBox="0 0 24 24" aria-hidden="true">
+                            <ellipse cx="12" cy="5" rx="9" ry="3" />
+                            <path d="M3 5v14a9 3 0 0 0 18 0V5M3 12a9 3 0 0 0 18 0" />
+                        </svg>Databases</h3>
+                    <ul class="tags">
+                        <li>MySQL</li>
+                        <li>Firebase</li>
+                        <li>Supabase</li>
+                        <li>ChromaDB</li>
+                    </ul>
+                </div>
+                <div class="card skill reveal">
+                    <h3><svg viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="m4 17 6-6-6-6M12 19h8" />
+                        </svg>Tools</h3>
+                    <ul class="tags">
+                        <li>Git</li>
+                        <li>Linux (Ubuntu)</li>
+                        <li>Windows</li>
+                    </ul>
                 </div>
             </div>
         </section>
 
-        <!-- EDUCATION & LEADERSHIP -->
-        <section id="education" class="section" data-pose="grad" data-say="3.91 GPA, 1st in faculty">
-            <div class="container">
-                <header class="section-head reveal">
-                    <p class="eyebrow">Education &amp; Leadership</p>
-                    <h2>Education</h2>
-                </header>
-                <div class="edu">
-                    <div class="card edu-item reveal">
-                        <p class="date">2022 – 2026</p>
-                        <h3>Çankaya University</h3>
-                        <p class="company">B.S. in Computer Engineering</p>
-                        <p class="edu-note">GPA 3.91/4.00 · ranked 1st in the Faculty of Engineering</p>
-                    </div>
-                    <div class="card edu-item reveal">
-                        <p class="date">2024 – 2025</p>
-                        <h3>Computer Engineering Society</h3>
-                        <p class="company">President (Volunteer) · Çankaya University</p>
-                        <p class="edu-note">Organized events and seminars, coordinated with companies and sponsors, and
-                            assigned tasks within the board.</p>
-                    </div>
-                    <div class="card edu-item reveal">
-                        <p class="date">2022</p>
-                        <h3>TED Ankara College</h3>
-                        <p class="company">High School Diploma</p>
-                    </div>
+        <!-- EDUCATION -->
+        <section id="education" class="row" data-pose="grad" data-say="3.91 GPA, 1st in faculty">
+            <header class="row-label reveal">
+                <h2><span>05</span>Education</h2>
+                <p>Degree &amp; leadership.</p>
+            </header>
+            <div class="row-body edu-grid">
+                <div class="card edu reveal">
+                    <span class="date">2022 – 2026</span>
+                    <h3>Çankaya University</h3>
+                    <p class="meta">B.S. Computer Engineering</p>
+                    <p class="edu-highlight"><strong>3.91</strong>/4.00 GPA · ranked 1st in the Faculty of
+                        Engineering</p>
+                </div>
+                <div class="card edu reveal">
+                    <span class="date">2024 – 2025</span>
+                    <h3>Computer Engineering Society</h3>
+                    <p class="meta">President (Volunteer)</p>
+                    <p>Organized events and seminars, coordinated with companies and sponsors, and assigned tasks
+                        within the board.</p>
+                </div>
+                <div class="card edu reveal">
+                    <span class="date">2022</span>
+                    <h3>TED Ankara College</h3>
+                    <p class="meta">High School Diploma</p>
                 </div>
             </div>
         </section>
 
         <!-- CONTACT -->
-        <section id="contact" class="contact" data-pose="wave" data-say="Say hi!">
-            <div class="container contact-inner reveal">
-                <div>
-                    <p class="eyebrow">Contact</p>
-                    <h2>Let's work together</h2>
-                    <p>I'm open to software, embedded and AI engineering roles. The best way to reach me is by email.</p>
-                </div>
-                <div class="contact-actions">
-                    <a href="mailto:ulasucrak@gmail.com" class="btn btn-light">
-                        <svg viewBox="0 0 24 24" aria-hidden="true">
-                            <rect x="2" y="4" width="20" height="16" rx="2" />
-                            <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
-                        </svg>
-                        ulasucrak@gmail.com
-                    </a>
-                    <a href="https://linkedin.com/in/ulasucrak" target="_blank" rel="noopener noreferrer"
-                        class="btn btn-ghost-light">Connect on LinkedIn</a>
+        <section id="contact" class="row contact" data-pose="wave" data-say="Say hi!">
+            <header class="row-label reveal">
+                <h2><span>06</span>Contact</h2>
+                <p>Let's talk.</p>
+            </header>
+            <div class="row-body">
+                <div class="card contact-card reveal">
+                    <p class="contact-title">Let's build something reliable.</p>
+                    <p class="contact-sub">Open to software, embedded and AI engineering roles.</p>
+                    <a class="contact-mail" href="mailto:ulasucrak@gmail.com">ulasucrak@gmail.com</a>
+                    <ul class="contact-links">
+                        <li><a href="https://linkedin.com/in/ulasucrak" target="_blank"
+                                rel="noopener noreferrer"><span>LinkedIn</span>linkedin.com/in/ulasucrak ↗</a></li>
+                        <li><a href="https://github.com/ulasucrak" target="_blank"
+                                rel="noopener noreferrer"><span>GitHub</span>github.com/ulasucrak ↗</a></li>
+                        <li><a href="cv.pdf" download><span>Résumé</span>Download CV (PDF) ↓</a></li>
+                    </ul>
                 </div>
             </div>
         </section>
     </main>
 
     <footer class="footer">
-        <div class="container footer-inner">
-            <span>© 2026 Ulaş Uçrak</span>
-            <a href="#top">Back to top ↑</a>
-        </div>
+        <span>© 2026 Ulaş Uçrak · built from scratch</span>
+        <a href="#top">Back to top ↑</a>
     </footer>
 
     <!-- Companion character: follows along and reacts to each section -->

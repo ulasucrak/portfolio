@@ -78,13 +78,13 @@
 
     <!-- PROP: laptop (Experience) -->
     <g class="ch-prop ch-laptop">
-      <g class="ch-code" font-family="JetBrains Mono, monospace" font-size="11" fill="#0284C7">
+      <g class="ch-code" font-family="JetBrains Mono, monospace" font-size="11" fill="#22C55E">
         <text x="112" y="244">{ }</text>
         <text x="170" y="240">01</text>
         <text x="142" y="236">&lt;/&gt;</text>
       </g>
       <rect x="98" y="250" width="104" height="64" rx="7" fill="#D5D8E0" stroke="#9EA3AE" stroke-width="1.5"/>
-      <path d="M144 276 l-6 6 6 6 M156 276 l6 6 -6 6" stroke="#0369A1" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M144 276 l-6 6 6 6 M156 276 l6 6 -6 6" stroke="#16A34A" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
       <rect x="88" y="312" width="124" height="9" rx="3" fill="#B7BBC6"/>
       <ellipse class="ch-tap-l" cx="110" cy="312" rx="11" ry="7" fill="url(#${p}-arm)"/>
       <ellipse class="ch-tap-r" cx="190" cy="312" rx="11" ry="7" fill="url(#${p}-arm)"/>
@@ -93,9 +93,9 @@
     <!-- PROP: CanSat satellite (Projects) -->
     <g class="ch-prop ch-sat">
       <g class="ch-sat-body">
-        <path class="ch-signal" d="M138 222 a16 16 0 0 1 24 0 M132 216 a24 24 0 0 1 36 0" stroke="#0284C7" stroke-width="2" fill="none" stroke-linecap="round"/>
+        <path class="ch-signal" d="M138 222 a16 16 0 0 1 24 0 M132 216 a24 24 0 0 1 36 0" stroke="#22C55E" stroke-width="2" fill="none" stroke-linecap="round"/>
         <line x1="150" y1="246" x2="150" y2="230" stroke="#9EA3AE" stroke-width="2"/>
-        <circle class="ch-led" cx="150" cy="228" r="3.5" fill="#0284C7"/>
+        <circle class="ch-led" cx="150" cy="228" r="3.5" fill="#22C55E"/>
         <rect x="104" y="258" width="32" height="18" rx="2" fill="#1E3A8A" stroke="#60A5FA" stroke-width="1"/>
         <path d="M112 258 v18 M120 258 v18 M128 258 v18 M104 267 h32" stroke="#60A5FA" stroke-width=".8" opacity=".8"/>
         <rect x="164" y="258" width="32" height="18" rx="2" fill="#1E3A8A" stroke="#60A5FA" stroke-width="1"/>
@@ -111,8 +111,8 @@
 
     <!-- PROP: microcontroller chip (Skills) -->
     <g class="ch-prop ch-chip">
-      <circle class="ch-glow" cx="150" cy="270" r="34" fill="#0284C7" opacity=".18"/>
-      <g stroke="#0284C7" stroke-width="2" stroke-linecap="round">
+      <circle class="ch-glow" cx="150" cy="270" r="34" fill="#22C55E" opacity=".18"/>
+      <g stroke="#22C55E" stroke-width="2" stroke-linecap="round">
         <path class="ch-trace" d="M150 244 V222 H176" fill="none"/>
         <path class="ch-trace" d="M124 270 H104 V250" fill="none"/>
         <path class="ch-trace" d="M176 270 H198 V290" fill="none"/>
@@ -123,9 +123,9 @@
         <path d="M124 256 h-6 M124 266 h-6 M124 276 h-6 M124 286 h-6"/>
         <path d="M176 256 h6 M176 266 h6 M176 276 h6 M176 286 h6"/>
       </g>
-      <rect x="124" y="244" width="52" height="52" rx="7" fill="#111827" stroke="#0284C7" stroke-width="1.6"/>
-      <rect x="138" y="258" width="24" height="24" rx="3" fill="none" stroke="#0284C7" stroke-width="1.4" opacity=".7"/>
-      <circle cx="131" cy="251" r="2" fill="#0284C7"/>
+      <rect x="124" y="244" width="52" height="52" rx="7" fill="#111827" stroke="#22C55E" stroke-width="1.6"/>
+      <rect x="138" y="258" width="24" height="24" rx="3" fill="none" stroke="#22C55E" stroke-width="1.4" opacity=".7"/>
+      <circle cx="131" cy="251" r="2" fill="#22C55E"/>
     </g>
 
     <!-- head -->
@@ -154,10 +154,10 @@
         <path d="M116 64 L116 82 Q150 96 184 82 L184 64 Z" fill="#1F1F24"/>
         <path d="M150 38 L214 58 L150 78 L86 58 Z" fill="#111114" stroke="#2C2C33" stroke-width="1.2"/>
         <g class="ch-tassel">
-          <path d="M150 58 L200 64 L200 90" stroke="#0284C7" stroke-width="2.2" fill="none" stroke-linecap="round"/>
-          <rect x="196" y="88" width="8" height="12" rx="2" fill="#0284C7"/>
+          <path d="M150 58 L200 64 L200 90" stroke="#22C55E" stroke-width="2.2" fill="none" stroke-linecap="round"/>
+          <rect x="196" y="88" width="8" height="12" rx="2" fill="#22C55E"/>
         </g>
-        <circle cx="150" cy="58" r="3" fill="#0284C7"/>
+        <circle cx="150" cy="58" r="3" fill="#22C55E"/>
       </g>
       <!-- brows -->
       <g class="ch-brows" stroke="#181312" stroke-width="7" stroke-linecap="round" fill="none">
