@@ -1,0 +1,174 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs><clipPath id="c"><circle cx="32" cy="32" r="30"/></clipPath></defs>
+  <circle cx="32" cy="32" r="31" fill="#111827" stroke="#22C55E" stroke-width="2"/>
+  <g clip-path="url(#c)">
+<svg x="4" y="6" width="56" height="56" viewBox="48 24 204 204">
+  <style>.ch-hold,.ch-prop,.ch-cap,.ch-wave,.ch-mouth-neutral,.ch-mouth-talk{display:none}.ch-cheek{opacity:.4}</style><defs>
+    <linearGradient id="fi-skin" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#F4CDA8"/><stop offset="1" stop-color="#E4AE86"/>
+    </linearGradient>
+    <linearGradient id="fi-shirt" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#2A2A31"/><stop offset="1" stop-color="#18181D"/>
+    </linearGradient>
+    <linearGradient id="fi-arm" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#F2C9A3"/><stop offset="1" stop-color="#DFA880"/>
+    </linearGradient>
+  </defs>
+
+  <g class="ch-root">
+    <!-- neck -->
+    <path d="M131 190 L131 232 Q150 244 169 232 L169 190 Z" fill="#DCA27B"/>
+    <path d="M131 196 Q150 214 169 196 L169 206 Q150 222 131 206 Z" fill="#C98E68" opacity=".55"/>
+
+    <!-- torso -->
+    <g class="ch-torso">
+      <path d="M52 330 C52 270 88 242 128 230 L172 230 C212 242 248 270 248 330 Z" fill="url(#fi-shirt)"/>
+      <path d="M92 262 C98 280 100 300 100 330" stroke="#111114" stroke-width="2" fill="none" opacity=".6"/>
+      <path d="M208 262 C202 280 200 300 200 330" stroke="#111114" stroke-width="2" fill="none" opacity=".6"/>
+      <path d="M128 228 L111 244 L140 267 L150 248 Z" fill="#303038" stroke="#0E0E11" stroke-width="1.4" stroke-linejoin="round"/>
+      <path d="M172 228 L189 244 L160 267 L150 248 Z" fill="#303038" stroke="#0E0E11" stroke-width="1.4" stroke-linejoin="round"/>
+      <path d="M150 250 L150 330" stroke="#62626E" stroke-width="2"/>
+      <rect x="146.5" y="268" width="7" height="12" rx="2" fill="#9A9AA6"/>
+    </g>
+
+    <!-- arms held forward (used by chip / satellite poses) -->
+    <g class="ch-hold">
+      <path d="M66 276 C84 284 102 290 118 292 L116 310 C98 308 80 300 62 292 Z" fill="url(#fi-shirt)"/>
+      <path d="M234 276 C216 284 198 290 182 292 L184 310 C202 308 220 300 238 292 Z" fill="url(#fi-shirt)"/>
+      <ellipse cx="126" cy="300" rx="13" ry="11" fill="url(#fi-arm)"/>
+      <ellipse cx="174" cy="300" rx="13" ry="11" fill="url(#fi-arm)"/>
+    </g>
+
+    <!-- PROP: laptop (Experience) -->
+    <g class="ch-prop ch-laptop">
+      <g class="ch-code" font-family="JetBrains Mono, monospace" font-size="11" fill="#22C55E">
+        <text x="112" y="244">{ }</text>
+        <text x="170" y="240">01</text>
+        <text x="142" y="236">&lt;/&gt;</text>
+      </g>
+      <rect x="98" y="250" width="104" height="64" rx="7" fill="#D5D8E0" stroke="#9EA3AE" stroke-width="1.5"/>
+      <path d="M144 276 l-6 6 6 6 M156 276 l6 6 -6 6" stroke="#16A34A" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      <rect x="88" y="312" width="124" height="9" rx="3" fill="#B7BBC6"/>
+      <ellipse class="ch-tap-l" cx="110" cy="312" rx="11" ry="7" fill="url(#fi-arm)"/>
+      <ellipse class="ch-tap-r" cx="190" cy="312" rx="11" ry="7" fill="url(#fi-arm)"/>
+    </g>
+
+    <!-- PROP: CanSat satellite (Projects) -->
+    <g class="ch-prop ch-sat">
+      <g class="ch-sat-body">
+        <path class="ch-signal" d="M138 222 a16 16 0 0 1 24 0 M132 216 a24 24 0 0 1 36 0" stroke="#22C55E" stroke-width="2" fill="none" stroke-linecap="round"/>
+        <line x1="150" y1="246" x2="150" y2="230" stroke="#9EA3AE" stroke-width="2"/>
+        <circle class="ch-led" cx="150" cy="228" r="3.5" fill="#22C55E"/>
+        <rect x="104" y="258" width="32" height="18" rx="2" fill="#1E3A8A" stroke="#60A5FA" stroke-width="1"/>
+        <path d="M112 258 v18 M120 258 v18 M128 258 v18 M104 267 h32" stroke="#60A5FA" stroke-width=".8" opacity=".8"/>
+        <rect x="164" y="258" width="32" height="18" rx="2" fill="#1E3A8A" stroke="#60A5FA" stroke-width="1"/>
+        <path d="M172 258 v18 M180 258 v18 M188 258 v18 M164 267 h32" stroke="#60A5FA" stroke-width=".8" opacity=".8"/>
+        <line x1="136" y1="267" x2="138" y2="267" stroke="#9EA3AE" stroke-width="3"/>
+        <line x1="162" y1="267" x2="164" y2="267" stroke="#9EA3AE" stroke-width="3"/>
+        <rect x="137" y="246" width="26" height="42" rx="6" fill="#CBD5E1" stroke="#94A3B8" stroke-width="1.2"/>
+        <rect x="137" y="256" width="26" height="4" fill="#94A3B8"/>
+        <rect x="137" y="274" width="26" height="4" fill="#94A3B8"/>
+        <text x="150" y="270" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="6" font-weight="700" fill="#0F172A">BEE</text>
+      </g>
+    </g>
+
+    <!-- PROP: microcontroller chip (Skills) -->
+    <g class="ch-prop ch-chip">
+      <circle class="ch-glow" cx="150" cy="270" r="34" fill="#22C55E" opacity=".18"/>
+      <g stroke="#22C55E" stroke-width="2" stroke-linecap="round">
+        <path class="ch-trace" d="M150 244 V222 H176" fill="none"/>
+        <path class="ch-trace" d="M124 270 H104 V250" fill="none"/>
+        <path class="ch-trace" d="M176 270 H198 V290" fill="none"/>
+      </g>
+      <g stroke="#9EA3AE" stroke-width="2.4" stroke-linecap="round">
+        <path d="M136 244 v-6 M146 244 v-6 M156 244 v-6 M166 244 v-6"/>
+        <path d="M136 296 v6 M146 296 v6 M156 296 v6 M166 296 v6"/>
+        <path d="M124 256 h-6 M124 266 h-6 M124 276 h-6 M124 286 h-6"/>
+        <path d="M176 256 h6 M176 266 h6 M176 276 h6 M176 286 h6"/>
+      </g>
+      <rect x="124" y="244" width="52" height="52" rx="7" fill="#111827" stroke="#22C55E" stroke-width="1.6"/>
+      <rect x="138" y="258" width="24" height="24" rx="3" fill="none" stroke="#22C55E" stroke-width="1.4" opacity=".7"/>
+      <circle cx="131" cy="251" r="2" fill="#22C55E"/>
+    </g>
+
+    <!-- head -->
+    <g class="ch-head">
+      <!-- hair back mass -->
+      <path d="M90 142 C80 96 96 48 150 42 C204 48 220 96 210 142 C206 124 202 112 196 104 C186 96 170 92 150 94 C130 92 114 96 104 104 C98 112 94 124 90 142 Z" fill="#181312"/>
+      <!-- ears -->
+      <ellipse cx="97" cy="146" rx="9" ry="14" fill="#E6B089"/>
+      <ellipse cx="203" cy="146" rx="9" ry="14" fill="#E6B089"/>
+      <path d="M98 141 q3 5 -1 10" stroke="#C78A64" stroke-width="2" fill="none" stroke-linecap="round"/>
+      <path d="M202 141 q-3 5 1 10" stroke="#C78A64" stroke-width="2" fill="none" stroke-linecap="round"/>
+      <!-- face -->
+      <path d="M99 116 C99 80 122 66 150 66 C178 66 201 80 201 116 L200 148 C198 178 179 201 150 203 C121 201 102 178 100 148 Z" fill="url(#fi-skin)"/>
+      <path d="M186 90 C200 110 201 150 192 176 C186 188 176 197 164 201 C182 188 192 166 192 140 C192 118 190 102 186 90 Z" fill="#C98E68" opacity=".25"/>
+      <!-- stubble -->
+      <path d="M101 150 C103 182 124 203 150 204 C176 203 197 182 199 150 C193 168 182 177 170 178 C162 173 156 171 150 172 C144 171 138 173 130 178 C118 177 107 168 101 150 Z" fill="#2E2420" opacity=".3"/>
+      <path d="M131 179 C140 172 160 172 169 179 C160 183 140 183 131 179 Z" fill="#2E2420" opacity=".42"/>
+      <path d="M140 194 Q150 200 160 194 L158 202 Q150 206 142 202 Z" fill="#2E2420" opacity=".3"/>
+      <!-- hair: curls -->
+      <g fill="#181312"><path d="M100 114 C100 76 122 60 150 60 C178 60 200 76 200 114 C194 102 186 96 177 94 C167 88 158 88 150 90 C142 88 133 88 123 94 C114 96 106 102 100 114 Z"/><circle cx="86.6" cy="112.4" r="12"/><circle cx="86.2" cy="98.8" r="15"/><circle cx="89.1" cy="85.5" r="12"/><circle cx="95.1" cy="73.1" r="15"/><circle cx="104" cy="62.3" r="12"/><circle cx="115.1" cy="53.7" r="15"/><circle cx="128.1" cy="47.6" r="12"/><circle cx="142.2" cy="44.4" r="15"/><circle cx="156.7" cy="44.3" r="12"/><circle cx="170.8" cy="47.3" r="15"/><circle cx="183.9" cy="53.1" r="12"/><circle cx="195.3" cy="61.6" r="15"/><circle cx="204.3" cy="72.2" r="12"/><circle cx="210.5" cy="84.5" r="15"/><circle cx="213.6" cy="97.7" r="12"/><circle cx="213.5" cy="111.3" r="15"/><circle cx="107.7" cy="84.4" r="11"/><circle cx="112.7" cy="73.7" r="14"/><circle cx="120.6" cy="64.8" r="11"/><circle cx="130.7" cy="58.3" r="14"/><circle cx="142.4" cy="54.6" r="11"/><circle cx="154.6" cy="54.2" r="14"/><circle cx="166.5" cy="57.1" r="11"/><circle cx="177.1" cy="62.9" r="14"/><circle cx="185.6" cy="71.3" r="11"/><circle cx="191.3" cy="81.6" r="14"/><circle cx="113" cy="96" r="9"/><circle cx="124" cy="90" r="10"/><circle cx="137" cy="93" r="8.5"/><circle cx="150" cy="88" r="10"/><circle cx="163" cy="93" r="8.5"/><circle cx="176" cy="90" r="10"/><circle cx="187" cy="96" r="9"/>
+        <path d="M96 112 C98 124 100 130 104 134 L106 116 Z"/><path d="M204 112 C202 124 200 130 196 134 L194 116 Z"/>
+      </g>
+      <g stroke="#4B403B" stroke-width="2" fill="none" stroke-linecap="round" opacity=".75"><path d="M80.0 111.2 a7.2 7.2 0 0 1 9.0 -5.4"/><path d="M78.0 97.3 a9.0 9.0 0 0 1 11.3 -6.8"/><path d="M82.5 84.3 a7.2 7.2 0 0 1 9.0 -5.4"/><path d="M86.8 71.6 a9.0 9.0 0 0 1 11.3 -6.8"/><path d="M97.4 61.1 a7.2 7.2 0 0 1 9.0 -5.4"/><path d="M106.8 52.2 a9.0 9.0 0 0 1 11.3 -6.8"/><path d="M121.5 46.4 a7.2 7.2 0 0 1 9.0 -5.4"/><path d="M133.9 42.9 a9.0 9.0 0 0 1 11.3 -6.8"/><path d="M150.1 43.1 a7.2 7.2 0 0 1 9.0 -5.4"/><path d="M162.6 45.8 a9.0 9.0 0 0 1 11.3 -6.8"/><path d="M177.3 51.9 a7.2 7.2 0 0 1 9.0 -5.4"/><path d="M187.1 60.1 a9.0 9.0 0 0 1 11.3 -6.8"/><path d="M197.7 71.0 a7.2 7.2 0 0 1 9.0 -5.4"/><path d="M202.3 83.0 a9.0 9.0 0 0 1 11.3 -6.8"/><path d="M207.0 96.5 a7.2 7.2 0 0 1 9.0 -5.4"/><path d="M205.3 109.8 a9.0 9.0 0 0 1 11.3 -6.8"/><path d="M101.7 83.3 a6.6 6.6 0 0 1 8.3 -5.0"/><path d="M105.0 72.3 a8.4 8.4 0 0 1 10.5 -6.3"/><path d="M114.5 63.7 a6.6 6.6 0 0 1 8.3 -5.0"/><path d="M123.0 56.9 a8.4 8.4 0 0 1 10.5 -6.3"/><path d="M136.3 53.5 a6.6 6.6 0 0 1 8.3 -5.0"/><path d="M146.9 52.8 a8.4 8.4 0 0 1 10.5 -6.3"/><path d="M160.4 56.0 a6.6 6.6 0 0 1 8.3 -5.0"/><path d="M169.4 61.5 a8.4 8.4 0 0 1 10.5 -6.3"/><path d="M179.5 70.2 a6.6 6.6 0 0 1 8.3 -5.0"/><path d="M183.6 80.2 a8.4 8.4 0 0 1 10.5 -6.3"/><path d="M108 95 a6 6 0 0 1 8 -4"/><path d="M119 89 a6 6 0 0 1 8 -4"/><path d="M132 92 a6 6 0 0 1 8 -4"/><path d="M145 87 a6 6 0 0 1 8 -4"/><path d="M158 92 a6 6 0 0 1 8 -4"/><path d="M171 89 a6 6 0 0 1 8 -4"/><path d="M182 95 a6 6 0 0 1 8 -4"/></g>
+      <!-- graduation cap (Education) -->
+      <g class="ch-cap">
+        <path d="M116 64 L116 82 Q150 96 184 82 L184 64 Z" fill="#1F1F24"/>
+        <path d="M150 38 L214 58 L150 78 L86 58 Z" fill="#111114" stroke="#2C2C33" stroke-width="1.2"/>
+        <g class="ch-tassel">
+          <path d="M150 58 L200 64 L200 90" stroke="#22C55E" stroke-width="2.2" fill="none" stroke-linecap="round"/>
+          <rect x="196" y="88" width="8" height="12" rx="2" fill="#22C55E"/>
+        </g>
+        <circle cx="150" cy="58" r="3" fill="#22C55E"/>
+      </g>
+      <!-- brows -->
+      <g class="ch-brows" stroke="#181312" stroke-width="7" stroke-linecap="round" fill="none">
+        <path d="M114 128 C122 120 134 119 142 123"/>
+        <path d="M158 123 C166 119 178 120 186 128"/>
+      </g>
+      <!-- eyes -->
+      <g class="ch-eye">
+        <path d="M118 143 Q130 133 142 143 Q130 150 118 143 Z" fill="#FFFFFF"/>
+        <g class="ch-pupil">
+          <circle cx="130" cy="142" r="5" fill="#4E2F1C"/>
+          <circle cx="130" cy="142" r="2.5" fill="#120D0B"/>
+          <circle cx="131.8" cy="140.4" r="1.2" fill="#FFFFFF"/>
+        </g>
+        <path d="M117 143 Q130 132 143 143" stroke="#181312" stroke-width="2.4" fill="none" stroke-linecap="round"/>
+      </g>
+      <g class="ch-eye">
+        <path d="M158 143 Q170 133 182 143 Q170 150 158 143 Z" fill="#FFFFFF"/>
+        <g class="ch-pupil">
+          <circle cx="170" cy="142" r="5" fill="#4E2F1C"/>
+          <circle cx="170" cy="142" r="2.5" fill="#120D0B"/>
+          <circle cx="171.8" cy="140.4" r="1.2" fill="#FFFFFF"/>
+        </g>
+        <path d="M157 143 Q170 132 183 143" stroke="#181312" stroke-width="2.4" fill="none" stroke-linecap="round"/>
+      </g>
+      <path d="M121 152 Q130 155 139 152 M161 152 Q170 155 179 152" stroke="#C98E68" stroke-width="1.4" fill="none" opacity=".6" stroke-linecap="round"/>
+      <!-- nose -->
+      <path d="M151 142 C150 156 147 164 142 170 C146 175 154 175 158 170" stroke="#C4875F" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      <!-- mouths -->
+      <path class="ch-mouth ch-mouth-neutral" d="M138 187 Q150 190 162 187" stroke="#9E5A50" stroke-width="3" fill="none" stroke-linecap="round"/>
+      <path class="ch-mouth ch-mouth-smile" d="M135 184 Q150 198 165 184 Q150 190 135 184 Z" fill="#7A3B35" stroke="#9E5A50" stroke-width="2" stroke-linejoin="round"/>
+      <ellipse class="ch-mouth ch-mouth-talk" cx="150" cy="188" rx="6.5" ry="4.5" fill="#7A3B35"/>
+      <ellipse class="ch-cheek" cx="116" cy="164" rx="8" ry="4.5" fill="#F09A8A"/>
+      <ellipse class="ch-cheek" cx="184" cy="164" rx="8" ry="4.5" fill="#F09A8A"/>
+    </g>
+
+    <!-- waving arm -->
+    <g class="ch-wave">
+      <path d="M212 262 C230 252 244 242 254 232 L276 248 C264 262 248 276 232 288 Z" fill="url(#fi-shirt)"/>
+      <path d="M256 236 L271 185 L289 190 L276 244 Z" fill="url(#fi-arm)"/>
+      <path d="M253 234 L277 249" stroke="#303038" stroke-width="4" stroke-linecap="round"/>
+      <g stroke="#F0C59F" stroke-width="7" stroke-linecap="round">
+        <path d="M272 162 L269 145"/><path d="M280 159 L279 141"/>
+        <path d="M287 160 L289 143"/><path d="M293 165 L299 152"/>
+        <path d="M270 176 L260 168"/>
+      </g>
+      <ellipse cx="281" cy="172" rx="13" ry="14" fill="#F0C59F"/>
+    </g>
+  </g>
+</svg></g>
+</svg>
