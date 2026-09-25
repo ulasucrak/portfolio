@@ -8,22 +8,22 @@ const hasIO = 'IntersectionObserver' in window;
 
 
 // ============================================================
-// 1) THEME — dark by default, remembers the visitor's choice
+// 1) THEME — light by default, remembers the visitor's choice
 // ============================================================
 const themeBtn = document.getElementById('theme-toggle');
 const themeMeta = document.querySelector('meta[name="theme-color"]');
 
 function applyTheme(theme) {
-    if (theme === 'light') root.setAttribute('data-theme', 'light');
+    if (theme === 'dark') root.setAttribute('data-theme', 'dark');
     else root.removeAttribute('data-theme');
-    themeBtn.setAttribute('aria-label', theme === 'light' ? 'Switch to dark mode' : 'Switch to light mode');
-    if (themeMeta) themeMeta.setAttribute('content', theme === 'light' ? '#FAFAFA' : '#09090B');
+    themeBtn.setAttribute('aria-label', theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode');
+    if (themeMeta) themeMeta.setAttribute('content', theme === 'dark' ? '#0B1220' : '#FFFFFF');
 }
 
-applyTheme(root.getAttribute('data-theme') === 'light' ? 'light' : 'dark');
+applyTheme(root.getAttribute('data-theme') === 'dark' ? 'dark' : 'light');
 
 themeBtn.addEventListener('click', () => {
-    const next = root.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+    const next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
     applyTheme(next);
     try { localStorage.setItem('theme', next); } catch (e) { /* storage unavailable */ }
 });
@@ -70,6 +70,7 @@ function updateNav() {
         current = sections[sections.length - 1].id;
     }
     navLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href') === `#${current}`));
+    if (typeof updateBuddy === 'function') updateBuddy();
     if (typeof enterSection === 'function' && current) enterSection(document.getElementById(current));
     navTicking = false;
 }
@@ -266,17 +267,17 @@ function enterSection(section) {
     }
 }
 
-if (hasIO && !reduceMotion) {
-    // Show the companion once the hero character scrolls away
-    new IntersectionObserver(([entry]) => {
-        buddyVisible = !entry.isIntersecting;
-        buddyEl.classList.toggle('show', buddyVisible);
-        if (!buddyVisible) buddyBubble.hide();
-        else if (currentSection && currentSection.dataset.say) {
-            buddyBubble.say(currentSection.dataset.say, { hold: 3000, clearAfter: true });
-        }
-    }, { threshold: 0.15 }).observe(heroStage);
-
+function updateBuddy() {
+    if (reduceMotion) return;
+    // Show the companion only once the hero character has scrolled up out of view
+    const visible = heroStage.getBoundingClientRect().bottom < 90;
+    if (visible === buddyVisible) return;
+    buddyVisible = visible;
+    buddyEl.classList.toggle('show', visible);
+    if (!visible) buddyBubble.hide();
+    else if (currentSection && currentSection.dataset.say) {
+        buddyBubble.say(currentSection.dataset.say, { hold: 3000, clearAfter: true });
+    }
 }
 
 const buddyQuips = ['Hey, that tickles!', 'Still here!', 'Need my CV? Top of the page.', 'Keep scrolling!'];
