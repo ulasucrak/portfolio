@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Claude Code Projects Rehberi</title>
+<meta name="description" content="Claude Code Projects nedir, nasıl çalışır, eski çalışma şeklinden farkı ne? Resmi dokümanlara dayalı sade bir Türkçe rehber.">
+<style>
+  :root {
+    --bg: #faf7f2;
+    --surface: #ffffff;
+    --surface-2: #f3eee6;
+    --text: #26221d;
+    --muted: #6b6359;
+    --border: #e4dccf;
+    --accent: #b5532f;
+    --accent-soft: #f6e6dd;
+    --ok: #3d7a5a;
+    --ok-soft: #e3f0e8;
+    --warn: #8a6412;
+    --warn-soft: #f8eed3;
+    --code-bg: #2a2621;
+    --code-text: #f1ebe1;
+    --radius: 14px;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #1b1916;
+      --surface: #24211d;
+      --surface-2: #2d2924;
+      --text: #ece6dc;
+      --muted: #a59c8f;
+      --border: #3a352e;
+      --accent: #e08a63;
+      --accent-soft: #3a2a22;
+      --ok: #7fc29f;
+      --ok-soft: #22322a;
+      --warn: #e2bd63;
+      --warn-soft: #362e1a;
+      --code-bg: #141210;
+      --code-text: #ece6dc;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #1b1916;
+    --surface: #24211d;
+    --surface-2: #2d2924;
+    --text: #ece6dc;
+    --muted: #a59c8f;
+    --border: #3a352e;
+    --accent: #e08a63;
+    --accent-soft: #3a2a22;
+    --ok: #7fc29f;
+    --ok-soft: #22322a;
+    --warn: #e2bd63;
+    --warn-soft: #362e1a;
+    --code-bg: #141210;
+    --code-text: #ece6dc;
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    font-size: 17px;
+    line-height: 1.65;
+  }
+  a { color: var(--accent); text-underline-offset: 3px; }
+  a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 6px; }
+  .wrap { max-width: 860px; margin: 0 auto; padding: 0 16px; }
+
+  /* Üst bar */
+  .topbar {
+    position: sticky; top: 0; z-index: 10;
+    background: var(--bg);
+    border-bottom: 1px solid var(--border);
+  }
+  .topbar .wrap { display: flex; align-items: center; gap: 12px; height: 54px; }
+  .brand { font-weight: 700; font-size: 15px; white-space: nowrap; display: flex; align-items: center; gap: 8px; }
+  .brand svg { color: var(--accent); }
+  .nav { display: flex; gap: 4px; overflow-x: auto; flex: 1; scrollbar-width: none; }
+  .nav::-webkit-scrollbar { display: none; }
+  .nav a {
+    color: var(--muted); text-decoration: none; font-size: 14px;
+    padding: 6px 10px; border-radius: 8px; white-space: nowrap;
+  }
+  .nav a:hover { color: var(--text); background: var(--surface-2); }
+  .theme-btn {
+    border: 1px solid var(--border); background: var(--surface); color: var(--text);
+    width: 38px; height: 38px; border-radius: 10px; cursor: pointer; font-size: 17px;
+    flex: none; display: grid; place-items: center;
+  }
+
+  /* Giriş */
+  header.hero { padding: 56px 0 28px; }
+  .badge {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: var(--warn-soft); color: var(--warn);
+    font-size: 13px; font-weight: 600; padding: 4px 12px; border-radius: 999px;
+  }
+  h1 { font-size: clamp(30px, 6vw, 44px); line-height: 1.15; margin: 16px 0 14px; letter-spacing: -0.02em; }
+  .lead { font-size: clamp(18px, 2.6vw, 21px); color: var(--text); margin: 0 0 14px; }
+  .sub { color: var(--muted); margin: 0; font-size: 15px; }
+
+  section { padding: 36px 0; border-top: 1px solid var(--border); }
+  h2 { font-size: clamp(22px, 4vw, 28px); line-height: 1.25; margin: 0 0 8px; letter-spacing: -0.01em; }
+  h2 .num { color: var(--accent); font-variant-numeric: tabular-nums; margin-right: 8px; }
+  .intro { color: var(--muted); margin: 0 0 22px; }
+  h3 { font-size: 18px; margin: 0 0 6px; }
+  sup a { text-decoration: none; font-weight: 600; font-size: 12px; padding: 0 2px; }
+
+  .card {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: var(--radius); padding: 20px;
+  }
+
+  /* Akış şeması */
+  .flow { display: flex; align-items: stretch; gap: 8px; margin-top: 24px; }
+  .flow .node {
+    flex: 1; background: var(--surface); border: 1px solid var(--border);
+    border-radius: 12px; padding: 14px; font-size: 14px; line-height: 1.45;
+  }
+  .flow .node b { display: block; font-size: 15px; margin-bottom: 4px; }
+  .flow .node span { color: var(--muted); }
+  .flow .node.main { border-color: var(--accent); background: var(--accent-soft); }
+  .flow .arrow { align-self: center; color: var(--muted); font-size: 20px; flex: none; }
+  @media (max-width: 720px) {
+    .flow { flex-direction: column; }
+    .flow .arrow { transform: rotate(90deg); }
+  }
+
+  /* Karşılaştırma */
+  .compare { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .compare .col { border-radius: var(--radius); border: 1px solid var(--border); overflow: hidden; background: var(--surface); }
+  .compare .col > header { padding: 14px 18px; font-weight: 700; font-size: 16px; background: var(--surface-2); }
+  .compare .col.new > header { background: var(--ok-soft); color: var(--ok); }
+  .compare dl { margin: 0; }
+  .compare .row { padding: 14px 18px; border-top: 1px solid var(--border); }
+  .compare dt { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); margin-bottom: 2px; }
+  .compare dd { margin: 0; font-size: 15.5px; }
+  @media (max-width: 720px) { .compare { grid-template-columns: 1fr; } }
+
+  /* Adımlar */
+  .steps { list-style: none; margin: 0; padding: 0; counter-reset: s; }
+  .steps > li {
+    counter-increment: s; position: relative;
+    padding: 0 0 26px 56px;
+  }
+  .steps > li::before {
+    content: counter(s);
+    position: absolute; left: 0; top: 0;
+    width: 38px; height: 38px; border-radius: 50%;
+    background: var(--accent); color: #fff; font-weight: 700;
+    display: grid; place-items: center;
+  }
+  .steps > li::after {
+    content: ""; position: absolute; left: 18px; top: 44px; bottom: 6px;
+    width: 2px; background: var(--border);
+  }
+  .steps > li:last-child { padding-bottom: 0; }
+  .steps > li:last-child::after { display: none; }
+  .steps p { margin: 0 0 8px; }
+  .steps ul { margin: 6px 0 0; padding-left: 20px; }
+  .steps li li { margin-bottom: 4px; font-size: 16px; }
+  .tip {
+    background: var(--surface-2); border-radius: 10px; padding: 10px 14px;
+    font-size: 15px; color: var(--muted); margin-top: 10px;
+  }
+  .tip b { color: var(--text); }
+  kbd, .ui {
+    font-family: inherit; font-size: 0.92em; font-weight: 600;
+    background: var(--surface-2); border: 1px solid var(--border);
+    padding: 1px 7px; border-radius: 6px; white-space: nowrap;
+  }
+
+  /* Özellik kartları */
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  @media (max-width: 720px) { .grid { grid-template-columns: 1fr; } }
+  .feature .ico {
+    width: 42px; height: 42px; border-radius: 11px; background: var(--accent-soft); color: var(--accent);
+    display: grid; place-items: center; margin-bottom: 12px;
+  }
+  .feature p { margin: 0; font-size: 16px; color: var(--muted); }
+  .feature p strong { color: var(--text); font-weight: 600; }
+
+  /* Durum tablosu */
+  .states { width: 100%; border-collapse: collapse; font-size: 15.5px; }
+  .states th, .states td { text-align: left; padding: 10px 12px; border-top: 1px solid var(--border); vertical-align: top; }
+  .states thead th { border-top: 0; font-size: 12px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); }
+  .states td:first-child { font-weight: 600; white-space: nowrap; }
+  .table-wrap { overflow-x: auto; }
+
+  /* Örnek brif */
+  .brief { position: relative; }
+  .brief-label { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); margin: 18px 0 6px; }
+  pre {
+    margin: 0; background: var(--code-bg); color: var(--code-text);
+    border-radius: 12px; padding: 16px; overflow-x: auto;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 14px; line-height: 1.6; white-space: pre-wrap; word-break: break-word;
+  }
+  .copy {
+    position: absolute; top: 8px; right: 8px;
+    border: 1px solid rgba(255,255,255,0.2); background: rgba(255,255,255,0.08); color: var(--code-text);
+    font-size: 12.5px; padding: 5px 10px; border-radius: 8px; cursor: pointer;
+  }
+  .copy:hover { background: rgba(255,255,255,0.16); }
+  .pre-wrap { position: relative; }
+  .copy + pre { padding-top: 44px; }
+
+  /* Notlar */
+  .notes { list-style: none; padding: 0; margin: 0; display: grid; gap: 10px; }
+  .notes li {
+    background: var(--surface); border: 1px solid var(--border); border-left: 4px solid var(--warn);
+    border-radius: 10px; padding: 12px 16px; font-size: 16px;
+  }
+  .notes li b { display: block; margin-bottom: 2px; }
+  .callout {
+    background: var(--warn-soft); color: var(--text);
+    border-radius: var(--radius); padding: 16px 18px; margin-top: 18px; font-size: 15.5px;
+  }
+
+  /* Kaynaklar */
+  .sources { padding-left: 22px; margin: 0; }
+  .sources li { margin-bottom: 12px; font-size: 15.5px; }
+  .sources .url { display: block; color: var(--muted); font-size: 13.5px; word-break: break-all; }
+  :target { scroll-margin-top: 70px; }
+  .sources li:target { background: var(--accent-soft); border-radius: 8px; }
+
+  footer { border-top: 1px solid var(--border); padding: 28px 0 48px; color: var(--muted); font-size: 14px; }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="wrap">
+    <div class="brand">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="5" cy="12" r="2.5"/><circle cx="19" cy="5" r="2.5"/><circle cx="19" cy="12" r="2.5"/><circle cx="19" cy="19" r="2.5"/><path d="M7.5 12h9M7.2 10.8l9.5-4.9M7.2 13.2l9.5 4.9"/></svg>
+      Projects Rehberi
+    </div>
+    <nav class="nav" aria-label="Sayfa içi">
+      <a href="#fark">Eski / Yeni</a>
+      <a href="#nasil">Nasıl kullanılır</a>
+      <a href="#ozellikler">Farklar</a>
+      <a href="#ornek">Örnek</a>
+      <a href="#sinirlar">Sınırlar</a>
+      <a href="#kaynaklar">Kaynaklar</a>
+    </nav>
+    <button class="theme-btn" id="themeBtn" type="button" aria-label="Açık/koyu tema değiştir" title="Tema">◐</button>
+  </div>
+</div>
+
+<main class="wrap">
+
+  <header class="hero">
+    <span class="badge">● Beta · Pro ve Max planlarında kademeli açılıyor</span>
+    <h1>Claude Code Projects nedir?</h1>
+    <p class="lead">
+      Tek cümleyle: Claude'a bir hedef verdiğiniz, onun da işi parçalara bölüp bulutta paralel çalışan
+      “thread”lere dağıttığı, sonuçları takip edip size raporladığı <strong>süreklilik taşıyan tek bir sohbet</strong>.<sup><a href="#k1">[1]</a></sup>
+    </p>
+    <p class="sub">Bu sayfa Anthropic'in resmi dokümanlarına dayanır. Bilgiler 21 Eylül 2026 itibarıyla kontrol edildi; beta sürecinde değişebilir.</p>
+
+    <div class="flow" role="img" aria-label="Akış: Siz proje sohbetine yazarsınız, Claude işi thread'lere böler, her thread bulutta kendi dalında çalışır, Overview paneli durumu gösterir.">
+      <div class="node"><b>🧑 Siz</b><span>Hedefi ve işleri proje sohbetine yazarsınız.</span></div>
+      <div class="arrow" aria-hidden="true">→</div>
+      <div class="node main"><b>💬 Proje sohbeti</b><span>Claude koordinatördür: cevaplar ya da thread açar.</span></div>
+      <div class="arrow" aria-hidden="true">→</div>
+      <div class="node"><b>☁️ Thread'ler</b><span>Her biri bulutta, kendi dalında (branch) çalışır; gerekirse PR açar.</span></div>
+      <div class="arrow" aria-hidden="true">→</div>
+      <div class="node"><b>📋 Overview</b><span>Hangisi bitti, hangisi sizi bekliyor, tek panelde.</span></div>
+    </div>
+  </header>
+
+  <section id="fark">
+    <h2><span class="num">1</span>Eskiden nasıldı, şimdi nasıl?</h2>
+    <p class="intro">Resmi dokümanın özeti şu: proje olmadan birden fazla oturum çalıştırmak, koordinasyonu sizin yapmanız demekti.<sup><a href="#k1">[1]</a></sup> Anthropic'in duyurusu bunu “klasörden sohbete” geçiş olarak adlandırıyor.<sup><a href="#k2">[2]</a></sup></p>
+
+    <div class="compare">
+      <div class="col old">
+        <header>Eskiden</header>
+        <dl>
+          <div class="row"><dt>Projenin anlamı</dt><dd>Sohbetleri ve referans dosyaları bir arada tutan bir klasör; thread ya da koordinatör yok.<sup><a href="#k3">[3]</a></sup></dd></div>
+          <div class="row"><dt>İş bölümü</dt><dd>Hangi oturumun ne yapacağına siz karar verirdiniz.</dd></div>
+          <div class="row"><dt>Bağlam</dt><dd>Aynı arka plan bilgisini her oturumun başında tekrar anlatırdınız.</dd></div>
+          <div class="row"><dt>Takip</dt><dd>Hangisi bitti, hangisi soru soruyor diye oturumları tek tek kontrol ederdiniz.</dd></div>
+          <div class="row"><dt>Süreklilik</dt><dd>Yerel oturumlar sizin bilgisayarınızda çalışır; makineye bağlıdır.</dd></div>
+        </dl>
+      </div>
+      <div class="col new">
+        <header>Şimdi (Projects)</header>
+        <dl>
+          <div class="row"><dt>Projenin anlamı</dt><dd>Claude'un ilgili işleri koordine ettiği, devam eden tek bir sohbet.</dd></div>
+          <div class="row"><dt>İş bölümü</dt><dd>İşi tek yere yazarsınız; Claude her parça için thread açar ya da o alanda çalışan thread'e iletir.</dd></div>
+          <div class="row"><dt>Bağlam</dt><dd>Bir kez tanımlarsınız: her yeni thread projenin depoları, talimatları ve hafızasıyla başlar.</dd></div>
+          <div class="row"><dt>Takip</dt><dd>Overview paneli biten, incelemeye hazır ve sizi bekleyen thread'leri gruplar.</dd></div>
+          <div class="row"><dt>Süreklilik</dt><dd>Thread'ler bulutta çalışır; bilgisayarı kapatsanız da devam eder, telefondan yönlendirebilirsiniz.</dd></div>
+        </dl>
+      </div>
+    </div>
+    <div class="callout">
+      <strong>Not:</strong> claude.ai sohbet ve Cowork tarafındaki eski tip projeler, yeni deneyim oralara ulaşana kadar bugünkü gibi çalışmaya devam ediyor.<sup><a href="#k1">[1]</a></sup>
+    </div>
+  </section>
+
+  <section id="nasil">
+    <h2><span class="num">2</span>Nasıl kullanılır?</h2>
+    <p class="intro">Projeler <span class="ui">claude.ai/code</span> adresinde, masaüstü uygulamasının Code sekmesinde ve Claude mobil uygulamasında kullanılıyor.<sup><a href="#k1">[1]</a></sup></p>
+
+    <ol class="steps">
+      <li>
+        <h3>Ön koşulları kontrol edin</h3>
+        <ul>
+          <li>Pro ya da Max planındasınız ve kenar çubuğunda <span class="ui">Projects</span> görünüyor. Görünmüyorsa erişim henüz hesabınıza ulaşmamıştır; resmi bekleme listesine yazılabilirsiniz.<sup><a href="#k5">[5]</a></sup></li>
+          <li>Kod üzerinde çalışacaksanız: deponuz github.com'da olmalı, hesabınızın push yetkisi bulunmalı ve depoya <em>Claude GitHub App</em> kurulmalı. GitHub Enterprise Server, GitLab ve Bitbucket desteklenmiyor.</li>
+        </ul>
+      </li>
+      <li>
+        <h3>Projeyi ve hedefi tanımlayın</h3>
+        <p><span class="ui">Projects → New project</span> ile açın. Yalnızca <strong>isim</strong> zorunlu; <strong>Goal</strong> (tek satırlık hedef) ve <strong>Context</strong> (depolar, dosyalar, Google Drive klasörleri) isteğe bağlı ve sonradan eklenebilir.</p>
+        <p>Ardından <span class="ui">Project settings → Memory → Project instructions</span> bölümüne kalıcı kuralları yazın: hangi daldan başlanacak, thread işini nasıl doğrulayacak, neler için onayınız gerekecek.</p>
+        <div class="tip"><b>İpucu:</b> Zaten çalışan bir bulut oturumunuz varsa menüsünden <span class="ui">Continue as a project</span> ile projeye dönüştürebilirsiniz.</div>
+      </li>
+      <li>
+        <h3>İşi yazın, Claude bölsün</h3>
+        <p>Sohbete bir hata raporu, bir görev listesi ya da aklınıza gelen bir notu yazın. Claude mesajı yönlendirir:</p>
+        <ul>
+          <li>Kısa sorular genellikle sohbetin içinde cevaplanır.</li>
+          <li>Yeni iş yeni bir thread'e ya da o alanda zaten çalışan thread'e gider.</li>
+          <li>Tek mesajdaki birbirinden bağımsız görevler ayrı thread'ler olur.</li>
+        </ul>
+        <div class="tip"><b>Resmi öneri:</b> İlk seferde tek ve küçük bir iş gönderin, thread'in nasıl raporladığına bakın. Claude'dan thread'leri önce önermesini ve aynı anda birkaç tanesiyle sınırlı kalmasını isteyin; sonuçlar istediğiniz gibi gelince gevşetin.</div>
+      </li>
+      <li>
+        <h3>Paralel ilerleme: bırakın çalışsın</h3>
+        <p>Her thread ayrı bir bulut oturumudur; kendi bağlam penceresi vardır, deponun varsayılan dalından yeni bir dal açıp orada çalışır, gerektiğinde pull request açar ve bitince sohbete rapor verir. Bilgisayarı kapatabilirsiniz.</p>
+        <p>Açılan PR'ı thread izlemeye devam eder: CI başarısız olursa düzeltme gönderir, inceleme yorumlarını ele alır.</p>
+      </li>
+      <li>
+        <h3>Gözden geçirin ve yönlendirin</h3>
+        <p>Döndüğünüzde <span class="ui">Overview</span> paneli thread'leri duruma göre gruplar:</p>
+        <div class="table-wrap">
+          <table class="states">
+            <thead><tr><th>Grup</th><th>Anlamı</th></tr></thead>
+            <tbody>
+              <tr><td>Ready for review</td><td>PR'ı açık, incelemenizi bekliyor</td></tr>
+              <tr><td>Waiting on you</td><td>Cevabınızı ya da onayınızı bekliyor, veya hata aldı</td></tr>
+              <tr><td>Working</td><td>Hâlâ çalışıyor</td></tr>
+              <tr><td>Landing</td><td>PR onaylandı ya da birleştirme sırasında</td></tr>
+              <tr><td>Idle / Resolved</td><td>Bitti; bir şey beklemiyor ya da kapatıldı</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p style="margin-top:12px">Bir thread'i açıp adım adım ne yaptığını okuyabilir, kendi mesaj kutusundan doğrudan yönlendirebilir, izin isteğini yanıtlayabilir ya da <span class="ui">Stop</span> ile durdurabilirsiniz.</p>
+        <div class="tip"><b>Dikkat:</b> Bir thread izin bekliyorsa onay o thread'in içinde verilmelidir; proje sohbetinde “devam et” demek ona ulaşmaz.</div>
+      </li>
+    </ol>
+  </section>
+
+  <section id="ozellikler">
+    <h2><span class="num">3</span>Öne çıkan farklar</h2>
+    <p class="intro">Dört başlıkta, resmi dokümandaki karşılıklarıyla.<sup><a href="#k1">[1]</a></sup></p>
+
+    <div class="grid">
+      <div class="card feature">
+        <div class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/><circle cx="9" cy="6" r="1.6" fill="currentColor"/><circle cx="15" cy="12" r="1.6" fill="currentColor"/><circle cx="7" cy="18" r="1.6" fill="currentColor"/></svg></div>
+        <h3>Paralel thread'ler</h3>
+        <p><strong>Her thread tam bir Claude Code oturumudur</strong> ve kendi dalında çalışır; bu yüzden birbirlerinin dosyalarını ezmezler. Sabit bir eşzamanlı sayı yok; Claude işin gerektirdiği kadar thread açar.</p>
+      </div>
+      <div class="card feature">
+        <div class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 18a4 4 0 0 1-.6-7.95A5.5 5.5 0 0 1 17.2 9.1 4.5 4.5 0 0 1 17 18z"/></svg></div>
+        <h3>Bulutta çalışma</h3>
+        <p>Thread'ler sizin makinenizde değil Anthropic'in bulut ortamında koşar. <strong>Dizüstünü kapattığınızda devam eder</strong>; ilerlemeyi telefondan kontrol edip yönlendirebilirsiniz.</p>
+      </div>
+      <div class="card feature">
+        <div class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h11l3 3v13H5z"/><path d="M9 10h6M9 14h6"/></svg></div>
+        <h3>Ortak proje hafızası</h3>
+        <p>Claude gereksinimleri, kararları ve tuzakları dosyalar hâlinde tutar; <strong>her thread başlarken hafıza dizinini (MEMORY.md) okur</strong>. “Bunu hatırla” demeniz yeterli; dosyaları ayarlardan okuyup düzenleyebilirsiniz. Ayrıca üretilen dosyalar ortak <em>Library</em> sekmesinde toplanır.</p>
+      </div>
+      <div class="card feature">
+        <div class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v18M12 7l7-2v3l-7 2M12 12l-7-2v3l7 2"/></svg></div>
+        <h3>Karar verici rolü</h3>
+        <p>Siz işi tek tek yapmak yerine <strong>hedefi koyar, PR'ları inceler, onay verir ve yön değiştirirsiniz</strong>. “Başlamadan önce bana sor”, “en fazla iki thread çalıştır”, “planı görmeden PR açma” gibi tercihleri sohbette söyleyebilirsiniz.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="ornek">
+    <h2><span class="num">4</span>Örnek kullanım senaryosu</h2>
+    <p class="intro">Aşağıdaki brif bu rehber için yazılmış kurgusal bir örnektir; yapısı resmi dokümandaki “project instructions” önerilerini izler.<sup><a href="#k1">[1]</a></sup></p>
+
+    <div class="card brief">
+      <h3>☕ Küçük bir kafe sitesini toparlamak</h3>
+      <p style="margin:0;color:var(--muted)">Tek depolu basit bir web sitesi. Hedef uzun soluklu, içinden sürekli küçük işler çıkıyor; yani projeye uygun.</p>
+
+      <div class="brief-label">Goal (tek satır)</div>
+      <div class="pre-wrap"><pre id="b1">Kafe sitesini mobilde hızlı ve erişilebilir hâle getir; menü sayfasını güncel tut.</pre></div>
+
+      <div class="brief-label">Project instructions</div>
+      <div class="pre-wrap">
+        <button class="copy" type="button" data-target="b2">Kopyala</button>
+<pre id="b2">Bu proje kafe-sitesi deposundaki web sitesinin bakımını kapsar: performans, erişilebilirlik ve menü içeriği.
+
+- main dalından başla, her thread için bir taslak (draft) pull request aç.
+- İşi bitti saymadan önce `npm test` ve `npm run lint` çalıştır, özet satırlarını son mesajına yapıştır.
+- İhtiyacın olan bir şeye (depo, anahtar, API) ulaşamıyorsan ilk mesajında neyin eksik olduğunu yaz ve dur. Tahmin yürütme, sahte veri koyma.
+- Bana sormadan merge etme, force-push yapma, CI ayarlarını değiştirme.</pre>
+      </div>
+
+      <div class="brief-label">Sohbete ilk mesaj</div>
+      <div class="pre-wrap">
+        <button class="copy" type="button" data-target="b3">Kopyala</button>
+<pre id="b3">Şu üç iş var. Thread'leri önce öner, onayımı bekle; aynı anda en fazla iki tane çalıştır.
+
+1. Ana sayfadaki görseller mobilde geç yükleniyor, nedenini bul ve düzelt.
+2. Menü sayfasındaki fiyat tablosu ekran okuyucuda düzgün okunmuyor.
+3. İletişim formu boş e-posta ile gönderilebiliyor, doğrulama ekle.
+
+Hatırla: fiyatlar her zaman "₺" işaretiyle ve kuruşsuz yazılır.</pre>
+      </div>
+
+      <div class="brief-label">Beklenen akış</div>
+      <ul style="margin:0;padding-left:20px;font-size:16px">
+        <li>Claude üç ayrı thread önerir; onaylayınca ikisini başlatır, üçüncüsünü sıraya alır.</li>
+        <li>Her thread kendi dalında çalışır ve taslak PR açar. “₺” kuralı proje hafızasına yazılır, sonraki thread'ler de bilir.</li>
+        <li>Siz Overview'da “Ready for review” altındaki PR'ları inceler, gerekirse thread'e doğrudan not düşer, uygun olanı merge edersiniz.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="sinirlar">
+    <h2><span class="num">5</span>Sınırlar ve notlar</h2>
+    <p class="intro">Aşağıdakiler resmi dokümanın “Limitations” ve “Usage and cost” bölümlerinden derlendi.<sup><a href="#k1">[1]</a></sup></p>
+
+    <ul class="notes">
+      <li><b>Beta ve kademeli erişim</b>Resmi dokümana göre Projects, Pro ve Max planlarında herkese açık beta aşamasında ve kademeli olarak açılıyor; öncelik bulut oturumu kullanmış ve claude.ai/Cowork'te mevcut projesi olmayan hesaplarda. Team ve Enterprise'da henüz yok. Duyuru yazısı bu planların ve sohbet/Cowork tarafının sonradan geleceğini söylüyor, tarih vermiyor.<sup><a href="#k2">[2]</a></sup></li>
+      <li><b>Kullanım limiti daha hızlı dolar</b>Proje, diğer Claude Code oturumlarınızla aynı plan limitini kullanır. Her thread tam bir oturum olduğu için özellikle Pro planda limite daha erken ulaşmayı bekleyin. Yeni projeler varsayılan olarak thread'leri Opus ve yüksek efor ile çalıştırır; ayarlardan daha küçük model seçilebilir.</li>
+      <li><b>Günlük thread sınırı</b>Zorunlu üst sınır, tüm projelerinizde günde 200 yeni thread. Sohbette söylediğiniz “en fazla iki thread” gibi sınırlar bir tercihtir, kesin tavan değildir.</li>
+      <li><b>Yalnızca bulut</b>Thread'ler GitHub depoları ve projeye yüklediğiniz dosyalar üzerinde çalışır; yalnızca sizin makinenizde olan araçlara (yerel veritabanı, VPN arkasındaki API) ulaşamaz. Yerel oturumlar projeye dahil edilemez. Terminal CLI'da ve Bedrock / Google Cloud / Microsoft Foundry üzerinden kullanılamıyor. Duyuruya göre yerel makinede çalıştırma desteği “yakında” planlanıyor.<sup><a href="#k2">[2]</a></sup></li>
+      <li><b>Tek kullanıcı</b>Proje tek bir kullanıcıya aittir; proje ya da thread'ler başkasıyla paylaşılamıyor. Beta süresince kurum düzeyinde yönetim kontrolleri yok.</li>
+      <li><b>Commit edilmemiş iş kaybolabilir</b>Thread'in sandbox'ı turlar arasında duraklar. Devam ettirilemezse thread temiz bir klondan sürer; uzun işlerde Claude'dan ara ara commit ve push yapmasını isteyin.</li>
+      <li><b>Thread'ler taşınamıyor</b>Bir thread, onu başlatan projeye aittir; başka projeye taşınamaz ya da kopyalanamaz.</li>
+    </ul>
+
+    <div class="callout">
+      <strong>Teyit edin:</strong> Plan kapsamı, limitler ve erişim durumu beta boyunca değişebilir. Karar vermeden önce aşağıdaki resmi sayfaların güncel hâline bakın. İki resmi kaynak arasında küçük bir ifade farkı da var: doküman “public beta” derken duyuru yazısı “seçili Pro ve Max aboneleri” diyor; pratikte ikisi de erişimin herkese aynı anda açılmadığı anlamına geliyor.
+    </div>
+  </section>
+
+  <section id="kaynaklar">
+    <h2><span class="num">6</span>Kaynaklar</h2>
+    <p class="intro">Bu sayfadaki bilgiler aşağıdaki resmi Anthropic sayfalarından alındı (erişim: 21 Eylül 2026).</p>
+    <ol class="sources">
+      <li id="k1"><a href="https://code.claude.com/docs/en/claude-projects" target="_blank" rel="noopener">Let Claude coordinate ongoing work with Projects</a> — Claude Code resmi dokümanı (ana kaynak)
+        <span class="url">https://code.claude.com/docs/en/claude-projects</span></li>
+      <li id="k2"><a href="https://claude.com/blog/projects-redesigned" target="_blank" rel="noopener">Projects redesigned: from folder to conversation</a> — Anthropic duyuru yazısı, 17 Eylül 2026
+        <span class="url">https://claude.com/blog/projects-redesigned</span></li>
+      <li id="k3"><a href="https://support.claude.com/en/articles/9517075-what-are-projects" target="_blank" rel="noopener">What are projects?</a> — Claude Yardım Merkezi (önceki Projects deneyimi)
+        <span class="url">https://support.claude.com/en/articles/9517075-what-are-projects</span></li>
+      <li id="k4"><a href="https://code.claude.com/docs/en/claude-code-on-the-web" target="_blank" rel="noopener">Use Claude Code in the cloud</a> — thread'lerin arkasındaki bulut oturumları
+        <span class="url">https://code.claude.com/docs/en/claude-code-on-the-web</span></li>
+      <li id="k5"><a href="https://claude.com/form/projects" target="_blank" rel="noopener">Projects bekleme listesi formu</a>
+        <span class="url">https://claude.com/form/projects</span></li>
+    </ol>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    Bu sayfa bağımsız bir bilgilendirme rehberidir; Anthropic ile bir bağlantısı yoktur ve resmi doküman yerine geçmez. “Claude” ve “Claude Code”, Anthropic'in ürün adlarıdır.
+  </div>
+</footer>
+
+<script>
+(function () {
+  var root = document.documentElement;
+  var KEY = "ccp-theme";
+  try {
+    var saved = localStorage.getItem(KEY);
+    if (saved === "light" || saved === "dark") root.setAttribute("data-theme", saved);
+  } catch (e) {}
+
+  document.getElementById("themeBtn").addEventListener("click", function () {
+    var current = root.getAttribute("data-theme");
+    if (!current) {
+      current = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+    }
+    var next = current === "dark" ? "light" : "dark";
+    root.setAttribute("data-theme", next);
+    try { localStorage.setItem(KEY, next); } catch (e) {}
+  });
+
+  function copyText(text) {
+    if (navigator.clipboard && window.isSecureContext) return navigator.clipboard.writeText(text);
+    return new Promise(function (resolve, reject) {
+      var ta = document.createElement("textarea");
+      ta.value = text;
+      ta.style.position = "fixed";
+      ta.style.opacity = "0";
+      document.body.appendChild(ta);
+      ta.select();
+      try { document.execCommand("copy") ? resolve() : reject(); } catch (e) { reject(e); }
+      document.body.removeChild(ta);
+    });
+  }
+
+  Array.prototype.forEach.call(document.querySelectorAll(".copy"), function (btn) {
+    btn.addEventListener("click", function () {
+      var el = document.getElementById(btn.getAttribute("data-target"));
+      if (!el) return;
+      copyText(el.textContent).then(function () {
+        btn.textContent = "Kopyalandı ✓";
+      }, function () {
+        btn.textContent = "Kopyalanamadı";
+      }).then(function () {
+        setTimeout(function () { btn.textContent = "Kopyala"; }, 1800);
+      });
+    });
+  });
+})();
+</script>
+</body>
+</html>
