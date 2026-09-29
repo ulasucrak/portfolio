@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jev Rehberi: LLM'lerden farkı, kullanımı ve projelere entegrasyonu</title>
+    <meta name="description"
+        content="TypeSafe'in Jev modeli için Türkçe rehber: LLM'lerden farkı, erişim, Playground, soru tipleri, kod örnekleri (AI SDK, HTTP, Python) ve projelere entegrasyon kalıpları.">
+    <link rel="canonical" href="https://ulasucrak.com/jev-rehberi/">
+    <meta name="theme-color" content="#09090B" media="(prefers-color-scheme: dark)">
+    <meta name="theme-color" content="#FAFAFA" media="(prefers-color-scheme: light)">
+
+    <link rel="icon" href="/favicon.ico" sizes="48x48">
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+    <meta property="og:type" content="article">
+    <meta property="og:locale" content="tr_TR">
+    <meta property="og:url" content="https://ulasucrak.com/jev-rehberi/">
+    <meta property="og:site_name" content="Ulaş Uçrak">
+    <meta property="og:title" content="Jev Rehberi: LLM'lerden farkı, kullanımı ve projelere entegrasyonu">
+    <meta property="og:description"
+        content="Metin yazmayan, sadece karar veren yapay zekâ. Jev'i nasıl deneyeceğini ve projelerine nasıl ekleyeceğini adım adım anlatan Türkçe rehber.">
+    <meta property="og:image" content="https://ulasucrak.com/jev-rehberi/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Jev Rehberi — Ulaş Uçrak">
+    <meta property="article:modified_time" content="2026-09-29">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Jev Rehberi: LLM'lerden farkı, kullanımı ve projelere entegrasyonu">
+    <meta name="twitter:description"
+        content="Metin yazmayan, sadece karar veren yapay zekâ: farkı, kullanımı ve projelere entegrasyonu.">
+    <meta name="twitter:image" content="https://ulasucrak.com/jev-rehberi/og-image.png">
+
+    <script>
+        // Follows the system theme; a manual choice (toggle) overrides it.
+        try { var t = localStorage.getItem('jev-theme'); if (t === 'light' || t === 'dark') document.documentElement.setAttribute('data-theme', t); } catch (e) { }
+    </script>
+    <link rel="preload" href="/jev-rehberi/fonts/inter-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+
+    <style>@font-face{font-family:'Inter';font-style: normal;font-display: swap;font-weight: 100 900;src:url(/jev-rehberi/fonts/inter-latin-ext-wght-normal.woff2) format('woff2');unicode-range: U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}@font-face{font-family:'Inter';font-style: normal;font-display: swap;font-weight: 100 900;src:url(/jev-rehberi/fonts/inter-latin-wght-normal.woff2) format('woff2');unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}@font-face{font-family:'JetBrains Mono';font-style: normal;font-display: swap;font-weight: 400;src:url(/jev-rehberi/fonts/jetbrains-mono-latin-ext-400-normal.woff2) format('woff2');unicode-range: U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}@font-face{font-family:'JetBrains Mono';font-style: normal;font-display: swap;font-weight: 400;src:url(/jev-rehberi/fonts/jetbrains-mono-latin-400-normal.woff2) format('woff2');unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}@font-face{font-family:'JetBrains Mono';font-style: normal;font-display: swap;font-weight: 500;src:url(/jev-rehberi/fonts/jetbrains-mono-latin-ext-500-normal.woff2) format('woff2');unicode-range: U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}@font-face{font-family:'JetBrains Mono';font-style: normal;font-display: swap;font-weight: 500;src:url(/jev-rehberi/fonts/jetbrains-mono-latin-500-normal.woff2) format('woff2');unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}:root{color-scheme: dark;--bg: #09090B;--surface: #111114;--surface-2: #17171B;--fg: #F4F4F5;--fg-2: #D4D4D8;--muted: #A1A1AA;--subtle: #8B8B94;--line: #27272A;--line-strong: #3F3F46;--accent: #22C55E;--accent-fg: #052E14;--accent-soft: rgba(34,197,94,0.12);--accent-line: rgba(34,197,94,0.4);--code-bg: #0D0D10;--t-kw: #C084FC;--t-str: #86EFAC;--t-key: #7DD3FC;--t-num: #FBBF24;--t-com: #8B8B94;--t-fn: #60A5FA;--t-var: #F9A8D4;--t-type: #FDBA74;--font: 'Inter',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;--mono: 'JetBrains Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;--top: 56px}:root[data-theme="light"]{color-scheme: light;--bg: #FAFAFA;--surface: #FFFFFF;--surface-2: #F4F4F5;--fg: #09090B;--fg-2: #27272A;--muted: #52525B;--subtle: #63636B;--line: #E4E4E7;--line-strong: #D4D4D8;--accent: #15803D;--accent-fg: #FFFFFF;--accent-soft: rgba(21,128,61,0.1);--accent-line: rgba(21,128,61,0.4);--code-bg: #F6F6F7;--t-kw: #7E22CE;--t-str: #15803D;--t-key: #0369A1;--t-num: #B45309;--t-com: #5F5F68;--t-fn: #1D4ED8;--t-var: #BE185D;--t-type: #C2410C}@media (prefers-color-scheme: light){:root:not([data-theme="dark"]){color-scheme: light;--bg: #FAFAFA;--surface: #FFFFFF;--surface-2: #F4F4F5;--fg: #09090B;--fg-2: #27272A;--muted: #52525B;--subtle: #63636B;--line: #E4E4E7;--line-strong: #D4D4D8;--accent: #15803D;--accent-fg: #FFFFFF;--accent-soft: rgba(21,128,61,0.1);--accent-line: rgba(21,128,61,0.4);--code-bg: #F6F6F7;--t-kw: #7E22CE;--t-str: #15803D;--t-key: #0369A1;--t-num: #B45309;--t-com: #5F5F68;--t-fn: #1D4ED8;--t-var: #BE185D;--t-type: #C2410C}}*,*::before,*::after{box-sizing: border-box;margin: 0;padding: 0}html{-webkit-text-size-adjust: 100%;scroll-padding-top: calc(var(--top) + 64px)}body{background: var(--bg);color: var(--fg);font-family: var(--font);font-size: 1rem;line-height: 1.7;-webkit-font-smoothing: antialiased;overflow-x: hidden}a{color: var(--accent);text-underline-offset: 3px}:focus-visible{outline: 2px solid var(--accent);outline-offset: 2px;border-radius: 4px}.skip{position: absolute;left: 12px;top: -60px;z-index: 100;padding: 10px 14px;background: var(--accent);color: var(--accent-fg);font-weight: 600;border-radius: 6px}.skip:focus{top: 10px}.topbar{position: sticky;top: 0;z-index: 30;height: var(--top);background: var(--bg);border-bottom: 1px solid var(--line)}.topbar-inner{max-width: 1120px;height: 100%;margin: 0 auto;padding: 0 16px;display: flex;align-items: center;justify-content: space-between;gap: 12px}.brand{display: inline-flex;align-items: center;gap: 10px;color: var(--fg);text-decoration: none;font-family: var(--mono);font-size: 0.9rem;font-weight: 500}.brand img{width: 28px;height: 28px;border-radius: 50%}.brand b{color: var(--accent);font-weight: 500}.icon-btn{display: grid;place-items: center;width: 44px;height: 44px;background: transparent;color: var(--muted);border: 1px solid var(--line);border-radius: 8px;cursor: pointer}.icon-btn svg{width: 18px;height: 18px;fill: none;stroke: currentColor;stroke-width: 2;stroke-linecap: round;stroke-linejoin: round}.icon-btn .i-moon{display: none}:root[data-theme="light"] .icon-btn .i-sun{display: none}:root[data-theme="light"] .icon-btn .i-moon{display: block}@media (prefers-color-scheme: light){:root:not([data-theme]) .icon-btn .i-sun{display: none}:root:not([data-theme]) .icon-btn .i-moon{display: block}}.hero{position: relative;max-width: 1120px;margin: 0 auto;padding: 36px 16px 28px}.hero::before{content: "";position: absolute;inset: 0;z-index: -1;background-image: linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size: 40px 40px;opacity: 0.45;-webkit-mask-image: radial-gradient(ellipse 80% 90% at 70% 30%,#000 10%,transparent 70%);mask-image: radial-gradient(ellipse 80% 90% at 70% 30%,#000 10%,transparent 70%);pointer-events: none}.chip{display: inline-flex;align-items: center;gap: 8px;padding: 4px 12px;border: 1px solid var(--line);border-radius: 999px;background: var(--surface);font-family: var(--mono);font-size: 0.78rem;color: var(--muted)}.chip i{width: 7px;height: 7px;border-radius: 50%;background: var(--accent)}.hero h1{font-size: clamp(2.4rem,9vw,4rem);line-height: 1.05;letter-spacing: -0.04em;margin: 18px 0 12px}.tagline{font-size: clamp(1.1rem,3.6vw,1.35rem);font-weight: 600;line-height: 1.4;letter-spacing: -0.01em;color: var(--fg);max-width: 34em;margin-bottom: 12px}.intro{color: var(--muted);max-width: 40em}.pills{display: flex;flex-wrap: wrap;gap: 8px;margin-top: 20px;list-style: none}.pills li{display: inline-flex;align-items: center;gap: 8px;padding: 8px 12px;background: var(--surface);border: 1px solid var(--line);border-radius: 8px;font-size: 0.875rem;color: var(--fg-2)}.pills b{font-family: var(--mono);font-weight: 500;color: var(--accent)}.toc-m{position: sticky;top: var(--top);z-index: 20;background: var(--bg);border-bottom: 1px solid var(--line)}.toc-m summary{display: flex;align-items: center;gap: 10px;min-height: 48px;padding: 0 16px;list-style: none;cursor: pointer;font-size: 0.9rem;font-weight: 600}.toc-m summary::-webkit-details-marker{display: none}.toc-m summary .cur{flex: 1;min-width: 0;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;font-weight: 400;color: var(--muted)}.toc-m summary::after{content: "";width: 8px;height: 8px;border-right: 2px solid var(--muted);border-bottom: 2px solid var(--muted);transform: rotate(45deg) translateY(-3px);transition: transform 0.2s ease}.toc-m[open] summary::after{transform: rotate(-135deg) translateY(-2px)}.toc-m nav{max-height: 65vh;overflow-y: auto;padding: 0 8px 12px;border-top: 1px solid var(--line)}.toc-list{list-style: none}.toc-list a{display: flex;gap: 12px;padding: 10px 8px;color: var(--muted);text-decoration: none;font-size: 0.925rem;line-height: 1.4;border-radius: 6px}.toc-list a span{flex: none;width: 20px;font-family: var(--mono);font-size: 0.8rem;color: var(--subtle);padding-top: 1px}.toc-list a:hover{color: var(--fg);background: var(--surface)}.toc-list a.active{color: var(--fg);background: var(--accent-soft)}.toc-list a.active span{color: var(--accent)}.layout{max-width: 1120px;margin: 0 auto;padding: 8px 16px 48px}.toc-d{display: none}.prose{min-width: 0;max-width: 740px}.prose h2{display: flex;align-items: center;gap: 12px;font-size: clamp(1.45rem,5vw,1.85rem);line-height: 1.25;letter-spacing: -0.025em;margin: 48px 0 16px;padding-top: 28px;border-top: 1px solid var(--line)}.prose h2:first-child{margin-top: 16px}.h-num{display: grid;place-items: center;flex: none;min-width: 34px;height: 34px;padding: 0 6px;border-radius: 8px;background: var(--accent-soft);color: var(--accent);font-family: var(--mono);font-size: 0.9rem;font-weight: 500;letter-spacing: 0}.prose h3{font-size: 1.15rem;line-height: 1.35;letter-spacing: -0.01em;margin: 32px 0 10px}.anchor{margin-left: 8px;color: var(--subtle);text-decoration: none;font-weight: 400;opacity: 0;transition: opacity 0.15s ease}.prose h2 .anchor{margin-left: 0}h2:hover .anchor,h3:hover .anchor,.anchor:focus-visible{opacity: 1}@media (hover: none){.anchor{display: none}}.prose p,.prose ul,.prose ol,.prose blockquote,.prose .table-wrap,.prose .code{margin-bottom: 16px}.prose p,.prose li{color: var(--fg-2)}.prose strong{color: var(--fg);font-weight: 600}.prose ul,.prose ol{padding-left: 22px}.prose li{margin-bottom: 6px}.prose li::marker{color: var(--accent)}.prose li:has(>.check){list-style: none;margin-left: -22px;display: flex;gap: 10px;align-items: baseline}.check{flex: none;width: 16px;height: 16px;border: 2px solid var(--accent-line);border-radius: 4px;transform: translateY(2px)}.sr-only{position: absolute;width: 1px;height: 1px;overflow: hidden;clip: rect(0 0 0 0);white-space: nowrap}.prose a .ext{font-size: 0.8em;margin-left: 2px}.prose :not(pre)>code{font-family: var(--mono);font-size: 0.86em;padding: 1px 6px;border-radius: 5px;background: var(--surface-2);border: 1px solid var(--line);color: var(--fg);overflow-wrap: anywhere}.prose blockquote{padding: 12px 16px;border-left: 3px solid var(--accent);background: var(--surface);border-radius: 0 8px 8px 0}.prose blockquote p{margin: 0;color: var(--muted)}.table-wrap{overflow-x: auto;-webkit-overflow-scrolling: touch;border: 1px solid var(--line);border-radius: 10px;background: var(--surface)}.prose table{width: 100%;min-width: 520px;border-collapse: collapse;font-size: 0.9rem;line-height: 1.5}.prose th,.prose td{padding: 10px 12px;text-align: left;vertical-align: top;border-bottom: 1px solid var(--line)}.prose th{background: var(--surface-2);font-weight: 600;color: var(--fg);white-space: nowrap}.prose tr:last-child td{border-bottom: 0}.prose td{color: var(--fg-2)}.prose td code,.prose th code{white-space: nowrap;overflow-wrap: normal}.code{border: 1px solid var(--line);border-radius: 10px;background: var(--code-bg);overflow: hidden}.code-head{display: flex;align-items: center;justify-content: space-between;gap: 12px;padding: 4px 4px 4px 14px;border-bottom: 1px solid var(--line);background: var(--surface)}.code-lang{font-family: var(--mono);font-size: 0.78rem;color: var(--subtle);overflow: hidden;text-overflow: ellipsis;white-space: nowrap}.copy{flex: none;min-height: 36px;min-width: 84px;padding: 0 12px;border: 1px solid var(--line);border-radius: 6px;background: var(--surface-2);color: var(--fg-2);font: 500 0.8rem var(--font);cursor: pointer;transition: color 0.15s ease,border-color 0.15s ease}.copy:hover{border-color: var(--line-strong);color: var(--fg)}.copy.done{color: var(--accent);border-color: var(--accent-line)}.code pre{margin: 0;padding: 14px 16px;overflow-x: auto;-webkit-overflow-scrolling: touch;font-family: var(--mono);font-size: 0.8125rem;line-height: 1.65;color: var(--fg);tab-size: 2}.t-kw{color: var(--t-kw)}.t-str{color: var(--t-str)}.t-key{color: var(--t-key)}.t-num{color: var(--t-num)}.t-com{color: var(--t-com);font-style: italic}.t-fn{color: var(--t-fn)}.t-prop{color: var(--t-key)}.t-var,.t-flag{color: var(--t-var)}.t-type{color: var(--t-type)}.author{display: flex;gap: 16px;align-items: flex-start;margin-top: 48px;padding: 20px;border: 1px solid var(--line);border-radius: 12px;background: var(--surface)}.author img{flex: none;width: 64px;height: 64px;border-radius: 50%}.prose .author h2{display: block;font-size: 1.05rem;margin: 0 0 4px;padding: 0;border: 0;letter-spacing: -0.01em}.author p{color: var(--muted);font-size: 0.925rem;margin-bottom: 12px}.author-links{display: flex;flex-wrap: wrap;gap: 8px}.author-links a{display: inline-flex;align-items: center;min-height: 40px;padding: 0 14px;border-radius: 8px;font-size: 0.9rem;font-weight: 600;text-decoration: none}.author-links .primary{background: var(--accent);color: var(--accent-fg)}.author-links .secondary{border: 1px solid var(--line-strong);color: var(--fg)}.footer{max-width: 1120px;margin: 0 auto;padding: 20px 16px 40px;border-top: 1px solid var(--line);font-family: var(--mono);font-size: 0.78rem;color: var(--subtle)}.footer a{color: var(--muted)}@media (min-width: 1024px){.toc-m{display: none}html{scroll-padding-top: calc(var(--top) + 24px)}.hero{padding: 56px 24px 32px}.layout{display: grid;grid-template-columns: 250px minmax(0,1fr);gap: 56px;padding: 8px 24px 64px}.toc-d{display: block;position: sticky;top: calc(var(--top) + 24px);align-self: start;max-height: calc(100vh - var(--top) - 48px);overflow-y: auto;padding-right: 4px}.toc-d p{font-family: var(--mono);font-size: 0.75rem;text-transform: uppercase;letter-spacing: 0.08em;color: var(--subtle);margin: 0 0 8px 8px}.toc-list a{padding: 7px 8px;font-size: 0.875rem}.code pre{font-size: 0.85rem}}@media (prefers-reduced-motion: reduce){*{transition: none !important}}</style>
+</head>
+
+<body>
+    <a class="skip" href="#icerik">İçeriğe geç</a>
+
+    <header class="topbar">
+        <div class="topbar-inner">
+            <a class="brand" href="https://ulasucrak.com/">
+                <img src="/jev-rehberi/avatar-56.png" alt="" width="28" height="28">
+                <span>ulaş uçrak<b>_</b></span>
+            </a>
+            <button class="icon-btn" id="theme" type="button" aria-label="Açık/koyu tema değiştir">
+                <svg class="i-sun" viewBox="0 0 24 24" aria-hidden="true">
+                    <circle cx="12" cy="12" r="4" />
+                    <path
+                        d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41" />
+                </svg>
+                <svg class="i-moon" viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z" />
+                </svg>
+            </button>
+        </div>
+    </header>
+
+    <header class="hero">
+        <span class="chip"><i aria-hidden="true"></i>Rehber · Son güncelleme: 29 Eylül 2026</span>
+        <h1>Jev Rehberi</h1>
+        <p class="tagline">Metin yazmayan, sadece karar veren yapay zekâ: LLM'lerden farkı, nasıl kullanılır, projelerine nasıl eklenir.</p>
+        <p class="intro">Bu rehber, reel&#39;de anlattığım Jev modelini kendi projelerinde kullanabilmen için hazırlandı. Önce Jev&#39;in normal LLM&#39;lerden neden farklı olduğunu kısaca anlatıyorum, sonra adım adım nasıl deneyeceğini, en sonda da gerçek projelere nasıl entegre edebileceğini gösteriyorum.</p>
+        <ul class="pills" aria-label="Kısaca Jev">
+            <li><b>70–500 ms</b> yanıt süresi</li>
+            <li><b>$0</b> çıktı token'ı</li>
+            <li><b>Tipli</b> cevap: seçenek, puan, olasılık</li>
+        </ul>
+    </header>
+
+    <details class="toc-m" id="toc-m">
+        <summary>İçindekiler <span class="cur" id="toc-cur"></span></summary>
+        <nav aria-label="İçindekiler">
+            <ol class="toc-list">
+                <li><a href="#nedir"><span>1</span>Jev nedir?</a></li>
+<li><a href="#farki"><span>2</span>LLM&#39;lerden farkı nedir?</a></li>
+<li><a href="#erisim"><span>3</span>Jev&#39;e nasıl erişirim?</a></li>
+<li><a href="#playground"><span>4</span>Kod yazmadan dene: TypeSafe Playground</a></li>
+<li><a href="#soru-tipleri"><span>5</span>Üç soru tipi ve iyi soru yazma</a></li>
+<li><a href="#kod"><span>6</span>Kodla kullanım</a></li>
+<li><a href="#guven"><span>7</span>&quot;Ne kadar emin?&quot; sorusuyla karar vermek</a></li>
+<li><a href="#projeler"><span>8</span>Jev&#39;i projelerinde nasıl kullanırsın?</a></li>
+<li><a href="#sinirlar"><span>9</span>Sınırlar: Jev neyi yapamaz?</a></li>
+<li><a href="#kaynaklar"><span>10</span>Kaynaklar</a></li>
+            </ol>
+        </nav>
+    </details>
+
+    <div class="layout">
+        <aside class="toc-d">
+            <nav aria-label="İçindekiler">
+                <p>İçindekiler</p>
+                <ol class="toc-list">
+                    <li><a href="#nedir"><span>1</span>Jev nedir?</a></li>
+<li><a href="#farki"><span>2</span>LLM&#39;lerden farkı nedir?</a></li>
+<li><a href="#erisim"><span>3</span>Jev&#39;e nasıl erişirim?</a></li>
+<li><a href="#playground"><span>4</span>Kod yazmadan dene: TypeSafe Playground</a></li>
+<li><a href="#soru-tipleri"><span>5</span>Üç soru tipi ve iyi soru yazma</a></li>
+<li><a href="#kod"><span>6</span>Kodla kullanım</a></li>
+<li><a href="#guven"><span>7</span>&quot;Ne kadar emin?&quot; sorusuyla karar vermek</a></li>
+<li><a href="#projeler"><span>8</span>Jev&#39;i projelerinde nasıl kullanırsın?</a></li>
+<li><a href="#sinirlar"><span>9</span>Sınırlar: Jev neyi yapamaz?</a></li>
+<li><a href="#kaynaklar"><span>10</span>Kaynaklar</a></li>
+                </ol>
+            </nav>
+        </aside>
+
+        <main class="prose" id="icerik">
+            <h2 id="nedir"><span class="h-num">1</span>Jev nedir?<a class="anchor" href="#nedir" aria-label="Bu başlığa bağlantı">#</a></h2>
+<p>Jev, TypeSafe AI&#39;ın 15 Eylül 2026&#39;da tanıttığı bir yapay zekâ modeli. Şirketin kurucusu Diogo Almeida, OpenAI&#39;da ChatGPT&#39;nin temelini oluşturan InstructGPT çalışmasının yazarlarından biri.</p>
+<p>Jev metin üretmez. Ona bir <strong>durum</strong> (metin ya da JSON) ve <strong>tipli sorular</strong> verirsin; o da her soruya bir seçenek, bir puan ya da bir olasılık döner. Tüm sorular tek çağrıda, aynı anda cevaplanır.</p>
+<p>En basit benzetme: <strong>Jev akıllı bir <code>if</code> ifadesidir.</strong> Kodun <code>if (tutar &gt; 100)</code> gibi hesaplanabilir koşullarda sorunsuz çalışır, ama &quot;bu mesaj öfkeli mi?&quot; gibi bir yargıyla karşılaşınca tıkanır. Jev tam o yargıları, milisaniyeler içinde verir.</p>
+<p>TypeSafe bu model sınıfına <strong>System One</strong> diyor. İsim, Daniel Kahneman&#39;ın <em>Hızlı ve Yavaş Düşünme</em> kitabından geliyor: System 1 hızlı ve sezgisel düşünce, System 2 yavaş ve derin düşünce. LLM&#39;ler System 2&#39;ye, Jev System 1&#39;e karşılık geliyor.</p>
+<h2 id="farki"><span class="h-num">2</span>LLM&#39;lerden farkı nedir?<a class="anchor" href="#farki" aria-label="Bu başlığa bağlantı">#</a></h2>
+<h3 id="cevabi-nasil-uretiyorlar">Cevabı nasıl üretiyorlar?<a class="anchor" href="#cevabi-nasil-uretiyorlar" aria-label="Bu başlığa bağlantı">#</a></h3>
+<p>ChatGPT, Claude ya da Gemini gibi LLM&#39;ler <strong>otoregresif</strong> çalışır: cevabı token token, yani kelime parçası kelime parçası üretir. Her yeni token için modelin baştan bir hesaplama yapması gerekir. &quot;Bu yorum spam mı?&quot; sorusuna JSON formatında cevap istesen bile model o JSON&#39;u karakter karakter yazar. Bu hem süre hem de çıktı token&#39;ı maliyeti demek.</p>
+<p>Jev ise hiç üretim yapmaz. Durumu bir kez okur ve tüm sorularının cevabını <strong>aynı ileri geçişte (forward pass)</strong> verir. Bu yüzden:</p>
+<ul>
+<li>Uçtan uca yanıt süresi <strong>70–500 milisaniye</strong>.</li>
+<li><strong>Çıktı token&#39;ları ücretsiz.</strong> Sadece gönderdiğin metin kadar ödersin.</li>
+<li>Soru eklemek süreyi neredeyse değiştirmez. TypeSafe&#39;in testinde 13 soruyu tek çağrıda sormak, 13 ayrı çağrı yapmaktan 11,5 kat ucuz ve 9,6 kat hızlı çıkmış.</li>
+</ul>
+<h3 id="ciktisi-ne-kadar-guvenilir">Çıktısı ne kadar güvenilir?<a class="anchor" href="#ciktisi-ne-kadar-guvenilir" aria-label="Bu başlığa bağlantı">#</a></h3>
+<p>LLM&#39;lerden JSON istediğinde bazen bozuk JSON, beklenmeyen bir alan ya da listede olmayan bir seçenek gelir; bunu yakalamak için ayrıca doğrulama kodu yazarsın. Jev&#39;in çıktısı ise <strong>tiplidir</strong>: tanımladığın şemanın dışında bir değer döndüremez.</p>
+<p>Bir incelik var: Jev geçersiz bir tip döndüremez, ama <strong>geçerli bir yanlış cevap</strong> verebilir. Yani &quot;halüsinasyon yapmaz&quot; iddiası sadece bu dar anlamda doğru. O yüzden her cevapla birlikte ne kadar emin olduğunu da söyler (bkz. Bölüm 7).</p>
+<h3 id="neye-gore-egitildiler">Neye göre eğitildiler?<a class="anchor" href="#neye-gore-egitildiler" aria-label="Bu başlığa bağlantı">#</a></h3>
+<p>LLM&#39;ler büyük ölçüde <strong>RLHF</strong> (insan geri bildirimiyle pekiştirmeli öğrenme) ile eğitilir: insanların beğendiği cevapları vermeyi öğrenirler. Bu sohbet için harika, ama modelin &quot;ne kadar emin olduğu&quot; bilgisini bozar; LLM&#39;ler yanlışken bile kendinden emin konuşabilir.</p>
+<p>Jev, TypeSafe&#39;in <strong>RLCD</strong> (Reinforcement Learning for Calibrated Decisions) adını verdiği yöntemle eğitildi. Hedef, gerçekle örtüşen olasılıklar vermek: Jev 100 farklı girdide &quot;0,9&quot; diyorsa bunların yaklaşık 90&#39;ının doğru çıkması gerekir.</p>
+<h3 id="karsilastirma">Karşılaştırma<a class="anchor" href="#karsilastirma" aria-label="Bu başlığa bağlantı">#</a></h3>
+<div class="table-wrap" tabindex="0" role="region" aria-label="Tablo"><table>
+<thead>
+<tr>
+<th><span class="sr-only">Özellik</span></th>
+<th>LLM (ChatGPT, Claude, Gemini)</th>
+<th>Jev</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Çıktı</td>
+<td>Serbest metin</td>
+<td>Seçenek, puan ya da olasılık</td>
+</tr>
+<tr>
+<td>Üretim</td>
+<td>Token token, sıralı</td>
+<td>Tek geçişte, tüm sorular paralel</td>
+</tr>
+<tr>
+<td>Tipik süre</td>
+<td>Saniyeler</td>
+<td>70–500 ms</td>
+</tr>
+<tr>
+<td>Çıktı maliyeti</td>
+<td>Her token ücretli</td>
+<td>Ücretsiz</td>
+</tr>
+<tr>
+<td>Şema dışı cevap</td>
+<td>Mümkün, doğrulama gerekir</td>
+<td>Mümkün değil</td>
+</tr>
+<tr>
+<td>Belirsizlik</td>
+<td>Genelde belirtmez</td>
+<td>Her cevapta olasılık ve güven</td>
+</tr>
+<tr>
+<td>Metin yazma, akıl yürütme</td>
+<td>Güçlü</td>
+<td>Yapamaz</td>
+</tr>
+<tr>
+<td>Görsel, ses</td>
+<td>Model destekliyorsa</td>
+<td>Sadece metin</td>
+</tr>
+</tbody></table></div>
+<h3 id="rakamlar-ne-diyor">Rakamlar ne diyor?<a class="anchor" href="#rakamlar-ne-diyor" aria-label="Bu başlığa bağlantı">#</a></h3>
+<p>Every&#39;nin CEO&#39;su Dan Shipper, aynı dört yazım kontrolünü on iki metin üzerinde hem Jev&#39;e hem Claude Fable 5.1&#39;e yaptırdı. Jev metin başına medyan <strong>0,35 saniye</strong>, Fable <strong>8,83 saniye</strong> sürdü; Jev yaklaşık <strong>580 kat daha ucuzdu</strong>. Doğruluk tarafında ise Jev yedi hatanın altısını, Fable yedisini de yakaladı.</p>
+<p>Özetle: çok daha hızlı ve ucuz, biraz daha az isabetli. TypeSafe&#39;in kendi lansmanında verdiği &quot;193 kat hızlı, 444 kat ucuz&quot; rakamlarını ise şirket de gerçek dünya kazançlarının üst ucu olarak tanımlıyor.</p>
+<h3 id="hangisini-ne-zaman-kullanmali">Hangisini ne zaman kullanmalı?<a class="anchor" href="#hangisini-ne-zaman-kullanmali" aria-label="Bu başlığa bağlantı">#</a></h3>
+<p><strong>Jev&#39;i kullan:</strong> Kararın bir listeden seçim, bir ölçekte puan ya da evet/hayır olduğu, sık tekrarlanan ve hızlı olması gereken işlerde. Sınıflandırma, yönlendirme, filtreleme, denetim, sıralama.</p>
+<p><strong>LLM kullan:</strong> Metin yazman, özetlemen, kod üretmen, çok adımlı akıl yürütmen ya da cevabın önceden tanımlanamadığı durumlarda.</p>
+<p><strong>En iyisi ikisini birlikte kullanmak.</strong> Jev&#39;i LLM&#39;in önüne bir &quot;hızlı refleks&quot; katmanı olarak koyarsın; LLM sadece gerçekten gerektiğinde devreye girer. Bölüm 8&#39;de bunun kalıplarını gösteriyorum.</p>
+<h2 id="erisim"><span class="h-num">3</span>Jev&#39;e nasıl erişirim?<a class="anchor" href="#erisim" aria-label="Bu başlığa bağlantı">#</a></h2>
+<p>Üç yol var. Başlangıç için en pratiği <strong>Vercel AI Gateway</strong>.</p>
+<div class="table-wrap" tabindex="0" role="region" aria-label="Tablo"><table>
+<thead>
+<tr>
+<th>Yol</th>
+<th>Model adı</th>
+<th>Anahtar</th>
+<th>Ne zaman seçilir</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><a href="https://vercel.com/docs/ai-gateway/getting-started/evaluation" target="_blank" rel="noopener noreferrer">Vercel AI Gateway<span class="ext" aria-hidden="true">↗</span></a></td>
+<td><code>typesafe-ai/jev</code></td>
+<td><code>AI_GATEWAY_API_KEY</code></td>
+<td>TypeScript/Next.js projeleri, tek faturada birden çok model</td>
+</tr>
+<tr>
+<td><a href="https://console.typesafe.ai" target="_blank" rel="noopener noreferrer">TypeSafe konsolu<span class="ext" aria-hidden="true">↗</span></a></td>
+<td><code>jev-latest</code>, <code>jev-1.13.0</code></td>
+<td><code>TYPESAFE_API_KEY</code></td>
+<td>Playground&#39;da görsel deneme, Python SDK</td>
+</tr>
+<tr>
+<td><a href="https://openrouter.ai/typesafe" target="_blank" rel="noopener noreferrer">OpenRouter<span class="ext" aria-hidden="true">↗</span></a></td>
+<td><code>typesafe/jev-latest</code>, <code>typesafe/jev-1.13</code></td>
+<td>OpenRouter anahtarı</td>
+<td>Zaten OpenRouter kullanıyorsan</td>
+</tr>
+</tbody></table></div>
+<p><strong>Erişim durumu hakkında:</strong> TypeSafe 20 Eylül&#39;de kayıtları herkese açtı, yoğunluk nedeniyle 22 Eylül&#39;de yeni kayıtları geçici olarak durdurdu. Hesabın varsa konsolda <strong>Billing</strong> sayfasından kredi yükleyerek kullanabilirsin. Vercel ve OpenRouter üzerinden erişim TypeSafe kaydına bağlı değil.</p>
+<p><strong>Fiyat:</strong> Milyon girdi token&#39;ı başına 0,042 dolar, çıktı ücretsiz. Vercel her takıma aylık ücretsiz AI Gateway kredisi veriyor; ancak bu ücretsiz katman modellerin bir alt kümesini kapsıyor. Jev&#39;in dahil olup olmadığını <a href="https://vercel.com/ai-gateway/models?freeTier=true" target="_blank" rel="noopener noreferrer">Free Tier modelleri listesinden<span class="ext" aria-hidden="true">↗</span></a> kontrol et.</p>
+<h3 id="teknik-ozellikler-jev-1-13">Teknik özellikler (jev-1.13)<a class="anchor" href="#teknik-ozellikler-jev-1-13" aria-label="Bu başlığa bağlantı">#</a></h3>
+<div class="table-wrap" tabindex="0" role="region" aria-label="Tablo"><table>
+<thead>
+<tr>
+<th>Özellik</th>
+<th>Değer</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Bağlam</td>
+<td>İstek başına 64k token; durum + en uzun soru için 32k</td>
+</tr>
+<tr>
+<td>Girdi</td>
+<td>Sadece metin (string, JSON ya da metin dizisi)</td>
+</tr>
+<tr>
+<td>Hız limiti</td>
+<td>250.000 token/sn, 1.200 istek/dk</td>
+</tr>
+</tbody></table></div>
+<h2 id="playground"><span class="h-num">4</span>Kod yazmadan dene: TypeSafe Playground<a class="anchor" href="#playground" aria-label="Bu başlığa bağlantı">#</a></h2>
+<p><a href="https://console.typesafe.ai/playground" target="_blank" rel="noopener noreferrer">console.typesafe.ai/playground<span class="ext" aria-hidden="true">↗</span></a> üzerinden Jev&#39;e kod yazmadan soru sorabilirsin. Hesabında kredi olması gerekiyor.</p>
+<ol>
+<li><strong>Giriş yap.</strong> Sayfa önce birkaç saniyelik bir güvenlik doğrulaması gösterir.</li>
+<li><strong>State paneli (üst):</strong> Değerlendirilecek içeriği buraya yaz. Düz metin ya da JSON olabilir.</li>
+<li><strong>Questions paneli (alt):</strong> Boş editörde <code>{</code> yazınca soru tipi menüsü açılır: <strong>Noul</strong>, <strong>Score</strong>, <strong>Choice</strong>. Her soru bir anahtar (ör. <code>is_urgent</code>), bir <code>type</code>, bir <code>instructions</code> ve gerekirse <code>criteria</code> içerir.</li>
+<li><strong>Model seç (sol alt):</strong> Varsayılan <code>jev-latest</code>. <code>+</code> ile ikinci bir model ekleyip sonuçları yan yana karşılaştırabilirsin.</li>
+<li><strong>Çalıştır:</strong> &quot;Run request&quot; düğmesi ya da <code>Ctrl + Enter</code>. Sağ panelde her sorunun sonucu görünür; <code>&lt;/&gt;</code> düğmesiyle ham JSON&#39;a geçebilirsin.</li>
+<li><strong>Paylaş:</strong> &quot;Share&quot; düğmesi isteğinin paylaşılabilir linkini üretir.</li>
+</ol>
+<p><strong>Hazır örneklerle başla.</strong> Sağ paneldeki &quot;Learn to TypeSafe&quot; bölümünde her soru tipi için adım adım bir ders var:</p>
+<div class="table-wrap" tabindex="0" role="region" aria-label="Tablo"><table>
+<thead>
+<tr>
+<th>Örnek</th>
+<th>Soru tipi</th>
+<th>Ne öğretir</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Is hotdog a sandwich?</td>
+<td>Noul</td>
+<td>Tek bir evet/hayır olasılığı</td>
+</tr>
+<tr>
+<td>What color is the sky?</td>
+<td>Choice</td>
+<td>Seçenekler arasından seçim</td>
+</tr>
+<tr>
+<td>Can monkeys create art?</td>
+<td>Score</td>
+<td>Sıralı seviyelerle puanlama</td>
+</tr>
+<tr>
+<td>Resumé screening</td>
+<td>Karışık</td>
+<td>7 soruyla CV değerlendirme</td>
+</tr>
+<tr>
+<td>Support agent audit</td>
+<td>Karışık</td>
+<td>Destek sohbeti denetimi</td>
+</tr>
+<tr>
+<td>LLM guardrails</td>
+<td>Karışık</td>
+<td>Jailbreak ve zarar tespiti</td>
+</tr>
+</tbody></table></div>
+<p>CV örneğinden iki ipucu: <code>instructions</code> bir nesne de olabilir, ör. <code>{&quot;question&quot;: &quot;...&quot;, &quot;today&quot;: &quot;September 15, 2026&quot;}</code>; böylece bugünün tarihi gibi bağlamı soruya iliştirirsin. Score kriterlerini de sadece etiket olarak değil, her seviyenin ne anlama geldiğini anlatan tam cümleler olarak yaz.</p>
+<h2 id="soru-tipleri"><span class="h-num">5</span>Üç soru tipi ve iyi soru yazma<a class="anchor" href="#soru-tipleri" aria-label="Bu başlığa bağlantı">#</a></h2>
+<p>Her soru <strong>tek bir anlık yargı</strong> sormalı; bilgili bir insanın doğru bağlamla bir saniyede vereceği türden. &quot;Bu mesaj aciliyet içeriyor mu?&quot; iyi bir soru. &quot;Bu mesajı analiz et ve en iyi aksiyonu belirle&quot; değil.</p>
+<div class="table-wrap" tabindex="0" role="region" aria-label="Tablo"><table>
+<thead>
+<tr>
+<th>Tip</th>
+<th>Sorduğu</th>
+<th>Döndürdüğü</th>
+<th>Örnek kullanım</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Noul</strong></td>
+<td>Bu doğru mu?</td>
+<td>0–1 arası evet olasılığı</td>
+<td>İade isteniyor mu? Kişisel veri var mı?</td>
+</tr>
+<tr>
+<td><strong>Choice</strong></td>
+<td>Hangisi?</td>
+<td>Seçim + her seçeneğin olasılığı + güven</td>
+<td>Hangi departman? Hangi belge türü?</td>
+</tr>
+<tr>
+<td><strong>Score</strong></td>
+<td>Hangi seviye?</td>
+<td>Puan + olasılıklar + güven</td>
+<td>Hata ne kadar ciddi? Müşteri ne kadar sinirli?</td>
+</tr>
+</tbody></table></div>
+<blockquote>
+<p>&quot;Noul&quot; ismi Bernoulli olasılığından geliyor; bool&#39;a benziyor ama kesin doğru/yanlış yerine bir olasılık döndürüyor.</p>
+</blockquote>
+<p><strong>Örnek istek (bir destek mesajı, üç tip bir arada):</strong></p>
+<div class="code">
+<div class="code-head"><span class="code-lang">JSON</span><button class="copy" type="button" aria-label="Kodu kopyala">Kopyala</button></div>
+<pre tabindex="0"><code class="lang-json">{
+  <span class="t-str t-key">&quot;state&quot;</span>: <span class="t-str">&quot;Stripe hesabımı 3 gündür bağlayamıyorum, sürekli hata veriyor. Satış kaybediyorum, lütfen acil yardım!&quot;</span>,
+  <span class="t-str t-key">&quot;model&quot;</span>: <span class="t-str">&quot;jev-latest&quot;</span>,
+  <span class="t-str t-key">&quot;questions&quot;</span>: {
+    <span class="t-str t-key">&quot;department&quot;</span>: {
+      <span class="t-str t-key">&quot;type&quot;</span>: <span class="t-str">&quot;choice&quot;</span>,
+      <span class="t-str t-key">&quot;instructions&quot;</span>: <span class="t-str">&quot;Which team should handle this?&quot;</span>,
+      <span class="t-str t-key">&quot;criteria&quot;</span>: {
+        <span class="t-str t-key">&quot;billing&quot;</span>: <span class="t-str">&quot;Payment or subscription issues&quot;</span>,
+        <span class="t-str t-key">&quot;technical&quot;</span>: <span class="t-str">&quot;Bugs or integration problems&quot;</span>,
+        <span class="t-str t-key">&quot;sales&quot;</span>: <span class="t-str">&quot;Pricing or account questions&quot;</span>
+      }
+    },
+    <span class="t-str t-key">&quot;frustration&quot;</span>: {
+      <span class="t-str t-key">&quot;type&quot;</span>: <span class="t-str">&quot;score&quot;</span>,
+      <span class="t-str t-key">&quot;instructions&quot;</span>: <span class="t-str">&quot;How frustrated does the customer appear?&quot;</span>,
+      <span class="t-str t-key">&quot;criteria&quot;</span>: [<span class="t-str">&quot;Calm, just stating facts&quot;</span>, <span class="t-str">&quot;Frustrated but civil&quot;</span>, <span class="t-str">&quot;Very angry, strong language&quot;</span>]
+    },
+    <span class="t-str t-key">&quot;is_urgent&quot;</span>: {
+      <span class="t-str t-key">&quot;type&quot;</span>: <span class="t-str">&quot;noul&quot;</span>,
+      <span class="t-str t-key">&quot;instructions&quot;</span>: <span class="t-str">&quot;Does the message convey urgency or time-sensitivity?&quot;</span>
+    }
+  }
+}</code></pre>
+</div>
+<p><strong>Altın kurallar:</strong></p>
+<ul>
+<li><strong>Anahtar modele gitmez.</strong> <code>is_urgent</code> sadece senin kodun için. Sorunun tamamını <code>instructions</code> içine yaz.</li>
+<li><strong>Karmaşık yargıyı böl.</strong> &quot;Bu girişimi puanla&quot; yerine pazar büyüklüğü, teknik fizibilite ve farklılaşmayı ayrı ayrı sor; ağırlıkları kodda ver.</li>
+<li><strong>Aklına gelen soruları ekle.</strong> Ek soru neredeyse hiç süre eklemiyor; belki lazım olacak soruları da aynı çağrıya koy.</li>
+<li><strong>Choice&#39;a kaçış seçeneği koy.</strong> Liste her girdiyi kapsamayabilecekse <code>other</code> ya da <code>none</code> ekle.</li>
+<li><strong>Noul ile Score&#39;u karıştırma.</strong> Noul&#39;da 0,5 &quot;orta seviye&quot; değil, &quot;emin değilim&quot; demek. Seviye ölçmek istiyorsan Score kullan.</li>
+<li><strong>Durumun belli bir kısmını işaret et.</strong> JSON durumda alan yolunu ters tırnakla yaz: &quot;Does <code>ticket.messages[0].text</code> request a refund?&quot;</li>
+<li><strong>Bağımlı soruları ayrı istekte sor.</strong> Aynı istekteki sorular birbirinin cevabını görmez.</li>
+</ul>
+<h2 id="kod"><span class="h-num">6</span>Kodla kullanım<a class="anchor" href="#kod" aria-label="Bu başlığa bağlantı">#</a></h2>
+<h3 id="yol-1-vercel-ai-sdk-onerilen">Yol 1: Vercel AI SDK (önerilen)<a class="anchor" href="#yol-1-vercel-ai-sdk-onerilen" aria-label="Bu başlığa bağlantı">#</a></h3>
+<p>AI SDK 7 ve Node.js 22.18+ gerekir. Önce Vercel panelinde <strong>AI Gateway &gt; API Keys</strong> sayfasından bir anahtar oluştur:</p>
+<div class="code">
+<div class="code-head"><span class="code-lang">Terminal</span><button class="copy" type="button" aria-label="Kodu kopyala">Kopyala</button></div>
+<pre tabindex="0"><code class="lang-bash"><span class="t-kw">export</span> AI_GATEWAY_API_KEY=<span class="t-str">&quot;anahtarın&quot;</span>
+<span class="t-kw">pnpm</span> add ai@latest</code></pre>
+</div>
+<div class="code">
+<div class="code-head"><span class="code-lang">index.mts</span><button class="copy" type="button" aria-label="Kodu kopyala">Kopyala</button></div>
+<pre tabindex="0"><code class="lang-typescript"><span class="t-kw">import</span> { experimental_evaluate <span class="t-kw">as</span> evaluate } <span class="t-kw">from</span> <span class="t-str">'ai'</span>;
+
+<span class="t-kw">const</span> result = <span class="t-kw">await</span> <span class="t-fn">evaluate</span>({
+  <span class="t-prop">model</span>: <span class="t-str">'typesafe-ai/jev'</span>,
+  <span class="t-prop">state</span>: <span class="t-str">'Destek temsilcisi müşteriye tam iade yaptı.'</span>,
+  <span class="t-prop">questions</span>: {
+    <span class="t-prop">refunded</span>: { <span class="t-kw">type</span>: <span class="t-str">'boolean'</span>, <span class="t-prop">instructions</span>: <span class="t-str">'Was a refund issued?'</span> },
+    <span class="t-prop">department</span>: {
+      <span class="t-kw">type</span>: <span class="t-str">'choice'</span>,
+      <span class="t-prop">instructions</span>: <span class="t-str">'Which team handled this case?'</span>,
+      <span class="t-prop">criteria</span>: { <span class="t-prop">billing</span>: <span class="t-str">'Payments and refunds'</span>, <span class="t-prop">technical</span>: <span class="t-str">'Bugs'</span>, <span class="t-prop">sales</span>: <span class="t-str">'Pricing'</span> },
+    },
+  },
+});
+
+console.<span class="t-fn">log</span>(JSON.<span class="t-fn">stringify</span>(result.answers, <span class="t-kw">null</span>, <span class="t-num">2</span>));
+console.<span class="t-fn">log</span>(result.providerMetadata?.typesafe?.confidence);</code></pre>
+</div>
+<p><code>node index.mts</code> ile çalıştır. <strong>Dikkat:</strong> Vercel&#39;de Noul&#39;un adı <code>boolean</code>, sonucu da <code>probability</code> alanında gelir. <code>evaluate</code> henüz deneysel bir API; SDK&#39;yı güncellerken değişiklikleri kontrol et. Vercel&#39;in OpenAI uyumlu uç noktaları (<code>/v1/chat/completions</code>) Jev&#39;i desteklemez.</p>
+<h3 id="yol-2-dogrudan-http-her-dil">Yol 2: Doğrudan HTTP (her dil)<a class="anchor" href="#yol-2-dogrudan-http-her-dil" aria-label="Bu başlığa bağlantı">#</a></h3>
+<p>TypeSafe&#39;e doğrudan:</p>
+<div class="code">
+<div class="code-head"><span class="code-lang">Terminal</span><button class="copy" type="button" aria-label="Kodu kopyala">Kopyala</button></div>
+<pre tabindex="0"><code class="lang-bash"><span class="t-kw">curl</span> <span class="t-flag">-X</span> POST https://api.typesafe.ai/v1/systemone \
+  <span class="t-flag">-H</span> <span class="t-str">&quot;Authorization: Bearer $TYPESAFE_API_KEY&quot;</span> \
+  <span class="t-flag">-H</span> <span class="t-str">&quot;Content-Type: application/json&quot;</span> \
+  <span class="t-flag">-d</span> '{
+    <span class="t-str">&quot;state&quot;</span>: <span class="t-str">&quot;Aboneliğim için iki kez ücret alındı.&quot;</span>,
+    <span class="t-str">&quot;model&quot;</span>: <span class="t-str">&quot;jev-latest&quot;</span>,
+    <span class="t-str">&quot;questions&quot;</span>: {
+      <span class="t-str">&quot;refund&quot;</span>: {<span class="t-str">&quot;type&quot;</span>: <span class="t-str">&quot;noul&quot;</span>, <span class="t-str">&quot;instructions&quot;</span>: <span class="t-str">&quot;Is the customer asking for money back?&quot;</span>}
+    }
+  }'</code></pre>
+</div>
+<p>Vercel üzerinden aynısı için adresi <code>https://ai-gateway.vercel.sh/typesafe/v1/systemone</code>, modeli <code>typesafe-ai/jev</code>, anahtarı <code>$AI_GATEWAY_API_KEY</code> yapman yeterli.</p>
+<h3 id="yol-3-python-sdk">Yol 3: Python SDK<a class="anchor" href="#yol-3-python-sdk" aria-label="Bu başlığa bağlantı">#</a></h3>
+<div class="code">
+<div class="code-head"><span class="code-lang">Terminal</span><button class="copy" type="button" aria-label="Kodu kopyala">Kopyala</button></div>
+<pre tabindex="0"><code class="lang-bash"><span class="t-kw">pip</span> install typesafe-sdk</code></pre>
+</div>
+<div class="code">
+<div class="code-head"><span class="code-lang">Python</span><button class="copy" type="button" aria-label="Kodu kopyala">Kopyala</button></div>
+<pre tabindex="0"><code class="lang-python"><span class="t-kw">from</span> typesafe_sdk <span class="t-kw">import</span> <span class="t-type">Choice</span>, <span class="t-type">Noul</span>, <span class="t-type">Score</span>, <span class="t-type">TypeSafeClient</span>
+
+client = <span class="t-type">TypeSafeClient</span>()  <span class="t-com"># TYPESAFE_API_KEY ortam değişkenini okur</span>
+
+response = client.<span class="t-fn">system_one</span>(
+    state=<span class="t-str">&quot;Stripe hesabımı 3 gündür bağlayamıyorum, lütfen acil yardım!&quot;</span>,
+    questions={
+        <span class="t-str">&quot;department&quot;</span>: <span class="t-type">Choice</span>(
+            instructions=<span class="t-str">&quot;Which team should handle this?&quot;</span>,
+            criteria={
+                <span class="t-str">&quot;billing&quot;</span>: <span class="t-str">&quot;Payment or subscription issues&quot;</span>,
+                <span class="t-str">&quot;technical&quot;</span>: <span class="t-str">&quot;Bugs or integration problems&quot;</span>,
+                <span class="t-str">&quot;sales&quot;</span>: <span class="t-str">&quot;Pricing or account questions&quot;</span>,
+            },
+        ),
+        <span class="t-str">&quot;frustration&quot;</span>: <span class="t-type">Score</span>(
+            instructions=<span class="t-str">&quot;How frustrated does the customer appear?&quot;</span>,
+            criteria=[<span class="t-str">&quot;Calm&quot;</span>, <span class="t-str">&quot;Frustrated but civil&quot;</span>, <span class="t-str">&quot;Very angry&quot;</span>],
+        ),
+        <span class="t-str">&quot;is_urgent&quot;</span>: <span class="t-type">Noul</span>(instructions=<span class="t-str">&quot;Does the message convey urgency?&quot;</span>),
+    },
+)
+
+<span class="t-kw">print</span>(response.answers[<span class="t-str">&quot;department&quot;</span>].choice)      <span class="t-com"># &quot;technical&quot;</span>
+<span class="t-kw">print</span>(response.answers[<span class="t-str">&quot;department&quot;</span>].confidence)  <span class="t-com"># 0.78</span>
+<span class="t-kw">print</span>(response.answers[<span class="t-str">&quot;is_urgent&quot;</span>].noul)         <span class="t-com"># 1.0</span></code></pre>
+</div>
+<p><strong>Yanıtın yapısı:</strong></p>
+<div class="code">
+<div class="code-head"><span class="code-lang">JSON</span><button class="copy" type="button" aria-label="Kodu kopyala">Kopyala</button></div>
+<pre tabindex="0"><code class="lang-json">{
+  <span class="t-str t-key">&quot;model&quot;</span>: <span class="t-str">&quot;jev-1.13.0&quot;</span>,
+  <span class="t-str t-key">&quot;answers&quot;</span>: {
+    <span class="t-str t-key">&quot;department&quot;</span>: {<span class="t-str t-key">&quot;type&quot;</span>: <span class="t-str">&quot;choice&quot;</span>, <span class="t-str t-key">&quot;choice&quot;</span>: <span class="t-str">&quot;technical&quot;</span>, <span class="t-str t-key">&quot;confidence&quot;</span>: <span class="t-num">0.78</span>,
+                   <span class="t-str t-key">&quot;probabilities&quot;</span>: {<span class="t-str t-key">&quot;technical&quot;</span>: <span class="t-num">0.85</span>, <span class="t-str t-key">&quot;sales&quot;</span>: <span class="t-num">0.0</span>, <span class="t-str t-key">&quot;billing&quot;</span>: <span class="t-num">0.15</span>}},
+    <span class="t-str t-key">&quot;frustration&quot;</span>: {<span class="t-str t-key">&quot;type&quot;</span>: <span class="t-str">&quot;score&quot;</span>, <span class="t-str t-key">&quot;score&quot;</span>: <span class="t-num">1.0</span>, <span class="t-str t-key">&quot;confidence&quot;</span>: <span class="t-num">1.0</span>,
+                    <span class="t-str t-key">&quot;legend&quot;</span>: {<span class="t-str t-key">&quot;0&quot;</span>: <span class="t-str">&quot;Calm&quot;</span>, <span class="t-str t-key">&quot;1&quot;</span>: <span class="t-str">&quot;Frustrated but civil&quot;</span>, <span class="t-str t-key">&quot;2&quot;</span>: <span class="t-str">&quot;Very angry&quot;</span>}},
+    <span class="t-str t-key">&quot;is_urgent&quot;</span>: {<span class="t-str t-key">&quot;type&quot;</span>: <span class="t-str">&quot;noul&quot;</span>, <span class="t-str t-key">&quot;noul&quot;</span>: <span class="t-num">1.0</span>}
+  },
+  <span class="t-str t-key">&quot;usage&quot;</span>: {<span class="t-str t-key">&quot;input_tokens&quot;</span>: <span class="t-num">392</span>, <span class="t-str t-key">&quot;output_tokens&quot;</span>: <span class="t-num">65</span>}
+}</code></pre>
+</div>
+<p><strong>Sürüm sabitleme:</strong> <code>jev-latest</code> yeni sürüm çıkınca kendiliğinden değişir. Eşiklerini bir sürüme göre ayarladıysan <code>jev-1.13.0</code> gibi sabit sürümü kullan.</p>
+<h3 id="diger-araclar">Diğer araçlar<a class="anchor" href="#diger-araclar" aria-label="Bu başlığa bağlantı">#</a></h3>
+<ul>
+<li><strong>JavaScript SDK:</strong> <code>@typesafe-ai/sdk</code></li>
+<li><strong>Claude Code eklentisi:</strong> <code>claude plugin marketplace add typesafe-ai/skills</code>, ardından <code>claude plugin install typesafe@typesafe-ai</code></li>
+<li><strong>Diğer kodlama ajanları için skill:</strong> <code>npx skills add typesafe-ai/skills --skill typesafe-ai</code></li>
+</ul>
+<h2 id="guven"><span class="h-num">7</span>&quot;Ne kadar emin?&quot; sorusuyla karar vermek<a class="anchor" href="#guven" aria-label="Bu başlığa bağlantı">#</a></h2>
+<p>Cevap sana <strong>ne</strong> olduğunu söyler; güven (confidence) ise <strong>buna göre davranmalı mısın</strong> sorusunu cevaplar. Jev&#39;i güvenilir yapan, ikisini birlikte kullanmak.</p>
+<p>Confidence, Choice ve Score cevaplarında 0 ile 1 arası bir sayı. Olasılık tek bir seçenekte toplanmışsa 1&#39;e yakın, seçeneklere yayılmışsa düşük olur. Noul&#39;da ayrı bir confidence yoktur; 0,5&#39;e yakın bir değer zaten &quot;emin değilim&quot; demektir.</p>
+<div class="table-wrap" tabindex="0" role="region" aria-label="Tablo"><table>
+<thead>
+<tr>
+<th>Güven</th>
+<th>Ne yapmalı</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Yüksek</td>
+<td>Otomatik uygula</td>
+</tr>
+<tr>
+<td>Orta</td>
+<td>Kullanıcıya onaylat ya da incelemeye işaretle</td>
+</tr>
+<tr>
+<td>Düşük</td>
+<td>Uygulama; bir insana ya da bir LLM&#39;e yönlendir</td>
+</tr>
+</tbody></table></div>
+<p><strong>Eşik, işin riskine göre değişir.</strong> Geri alınabilir bir işlem düşük eşikle, para transferi gibi geri alınamaz bir işlem yüksek eşikle yapılmalı:</p>
+<div class="code">
+<div class="code-head"><span class="code-lang">Python</span><button class="copy" type="button" aria-label="Kodu kopyala">Kopyala</button></div>
+<pre tabindex="0"><code class="lang-python">action = response.answers[<span class="t-str">&quot;action&quot;</span>]
+
+<span class="t-kw">if</span> action.confidence &lt; <span class="t-num">0.5</span>:
+    <span class="t-fn">route_to_human</span>(message)            <span class="t-com"># Model gerçekten emin değil</span>
+<span class="t-kw">elif</span> action.choice == <span class="t-str">&quot;check_balance&quot;</span>:
+    <span class="t-fn">show_balance</span>(account_id)           <span class="t-com"># Düşük risk</span>
+<span class="t-kw">elif</span> action.choice == <span class="t-str">&quot;approve_transfer&quot;</span>:
+    <span class="t-kw">if</span> action.confidence &gt; <span class="t-num">0.9</span>:
+        <span class="t-fn">confirm_then_execute</span>(account_id)
+    <span class="t-kw">else</span>:
+        <span class="t-fn">ask_user_to_confirm</span>(account_id)</code></pre>
+</div>
+<p>Muhafazakâr eşiklerle başla, kendi verinle test et, sonra ayarla.</p>
+<h2 id="projeler"><span class="h-num">8</span>Jev&#39;i projelerinde nasıl kullanırsın?<a class="anchor" href="#projeler" aria-label="Bu başlığa bağlantı">#</a></h2>
+<p>Jev&#39;i düşünmenin en iyi yolu: <strong>kodunda bir yargı gerektiren, sık tekrarlanan her nokta bir Jev çağrısı olabilir.</strong> Şu an bu noktalarda ya bir LLM kullanıyorsun (yavaş ve pahalı), ya bir regex ya da anahtar kelime listesi yazıyorsun (kırılgan), ya da işi elle yapıyorsun.</p>
+<h3 id="kalip-1-siniflandir-ve-yonlendir">Kalıp 1: Sınıflandır ve yönlendir<a class="anchor" href="#kalip-1-siniflandir-ve-yonlendir" aria-label="Bu başlığa bağlantı">#</a></h3>
+<p>Gelen bir mesajı, e-postayı ya da destek talebini doğru yere gönder. Departman için Choice, aciliyet için Noul, öfke seviyesi için Score; hepsi tek çağrıda.</p>
+<p><em>Nerede işe yarar:</em> Destek sistemleri, gelen kutusu otomasyonu, form başvuruları, CRM&#39;e düşen potansiyel müşteriler.</p>
+<h3 id="kalip-2-once-jev-sonra-llm">Kalıp 2: Önce Jev, sonra LLM<a class="anchor" href="#kalip-2-once-jev-sonra-llm" aria-label="Bu başlığa bağlantı">#</a></h3>
+<p>Pahalı LLM&#39;i her istekte çalıştırma. Önce Jev ile isteğin ne olduğunu ve LLM&#39;e gerçekten ihtiyaç olup olmadığını belirle:</p>
+<div class="code">
+<div class="code-head"><span class="code-lang">TypeScript</span><button class="copy" type="button" aria-label="Kodu kopyala">Kopyala</button></div>
+<pre tabindex="0"><code class="lang-typescript"><span class="t-kw">const</span> triage = <span class="t-kw">await</span> <span class="t-fn">evaluate</span>({
+  <span class="t-prop">model</span>: <span class="t-str">'typesafe-ai/jev'</span>,
+  <span class="t-prop">state</span>: userMessage,
+  <span class="t-prop">questions</span>: {
+    <span class="t-prop">needs_llm</span>: { <span class="t-kw">type</span>: <span class="t-str">'boolean'</span>, <span class="t-prop">instructions</span>: <span class="t-str">'Does answering this require writing a detailed, custom response?'</span> },
+    <span class="t-prop">faq_topic</span>: {
+      <span class="t-kw">type</span>: <span class="t-str">'choice'</span>,
+      <span class="t-prop">instructions</span>: <span class="t-str">'Which FAQ topic does this message match?'</span>,
+      <span class="t-prop">criteria</span>: { <span class="t-prop">pricing</span>: <span class="t-str">'Pricing and plans'</span>, <span class="t-prop">shipping</span>: <span class="t-str">'Shipping and delivery'</span>, <span class="t-prop">returns</span>: <span class="t-str">'Returns and refunds'</span>, <span class="t-prop">none</span>: <span class="t-str">'None of these'</span> },
+    },
+  },
+});
+
+<span class="t-kw">if</span> (triage.answers.needs_llm.probability &lt; <span class="t-num">0.3</span> &amp;&amp; triage.answers.faq_topic.choice !== <span class="t-str">'none'</span>) {
+  <span class="t-kw">return</span> <span class="t-fn">cannedAnswer</span>(triage.answers.faq_topic.choice);   <span class="t-com">// Hazır cevap, LLM yok</span>
+}
+<span class="t-kw">return</span> <span class="t-kw">await</span> <span class="t-fn">askLLM</span>(userMessage);                          <span class="t-com">// Gerçekten gerekiyorsa LLM</span></code></pre>
+</div>
+<p><em>Nerede işe yarar:</em> Müşteri hizmetleri botları, sık sorulan sorular, maliyeti düşürmek istediğin her LLM uygulaması.</p>
+<h3 id="kalip-3-filtrele-ve-sirala-llm-e-gitmeden-once">Kalıp 3: Filtrele ve sırala (LLM&#39;e gitmeden önce)<a class="anchor" href="#kalip-3-filtrele-ve-sirala-llm-e-gitmeden-once" aria-label="Bu başlığa bağlantı">#</a></h3>
+<p>Elinde yüzlerce arama sonucu, belge ya da ürün var. Hepsini LLM&#39;e vermek yerine her biri için Jev&#39;e &quot;bu, kullanıcının sorusuyla ne kadar alakalı?&quot; diye sor, en iyi birkaçını LLM&#39;e gönder. RAG sistemlerinde hem maliyeti hem de gürültüyü azaltır.</p>
+<p><em>Nerede işe yarar:</em> RAG, arama, ürün önerisi, büyük veri kümelerini etiketleme.</p>
+<h3 id="kalip-4-guvenlik-bekcisi-guardrail">Kalıp 4: Güvenlik bekçisi (guardrail)<a class="anchor" href="#kalip-4-guvenlik-bekcisi-guardrail" aria-label="Bu başlığa bağlantı">#</a></h3>
+<p>Bir yapay zekâ ajanı bir komutu çalıştırmadan, bir e-posta göndermeden ya da bir dosyayı silmeden önce Jev&#39;e sor: &quot;Bu işlem geri alınamaz mı? Görevin kapsamı dışında mı?&quot; Olasılık yüksekse dur ve onay iste.</p>
+<p>Topluluktan bir örnek: <strong>pi-warden</strong> projesi, bir kodlama ajanının her <code>bash</code>, <code>write</code> ya da <code>edit</code> komutundan önce Jev&#39;e dört soru soruyor. Yaklaşık 17.000 çağrıda 42 kez durdurmuş; bunların %88 kadarı gerçekten durdurulması gereken işlemlermiş.</p>
+<p><em>Nerede işe yarar:</em> Kodlama ajanları, otomasyon araçları, kullanıcı girdisinde jailbreak tespiti.</p>
+<h3 id="kalip-5-model-yonlendirme">Kalıp 5: Model yönlendirme<a class="anchor" href="#kalip-5-model-yonlendirme" aria-label="Bu başlığa bağlantı">#</a></h3>
+<p>Gelen isteğin zorluğunu Score ile ölç. Kolaysa ucuz ve hızlı bir modele, zorsa güçlü bir modele gönder. Kalite düşmeden maliyet düşer.</p>
+<h3 id="kalip-6-gercek-zamanli-kararlar">Kalıp 6: Gerçek zamanlı kararlar<a class="anchor" href="#kalip-6-gercek-zamanli-kararlar" aria-label="Bu başlığa bağlantı">#</a></h3>
+<p>Jev saniyede onlarca karar verebilecek kadar hızlı. TypeSafe&#39;in demosunda Jev, oyunun durumunu metin olarak okuyup saniyede yaklaşık 10 kez sıradaki hamleyi seçerek Doom oynuyor; bunun maliyeti saatte yaklaşık 7 dolar. Aynı mantık oyun botlarında, canlı içerik moderasyonunda ya da gerçek zamanlı bildirim filtrelemede kullanılabilir.</p>
+<h3 id="ornek-proje-instagram-yorum-siniflandirici">Örnek proje: Instagram yorum sınıflandırıcı<a class="anchor" href="#ornek-proje-instagram-yorum-siniflandirici" aria-label="Bu başlığa bağlantı">#</a></h3>
+<p>Bir Next.js API route&#39;u. Gelen her yorumu kategorilere ayırıyor ve cevap beklenip beklenmediğini söylüyor. ManyChat, Make ya da kendi webhook&#39;undan bu uç noktaya istek atabilirsin.</p>
+<div class="code">
+<div class="code-head"><span class="code-lang">app/api/classify-comment/route.ts</span><button class="copy" type="button" aria-label="Kodu kopyala">Kopyala</button></div>
+<pre tabindex="0"><code class="lang-typescript"><span class="t-kw">import</span> { experimental_evaluate <span class="t-kw">as</span> evaluate } <span class="t-kw">from</span> <span class="t-str">'ai'</span>;
+
+<span class="t-kw">export</span> <span class="t-kw">async</span> <span class="t-kw">function</span> <span class="t-fn">POST</span>(<span class="t-prop">req</span>: Request) {
+  <span class="t-kw">const</span> { text } = <span class="t-kw">await</span> req.<span class="t-fn">json</span>();
+
+  <span class="t-kw">const</span> result = <span class="t-kw">await</span> <span class="t-fn">evaluate</span>({
+    <span class="t-prop">model</span>: <span class="t-str">'typesafe-ai/jev'</span>,
+    <span class="t-prop">state</span>: text,
+    <span class="t-prop">questions</span>: {
+      <span class="t-prop">category</span>: {
+        <span class="t-kw">type</span>: <span class="t-str">'choice'</span>,
+        <span class="t-prop">instructions</span>: <span class="t-str">'What kind of Instagram comment is this?'</span>,
+        <span class="t-prop">criteria</span>: {
+          <span class="t-prop">question</span>: <span class="t-str">'Asks the creator a question'</span>,
+          <span class="t-prop">praise</span>: <span class="t-str">'Compliments or thanks the creator'</span>,
+          <span class="t-prop">spam</span>: <span class="t-str">'Spam, self-promotion, or follow-for-follow'</span>,
+          <span class="t-prop">collab</span>: <span class="t-str">'Business or collaboration offer'</span>,
+          <span class="t-prop">other</span>: <span class="t-str">'None of the above'</span>,
+        },
+      },
+      <span class="t-prop">needs_reply</span>: {
+        <span class="t-kw">type</span>: <span class="t-str">'boolean'</span>,
+        <span class="t-prop">instructions</span>: <span class="t-str">'Does this comment expect a reply from the creator?'</span>,
+      },
+      <span class="t-prop">is_negative</span>: {
+        <span class="t-kw">type</span>: <span class="t-str">'boolean'</span>,
+        <span class="t-prop">instructions</span>: <span class="t-str">'Is this comment rude, hostile, or insulting?'</span>,
+      },
+    },
+  });
+
+  <span class="t-kw">return</span> Response.<span class="t-fn">json</span>(result.answers);
+}</code></pre>
+</div>
+<p>Bunun üzerine kurabileceklerin: spam&#39;i otomatik gizlemek, soruları öncelikli bir listeye almak, iş birliği tekliflerini e-postana yönlendirmek.</p>
+<h3 id="ilk-projeyi-secmek-icin-kontrol-listesi">İlk projeyi seçmek için kontrol listesi<a class="anchor" href="#ilk-projeyi-secmek-icin-kontrol-listesi" aria-label="Bu başlığa bağlantı">#</a></h3>
+<ul>
+<li><span class="check" aria-hidden="true"></span>Şu an LLM, regex ya da elle yaptığın, sık tekrarlanan tek bir karar seç.</li>
+<li><span class="check" aria-hidden="true"></span>Kararı bir ya da birkaç tipli soruya böl.</li>
+<li><span class="check" aria-hidden="true"></span>50–100 gerçek örnekle bugünkü yönteminle karşılaştır.</li>
+<li><span class="check" aria-hidden="true"></span>Güven eşiklerini riske göre belirle; düşük güveni insana ya da LLM&#39;e yönlendir.</li>
+<li><span class="check" aria-hidden="true"></span>Kullandığın model sürümünü sabitle ve logla.</li>
+</ul>
+<h2 id="sinirlar"><span class="h-num">9</span>Sınırlar: Jev neyi yapamaz?<a class="anchor" href="#sinirlar" aria-label="Bu başlığa bağlantı">#</a></h2>
+<p><strong>Türkçe hakkında önemli not:</strong> Jev&#39;in ana eğitim dili İngilizce ve en iyi doğruluğu orada veriyor. Diğer diller işleniyor ama aynı kalitede değil. Türkçe içerikle çalışırken kendi örneklerinle test et ve güven değerlerini yakından izle. Denemeye değer bir yaklaşım: durum (state) Türkçe kalsın, ama <code>instructions</code> ve <code>criteria</code> alanlarını İngilizce yaz.</p>
+<p>TypeSafe&#39;in jev-1.13 için yayımladığı bilinen zayıflıklar:</p>
+<div class="table-wrap" tabindex="0" role="region" aria-label="Tablo"><table>
+<thead>
+<tr>
+<th>Zayıflık</th>
+<th>Ne oluyor</th>
+<th>Ne yapmalı</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Literal okuma</td>
+<td>Kastettiğini değil, yazdığını cevaplıyor</td>
+<td>Koşulu açıkça yaz, sınır durumlarını kriterlere koy</td>
+</tr>
+<tr>
+<td>Matematik ve sayma</td>
+<td>Hesaplamıyor, cevabın şeklini tanıyor</td>
+<td>Sayma ve aritmetiği kodda yap</td>
+</tr>
+<tr>
+<td>Sayısal gösterimler</td>
+<td>Hex renk, RGB gibi değerlerde zayıf</td>
+<td>Kodda anlamlı bir isme dönüştür</td>
+</tr>
+<tr>
+<td>Tarih karşılaştırma</td>
+<td>Tarihleri metin olarak okuyor</td>
+<td>Tarihleri çıkar, karşılaştırmayı kodda yap</td>
+</tr>
+<tr>
+<td>Dolaylı sorular</td>
+<td>Çift olumsuzluk ve çok adımlı akıl yürütmede zorlanıyor</td>
+<td>Soruyu sadeleştir</td>
+</tr>
+<tr>
+<td>Gereksiz bağlam</td>
+<td>Alakasız detay dikkatini dağıtıyor</td>
+<td>Durumu önce kodda filtrele</td>
+</tr>
+<tr>
+<td>Manipülatif içerik</td>
+<td>Metne gömülü talimatlar cevabı kaydırabiliyor</td>
+<td>Kriterleri net yaz, uç durumları test et</td>
+</tr>
+<tr>
+<td>Metin üretme</td>
+<td>Eğitilmediği bir iş</td>
+<td>LLM kullan</td>
+</tr>
+</tbody></table></div>
+<p><strong>Kısa kural:</strong> Kodunun kesin hesaplayabildiği bir şeyi Jev&#39;e sorma, bir soruya birden çok yargı sıkıştırma ve duruma gerekenden fazlasını koyma.</p>
+<h2 id="kaynaklar"><span class="h-num">10</span>Kaynaklar<a class="anchor" href="#kaynaklar" aria-label="Bu başlığa bağlantı">#</a></h2>
+<ul>
+<li><a href="https://typesafe.ai/blog/introducing-system-one-models-and-jev" target="_blank" rel="noopener noreferrer">TypeSafe lansman yazısı<span class="ext" aria-hidden="true">↗</span></a></li>
+<li><a href="https://docs.typesafe.ai/introduction/quickstart" target="_blank" rel="noopener noreferrer">TypeSafe dokümanları<span class="ext" aria-hidden="true">↗</span></a></li>
+<li><a href="https://docs.typesafe.ai/primitives.md" target="_blank" rel="noopener noreferrer">Soru tipleri (Primitives)<span class="ext" aria-hidden="true">↗</span></a></li>
+<li><a href="https://docs.typesafe.ai/confidence.md" target="_blank" rel="noopener noreferrer">Güven değerleri (Confidence)<span class="ext" aria-hidden="true">↗</span></a></li>
+<li><a href="https://docs.typesafe.ai/model-jaggedness/jev-1.13.md" target="_blank" rel="noopener noreferrer">Jev 1.13&#39;ün bilinen zayıflıkları<span class="ext" aria-hidden="true">↗</span></a></li>
+<li><a href="https://docs.typesafe.ai/models.md" target="_blank" rel="noopener noreferrer">Model özellikleri, limitler ve dil desteği<span class="ext" aria-hidden="true">↗</span></a></li>
+<li><a href="https://vercel.com/docs/ai-gateway/sdks-and-apis/typesafe" target="_blank" rel="noopener noreferrer">Vercel AI Gateway ile Jev<span class="ext" aria-hidden="true">↗</span></a></li>
+<li><a href="https://vercel.com/docs/ai-gateway/getting-started/evaluation" target="_blank" rel="noopener noreferrer">Vercel AI Gateway hızlı başlangıç<span class="ext" aria-hidden="true">↗</span></a></li>
+<li><a href="https://console.typesafe.ai/playground" target="_blank" rel="noopener noreferrer">TypeSafe Playground<span class="ext" aria-hidden="true">↗</span></a></li>
+</ul>
+
+
+            <section class="author" aria-label="Yazar hakkında">
+                <img src="/jev-rehberi/avatar-128.png" alt="Ulaş Uçrak'ın çizgi karakteri" width="64" height="64" loading="lazy">
+                <div>
+                    <h2>Ulaş Uçrak</h2>
+                    <p>Yazılımcı. Yazılım ve yapay zekâ araçları üzerine Türkçe içerikler üretiyorum. Yeni rehberler ve
+                        kısa anlatımlar için Instagram'dan takip edebilirsin.</p>
+                    <div class="author-links">
+                        <a class="primary" href="https://www.instagram.com/ulascodes/" target="_blank"
+                            rel="noopener noreferrer">Instagram · @ulascodes</a>
+                        <a class="secondary" href="https://ulasucrak.com/">ulasucrak.com</a>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <footer class="footer">
+        © 2026 Ulaş Uçrak · <a href="https://ulasucrak.com/">ulasucrak.com</a> · Bu rehber bağımsızdır; TypeSafe AI
+        veya Vercel ile bağlantılı değildir.
+    </footer>
+
+    <script>
+        (function () {
+            var root = document.documentElement;
+
+            // theme toggle: flips between the opposite of whatever is showing now
+            document.getElementById('theme').addEventListener('click', function () {
+                var cur = root.getAttribute('data-theme') ||
+                    (matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+                var next = cur === 'light' ? 'dark' : 'light';
+                root.setAttribute('data-theme', next);
+                try { localStorage.setItem('jev-theme', next); } catch (e) { }
+            });
+
+            // copy buttons (with a fallback for in-app browsers without the Clipboard API)
+            function legacyCopy(text) {
+                return new Promise(function (ok, fail) {
+                    var ta = document.createElement('textarea');
+                    ta.value = text;
+                    ta.setAttribute('readonly', '');
+                    ta.style.cssText = 'position:fixed;top:0;left:0;opacity:0';
+                    document.body.appendChild(ta);
+                    ta.select();
+                    ta.setSelectionRange(0, text.length);
+                    try { document.execCommand('copy') ? ok() : fail(); } catch (e) { fail(e); }
+                    document.body.removeChild(ta);
+                });
+            }
+            function copyText(text) {
+                // In-app browsers (e.g. Instagram) may expose the Clipboard API but reject it, so fall back.
+                if (navigator.clipboard && window.isSecureContext) {
+                    return navigator.clipboard.writeText(text).catch(function () { return legacyCopy(text); });
+                }
+                return legacyCopy(text);
+            }
+            document.querySelectorAll('.copy').forEach(function (btn) {
+                btn.addEventListener('click', function () {
+                    var code = btn.closest('.code').querySelector('code').textContent;
+                    copyText(code).then(function () {
+                        btn.textContent = 'Kopyalandı ✓';
+                        btn.classList.add('done');
+                    }, function () {
+                        btn.textContent = 'Kopyalanamadı';
+                    }).then(function () {
+                        setTimeout(function () { btn.textContent = 'Kopyala'; btn.classList.remove('done'); }, 1800);
+                    });
+                });
+            });
+
+            // table of contents: highlight the current section, close the mobile menu on tap
+            var tocM = document.getElementById('toc-m');
+            var cur = document.getElementById('toc-cur');
+            var links = document.querySelectorAll('.toc-list a');
+            var heads = Array.prototype.map.call(document.querySelectorAll('.toc-d .toc-list a'), function (a) {
+                return document.getElementById(a.getAttribute('href').slice(1));
+            });
+            links.forEach(function (a) { a.addEventListener('click', function () { tocM.open = false; }); });
+
+            var ticking = false;
+            function update() {
+                var y = window.scrollY + 140, active = null;
+                heads.forEach(function (h) { if (h && h.offsetTop <= y) active = h; });
+                links.forEach(function (a) {
+                    a.classList.toggle('active', !!active && a.getAttribute('href') === '#' + active.id);
+                });
+                cur.textContent = active ? active.textContent.replace(/#$/, '').replace(/^\d+/, '').trim() : '';
+                ticking = false;
+            }
+            window.addEventListener('scroll', function () {
+                if (!ticking) { requestAnimationFrame(update); ticking = true; }
+            }, { passive: true });
+            requestAnimationFrame(update);
+        })();
+    </script>
+</body>
+
+</html>

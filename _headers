@@ -1,0 +1,5 @@
+/jev-rehberi/fonts/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/jev-rehberi/*.png
+  Cache-Control: public, max-age=604800
